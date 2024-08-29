@@ -11,6 +11,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dataFolderPath = path.join(__dirname, '..', 'data');
+const apiDefinitionPath = path.join(__dirname,'..', 'docs','api-definition.yaml');
+const publicFolderPath = path.join(__dirname, 'public');
+const publicHtmlFilePath = path.join(__dirname, 'public', 'docs.html');
 
 const app = express();
 
@@ -20,14 +23,17 @@ app.disable('x-powered-by');
 // تفعيل CORS
 app.use(cors());
 
+// تقديم ملفات الوثائق من مجلد public
+app.use('/docs/api-definition.yaml', express.static(apiDefinitionPath));
+app.use('/', express.static(publicFolderPath));
+app.get('/docs', (req, res) => {
+    res.sendFile(publicHtmlFilePath);
+});
+// إعداد باقي المسارات
 app.use(rateLimiter);
-
 app.use('/data', express.static(dataFolderPath));
-
 app.use('/api', apiRoutes);
-
 app.use(notFoundHandler);
-
 app.use(errorHandler);
 
 app.listen(config.port, () => {

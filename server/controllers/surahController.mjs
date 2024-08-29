@@ -12,7 +12,6 @@ const surahFolderPath = path.join(__dirname, '..', '..', 'data', 'json', 'surah'
 const versesFolderPath = path.join(__dirname, '..', '..', 'data', 'json', 'verses');
 const audioFolderPath = path.join(__dirname, '..', '..', 'data', 'json', 'audio');
 
-// الحصول على جميع السور
 export const getAllSurahs = (req, res) => {
     try {
         const metadata = fs.readJSONSync(metadataPath);
@@ -27,15 +26,14 @@ export const getAllSurahs = (req, res) => {
     }
 };
 
-// الحصول على جميع الآيات لسورة معينة
 export const getAllVerses = (req, res) => {
     try {
-        const surahNumber = req.query.number;
-        const surahPath = path.join(surahFolderPath, `surah_${surahNumber}.json`);
+        const surahId = req.query.surah_id;
+        const surahPath = path.join(surahFolderPath, `surah_${surahId}.json`);
 
         if (!fs.existsSync(surahPath)) {
             return handleError(res, 404, 'The requested verses do not exist.', {
-                surahNumber: surahNumber,
+                surah_id: surahId,
             });
         }
 
@@ -51,14 +49,16 @@ export const getAllVerses = (req, res) => {
     }
 };
 
-// الحصول على سورة معينة
 export const getSurah = (req, res) => {
-    const surahNumber = req.query.number;
-    const surahPath = path.join(surahFolderPath, `surah_${surahNumber}.json`);
+    const surahId = req.query.surah_id;
+    const surahPath = path.join(surahFolderPath, `surah_${surahId}.json`);
 
     if (!fs.existsSync(surahPath)) {
-        return handleError(res, 404, 'The requested surah does not exist.', {
-            surahNumber: surahNumber,
+        return handleError(res, 404, '⚠️ The requested surah does not exist.', {
+            surah_id: surahId,
+            timestamp: new Date().toISOString(),
+            method: req.method,
+            path: req.originalUrl
         });
     }
 
@@ -70,48 +70,87 @@ export const getSurah = (req, res) => {
         });
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching surah data.', {
-            surahNumber: surahNumber,
+            surah_id: surahId,
             message: error.message,
+            timestamp: new Date().toISOString(),
+            method: req.method,
+            path: req.originalUrl
         });
     }
 };
 
-// الحصول على آية معينة
 export const getVerse = (req, res) => {
-    const surahNumber = req.query.number;
-    const verseNumber = req.query.verseNumber;
-    const versePath = path.join(versesFolderPath, `${String(surahNumber).padStart(3, '0')}_${String(verseNumber).padStart(3, '0')}.json`);
+    const surahId = req.query.surah_id;
+    const verseId = req.query.verse_id;
+    const versePath = path.join(versesFolderPath, `${String(surahId).padStart(3, '0')}_${String(verseId).padStart(3, '0')}.json`);
 
-    if (!fs.existsSync(versePath)) {
-        return handleError(res, 404, 'The requested verse does not exist.', {
-            surahNumber: surahNumber,
-            verseNumber: verseNumber,
-        });
-    }
+    if (verseId) {
+        // Fetch a specific verse
+        if (!fs.existsSync(versePath)) {
+            return handleError(res, 404, '⚠️ The requested verse does not exist.', {
+                surah_id: surahId,
+                verse_id: verseId,
+                timestamp: new Date().toISOString(),
+                method: req.method,
+                path: req.originalUrl
+            });
+        }
 
-    try {
-        const verseData = fs.readJSONSync(versePath);
-        res.json({
-            success: true,
-            result: verseData
-        });
-    } catch (error) {
-        handleError(res, 500, 'An error occurred while fetching verse data.', {
-            surahNumber: surahNumber,
-            verseNumber: verseNumber,
-            message: error.message,
-        });
+        try {
+            const verseData = fs.readJSONSync(versePath);
+            res.json({
+                success: true,
+                result: verseData
+            });
+        } catch (error) {
+            handleError(res, 500, 'An error occurred while fetching verse data.', {
+                surah_id: surahId,
+                verse_id: verseId,
+                message: error.message,
+                timestamp: new Date().toISOString(),
+                method: req.method,
+                path: req.originalUrl
+            });
+        }
+    } else {
+        // Fetch all verses of the surah
+        const surahVersesPath = path.join(versesFolderPath, `${String(surahId).padStart(3, '0')}_*.json`);
+        const verseFiles = glob.sync(surahVersesPath);
+
+        if (verseFiles.length === 0) {
+            return handleError(res, 404, '⚠️ No verses found for the specified surah.', {
+                surah_id: surahId,
+                timestamp: new Date().toISOString(),
+                method: req.method,
+                path: req.originalUrl
+            });
+        }
+
+        try {
+            const allVerses = verseFiles.map(file => fs.readJSONSync(file));
+            res.json({
+                success: true,
+                result: allVerses
+            });
+        } catch (error) {
+            handleError(res, 500, 'An error occurred while fetching verses data.', {
+                surah_id: surahId,
+                message: error.message,
+                timestamp: new Date().toISOString(),
+                method: req.method,
+                path: req.originalUrl
+            });
+        }
     }
 };
 
-// الحصول على ملف الصوت لسورة معينة
 export const getAudio = (req, res) => {
-    const surahNumber = req.query.number;
-    const audioPath = path.join(audioFolderPath, `audio_surah_${surahNumber}.json`);
+    const surahId = req.query.surah_id;
+    const audioPath = path.join(audioFolderPath, `audio_surah_${surahId}.json`);
 
     if (!fs.existsSync(audioPath)) {
         return handleError(res, 404, 'The requested audio does not exist.', {
-            surahNumber: surahNumber,
+            surah_id: surahId,
         });
     }
 
@@ -123,15 +162,14 @@ export const getAudio = (req, res) => {
         });
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching audio data.', {
-            surahNumber: surahNumber,
+            surah_id: surahId,
             message: error.message,
         });
     }
 };
 
-// الحصول على جميع الآيات بناءً على رقم الجزء
 export const getVersesByJuz = (req, res) => {
-    const juzNumber = parseInt(req.query.number, 10);
+    const juzId = parseInt(req.query.juz_id, 10);
     const surahFiles = fs.readdirSync(surahFolderPath);
 
     let allVerses = [];
@@ -142,7 +180,7 @@ export const getVersesByJuz = (req, res) => {
             const surahData = fs.readJSONSync(filePath);
 
             if (surahData.verses) {
-                const verses = surahData.verses.filter(verse => verse.juz === juzNumber)
+                const verses = surahData.verses.filter(verse => verse.juz === juzId)
                     .map(verse => ({
                         ...verse,
                         surahName: surahData.name.ar,
@@ -154,7 +192,7 @@ export const getVersesByJuz = (req, res) => {
         }
 
         if (allVerses.length === 0) {
-            return handleError(res, 404, 'No verses found for the specified juz.', { juzNumber });
+            return handleError(res, 404, 'No verses found for the specified juz.', { juzId });
         }
 
         res.json({
@@ -163,13 +201,12 @@ export const getVersesByJuz = (req, res) => {
         });
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching verses by juz.', {
-            juzNumber,
+            juz_id: juzId,
             message: error.message,
         });
     }
 };
 
-// الحصول على الآيات التي تحتوي على سجود
 export const getSajdaVerses = (req, res) => {
     const surahFiles = fs.readdirSync(surahFolderPath);
     let sajdaVerses = [];
