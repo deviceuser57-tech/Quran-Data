@@ -1,8 +1,11 @@
 import express from 'express';
 import { getSurah, getAllSurahs, getAllVerses, getVerse, getAudio, getVersesByJuz, getSajdaVerses, getPage } from '../controllers/surahController.mjs';
-import { handleError } from '../utils/errorUtils.mjs'
+import { handleCognitiveSearch } from '../controllers/cognitiveSearchController.mjs';
+import { handleError } from '../utils/errorUtils.mjs';
 const router = express.Router();
 
+router.post('/cognitive-search', handleCognitiveSearch);
+router.get('/cognitive-search', handleCognitiveSearch);
 
 router.get('/surahs', getAllSurahs);
 

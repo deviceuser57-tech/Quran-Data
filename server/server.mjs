@@ -22,10 +22,20 @@ app.disable('x-powered-by');
 
 // تفعيل CORS
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+const searchHtmlFilePath = path.join(__dirname, 'public', 'search.html');
 
 // تقديم ملفات الوثائق من مجلد public
 app.use('/docs/api-definition.yaml', express.static(apiDefinitionPath));
 app.use('/', express.static(publicFolderPath));
+app.get('/', (req, res) => {
+    res.redirect('/search');
+});
+app.get('/search', (req, res) => {
+    res.sendFile(searchHtmlFilePath);
+});
 app.get('/docs', (req, res) => {
     res.sendFile(publicHtmlFilePath);
 });
