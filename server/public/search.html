@@ -3,23 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>محرك البحث القرآني المعرفي الذكي | Quran Cognitive AI</title>
+  <title>نظام التشغيل البحثي القرآني المعرفي | Quranic Cognitive Research OS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Tajawal:wght@300;400;500;700;900&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #059669;
       --primary-dark: #047857;
       --primary-light: #10b981;
       --accent: #d97706;
-      --bg-dark: #0a0f1d;
-      --card-bg: rgba(17, 24, 39, 0.75);
+      --accent-light: #f59e0b;
+      --bg-dark: #080d1a;
+      --card-bg: rgba(15, 23, 42, 0.75);
       --card-border: rgba(255, 255, 255, 0.08);
-      --text-main: #f3f4f6;
-      --text-muted: #9ca3af;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --tier0-color: #38bdf8;
+      --tier1-color: #a855f7;
+      --tier2-color: #fbbf24;
+      --tier4-color: #34d399;
+      --tier5-color: #f97316;
       --font-ui: 'Tajawal', sans-serif;
       --font-quran: 'Amiri', serif;
+      --font-code: 'Fira Code', monospace;
     }
 
     * {
@@ -29,7 +36,7 @@
     }
 
     body {
-      background: radial-gradient(circle at 50% 0%, #132438 0%, var(--bg-dark) 70%);
+      background: radial-gradient(circle at 50% 0%, #0f1f38 0%, var(--bg-dark) 80%);
       color: var(--text-main);
       font-family: var(--font-ui);
       min-height: 100vh;
@@ -39,13 +46,13 @@
     }
 
     header {
-      padding: 24px 32px;
+      padding: 20px 32px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--card-border);
-      backdrop-filter: blur(12px);
-      background: rgba(10, 15, 29, 0.6);
+      backdrop-filter: blur(16px);
+      background: rgba(8, 13, 26, 0.75);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -71,8 +78,8 @@
 
     .logo-text h1 {
       font-size: 1.25rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #34d399, #fbbf24);
+      font-weight: 900;
+      background: linear-gradient(90deg, #38bdf8, #34d399, #fbbf24);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -85,69 +92,107 @@
     .header-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
-      padding: 8px 16px;
+      font-size: 0.88rem;
+      padding: 6px 14px;
       border-radius: 8px;
+      border: 1px solid var(--card-border);
+      background: rgba(255, 255, 255, 0.03);
       transition: all 0.2s;
-      border: 1px solid transparent;
     }
 
     .header-links a:hover {
       color: #fff;
-      border-color: var(--card-border);
-      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--primary-light);
+      background: rgba(16, 185, 129, 0.1);
     }
 
     main {
       flex: 1;
-      max-width: 1000px;
+      max-width: 1200px;
       width: 100%;
       margin: 0 auto;
-      padding: 40px 20px 80px;
+      padding: 32px 20px 80px;
     }
 
     .hero-section {
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
 
-    .hero-badge {
+    .constitution-pill {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 999px;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      color: var(--primary-light);
-      font-size: 0.85rem;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #7dd3fc;
+      font-size: 0.82rem;
       font-weight: 600;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .hero-title {
-      font-size: 2.25rem;
+      font-size: 2.1rem;
       font-weight: 900;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       line-height: 1.3;
     }
 
     .hero-subtitle {
       color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 650px;
+      font-size: 0.98rem;
+      max-width: 800px;
       margin: 0 auto;
       line-height: 1.6;
     }
 
+    /* Mode Selection Tabs */
+    .mode-selector {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .mode-tab {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.2s;
+    }
+
+    .mode-tab:hover {
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+    }
+
+    .mode-tab.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.3));
+      border-color: var(--primary-light);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(16, 185, 129, 0.25);
+    }
+
+    /* Search Input Card */
     .search-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 20px;
-      padding: 24px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(16px);
-      margin-bottom: 32px;
+      padding: 22px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(20px);
+      margin-bottom: 28px;
     }
 
     .search-input-group {
@@ -157,7 +202,7 @@
 
     .search-input {
       flex: 1;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0, 0, 0, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 14px;
       padding: 16px 20px;
@@ -178,7 +223,7 @@
       color: #fff;
       border: none;
       border-radius: 14px;
-      padding: 0 28px;
+      padding: 0 30px;
       font-size: 1.05rem;
       font-weight: 700;
       cursor: pointer;
@@ -201,193 +246,277 @@
     }
 
     .example-queries {
-      margin-top: 16px;
+      margin-top: 14px;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
     }
 
     .example-tag {
-      font-size: 0.85rem;
-      background: rgba(255, 255, 255, 0.05);
+      font-size: 0.82rem;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 20px;
       cursor: pointer;
-      color: #d1d5db;
+      color: #cbd5e1;
       transition: all 0.2s;
     }
 
     .example-tag:hover {
-      background: rgba(16, 185, 129, 0.15);
-      border-color: var(--primary-light);
+      background: rgba(56, 189, 248, 0.15);
+      border-color: #38bdf8;
       color: #fff;
     }
 
-    /* Pipeline Status Flow */
+    /* Pipeline Status */
     .pipeline-tracker {
       display: none;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 30px;
+      padding: 18px;
+      margin-bottom: 28px;
     }
 
     .pipeline-steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
+      gap: 12px;
     }
 
     .step-item {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       padding: 10px 14px;
-      border-radius: 12px;
+      border-radius: 10px;
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      font-size: 0.88rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.85rem;
+      color: var(--text-muted);
     }
 
     .step-item.active {
       border-color: var(--primary-light);
-      background: rgba(16, 185, 129, 0.08);
+      background: rgba(16, 185, 129, 0.1);
       color: #fff;
     }
 
-    .step-icon {
-      font-size: 1.1rem;
-    }
-
-    /* Results */
-    .results-container {
+    /* 5-Nodes Canvas Display */
+    .canvas-container {
       display: none;
-    }
-
-    .synthesis-card {
-      background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(6, 78, 59, 0.15));
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      border-radius: 18px;
-      padding: 28px;
-      margin-bottom: 30px;
-    }
-
-    .synthesis-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-      color: #34d399;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .synthesis-text {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: #e5e7eb;
-      margin-bottom: 20px;
-    }
-
-    .insights-box {
-      border-top: 1px dashed rgba(255, 255, 255, 0.1);
-      padding-top: 16px;
-    }
-
-    .insights-box h4 {
-      font-size: 0.95rem;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .insights-list {
-      list-style-type: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 24px;
     }
 
-    .insights-list li {
-      font-size: 0.92rem;
-      color: #d1d5db;
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-    }
-
-    .insights-list li::before {
-      content: "✦";
-      color: #34d399;
-    }
-
-    /* Verse Cards */
-    .verse-card {
+    .node-card {
       background: var(--card-bg);
-      border: 1px solid var(--card-border);
       border-radius: 18px;
       padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-      transition: all 0.25s ease;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+      position: relative;
     }
 
-    .verse-card:hover {
-      border-color: rgba(16, 185, 129, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .verse-header {
+    .node-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .surah-info {
+    .node-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tier-badge {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
       font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .tier-0-badge { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid #38bdf8; }
+    .tier-1-badge { background: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid #a855f7; }
+    .tier-2-badge { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid #f59e0b; }
+    .tier-4-badge { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid #10b981; }
+    .tier-5-badge { background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px dashed #f97316; }
+
+    /* Node 1: Morphology & Resonance */
+    .morph-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .morph-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .morph-box h5 {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .morph-box p {
+      font-size: 0.95rem;
+      color: #e2e8f0;
+      font-family: var(--font-ui);
+    }
+
+    .formula-tag {
+      display: inline-block;
+      font-family: var(--font-code);
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      direction: ltr;
+    }
+
+    /* Verse Cards */
+    .verse-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 14px;
+      transition: all 0.2s;
+    }
+
+    .verse-card:hover {
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .ref-tag {
+      font-family: var(--font-code);
+      font-size: 0.75rem;
+      color: #7dd3fc;
+      background: rgba(56, 189, 248, 0.15);
+      padding: 3px 8px;
+      border-radius: 6px;
+      direction: ltr;
+      display: inline-block;
+    }
+
+    .quran-ayah {
+      font-family: var(--font-quran);
+      font-size: 1.6rem;
+      line-height: 2.2;
+      color: #ffffff;
+      margin: 12px 0;
+      padding: 10px 16px;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      border-right: 4px solid #38bdf8;
+    }
+
+    /* Node 2: Matrix Table */
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    .matrix-table th, .matrix-table td {
+      padding: 12px 14px;
+      text-align: right;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.9rem;
+    }
+
+    .matrix-table th {
+      color: var(--text-muted);
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .divergence-alert {
+      color: #fbbf24;
+      font-size: 0.82rem;
+      background: rgba(251, 191, 36, 0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Node 3: Pathways (Dashed Borders) */
+    .pathway-card {
+      background: rgba(249, 115, 22, 0.04);
+      border: 1px dashed rgba(249, 115, 22, 0.4);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .pathway-card h4 {
+      color: #fb923c;
       font-size: 1.05rem;
-      color: #34d399;
+      margin-bottom: 8px;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .surah-badge {
-      background: rgba(255, 255, 255, 0.08);
-      font-size: 0.78rem;
-      padding: 3px 10px;
-      border-radius: 99px;
+    .guard-check-box {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 8px;
+      font-size: 0.82rem;
       color: var(--text-muted);
+      border-left: 3px solid var(--primary-light);
     }
 
-    .quran-ayah {
-      font-family: var(--font-quran);
-      font-size: 1.65rem;
-      line-height: 2.2;
-      text-align: right;
-      color: #ffffff;
-      margin-bottom: 16px;
-      padding: 12px 18px;
-      background: rgba(0, 0, 0, 0.25);
+    /* Node 4: Limits / Ghayb */
+    .limits-card {
+      background: rgba(148, 163, 184, 0.04);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    /* Node 5: Human Console & Red Team */
+    .console-card {
+      background: linear-gradient(145deg, rgba(16, 185, 129, 0.08), rgba(15, 23, 42, 0.6));
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .red-team-box {
+      margin-top: 16px;
+      padding: 14px;
+      background: rgba(239, 68, 68, 0.08);
+      border: 1px solid rgba(239, 68, 68, 0.25);
       border-radius: 12px;
-      border-right: 4px solid var(--primary-light);
     }
 
-    .verse-reason {
-      font-size: 0.95rem;
-      color: #9ca3af;
-      line-height: 1.6;
+    .red-team-box h5 {
+      color: #f87171;
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
-    .verse-reason strong {
-      color: #e5e7eb;
-    }
-
-    /* Loading Spinner */
     .loader {
       display: inline-block;
       width: 18px;
@@ -417,8 +546,8 @@
     <div class="logo-container">
       <div class="logo-icon">📖</div>
       <div class="logo-text">
-        <h1>Quran Cognitive Search</h1>
-        <p>محرك البحث القرآني المعرفي الذكي متعدد الوكلاء</p>
+        <h1>Quranic Cognitive Research OS</h1>
+        <p>نظام التشغيل البحثي القرآني المعرفي المستند للدستور المنهجي</p>
       </div>
     </div>
     <div class="header-links">
@@ -428,10 +557,26 @@
 
   <main>
     <section class="hero-section">
-      <div class="hero-badge">✨ مدعوم بنماذج Google Gemini & Multi-Agent Architecture</div>
-      <h2 class="hero-title">ابحث بالمعنى، المقصد، والرؤية القرآنية</h2>
-      <p class="hero-subtitle">لا يعتمد على التطابق اللفظي فقط، بل يمر عبر وكلاء ذكاء اصطناعي متعددين لفهم سياق السؤال واستخراج الآيات بدقة معرفية وهدايات عملية.</p>
+      <div class="constitution-pill">📜 خاضع للدستور التأسيسي لنظام التشغيل البحثي القرآني v1.0</div>
+      <h2 class="hero-title">منصة البحث القرآني المعرفي متعددة المسارات</h2>
+      <p class="hero-subtitle">استخراج خام شامل، محرك صرفي وتركيبي، رنين قرآني داخلي، وتجاور للآراء دون اندماج قسري، مع السيادة الكاملة للباحث.</p>
     </section>
+
+    <!-- Phase 0: Intent Calibration Selector -->
+    <div class="mode-selector">
+      <div class="mode-tab active" id="modeTadabbur" onclick="selectMode('tadabbur')">
+        <span>🌱</span>
+        <span>الاستكشاف التدبري (Tadabbur)</span>
+      </div>
+      <div class="mode-tab" id="modeHeritage" onclick="selectMode('heritage')">
+        <span>📚</span>
+        <span>التأصيل والمراجعة التراثية (Heritage)</span>
+      </div>
+      <div class="mode-tab" id="modeKnowledge" onclick="selectMode('knowledge')">
+        <span>🔬</span>
+        <span>البحث المعرفي والكوني (Knowledge)</span>
+      </div>
+    </div>
 
     <div class="search-card">
       <form id="searchForm" onsubmit="event.preventDefault(); performSearch();">
@@ -440,68 +585,175 @@
             type="text" 
             id="queryInput" 
             class="search-input" 
-            placeholder="اكتب تساؤلك أو الموضوع المعرفي هنا... (مثال: حفظ النفس والصبر عند الابتلاء)"
+            placeholder="اكتب المفهوم أو الصيغة المراد تدبرها... (مثال: القلب كمايسترو قيادي للدماغ والشبكات، أو صيغة كن فيكون)"
             required
             autocomplete="off"
           />
           <button type="submit" id="searchBtn" class="search-btn">
-            <span id="btnText">بحث معرفي</span>
+            <span id="btnText">تشغيل البحث المعرفي</span>
           </button>
         </div>
       </form>
 
       <div class="example-queries">
-        <span style="font-size: 0.85rem; color: var(--text-muted);">أمثلة مقترحة:</span>
-        <span class="example-tag" onclick="setQuery('حفظ النفس وقيمة الروح الإنسانية')">حفظ النفس وحرمة الدماء</span>
-        <span class="example-tag" onclick="setQuery('الطمأنينة وراحة القلب عند الشدائد')">الطمأنينة عند الشدائد</span>
-        <span class="example-tag" onclick="setQuery('الأمانة وإتقان العمل والمسؤولية')">الأمانة وإتقان العمل</span>
-        <span class="example-tag" onclick="setQuery('العدل حتى مع الخصوم والمخالفين')">العدل مع الخصوم</span>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">أمثلة منهجية:</span>
+        <span class="example-tag" onclick="setQuery('القلب والتعقل والفقه وعلاقته بالشبكات العصبية')">القلب والفقه والعقل</span>
+        <span class="example-tag" onclick="setQuery('صيغة كن فيكون في سياقات الخلق والأمر')">صيغة كن فيكون</span>
+        <span class="example-tag" onclick="setQuery('تعليم آدم الأسماء كلها والاستخلاف')">تعليم آدم الأسماء</span>
+        <span class="example-tag" onclick="setQuery('الروح من أمر ربي وما أوتيتم من العلم إلا قليلا')">الروح وأمر ربي والعلم</span>
       </div>
     </div>
 
     <!-- Pipeline Steps Progress -->
     <div id="pipelineTracker" class="pipeline-tracker">
       <div class="pipeline-steps">
-        <div class="step-item active" id="step1">
-          <span class="step-icon">🧠</span>
-          <span>1. تفكيك القصد والنية</span>
+        <div class="step-item" id="step1">
+          <span>0. معايرة النية</span>
         </div>
         <div class="step-item" id="step2">
-          <span class="step-icon">🔍</span>
-          <span>2. الاسترجاع الدلالي</span>
+          <span>1. المحرك الصرفي والتركيبي</span>
         </div>
         <div class="step-item" id="step3">
-          <span class="step-icon">⚖️</span>
-          <span>3. التدقيق وسياق المعنى</span>
+          <span>2. الرنين القرآني (Tier 0)</span>
         </div>
         <div class="step-item" id="step4">
-          <span class="step-icon">✍️</span>
-          <span>4. الصياغة والبيان</span>
+          <span>3. مصفوفة المصادر والمقارنة</span>
+        </div>
+        <div class="step-item" id="step5">
+          <span>4. فحص العزلة السياقية والمسارات</span>
         </div>
       </div>
     </div>
 
-    <!-- Results Area -->
-    <div id="resultsContainer" class="results-container">
-      <div class="synthesis-card">
-        <h3><span>🌿</span> الخلاصة المعرفية والبيان</h3>
-        <p class="synthesis-text" id="synthesisText"></p>
-        <div class="insights-box">
-          <h4>💡 هدايات وتوجيهات عملية مستفادة:</h4>
-          <ul class="insights-list" id="insightsList"></ul>
+    <!-- 5-Nodes Canvas Display -->
+    <div id="canvasContainer" class="canvas-container">
+
+      <!-- Node 1: Raw Data & Morphology -->
+      <div class="node-card" style="border-color: rgba(56, 189, 248, 0.4);">
+        <div class="node-header">
+          <div class="node-title">
+            <span>📊 [العقدة الأولى] البيانات الخام والمحرك الصرفي والتركيبي</span>
+          </div>
+          <span class="tier-badge tier-0-badge">Tier 0 (القرآن القطعي)</span>
+        </div>
+
+        <div class="morph-grid">
+          <div class="morph-box">
+            <h5>الجذر الصرفي والمشتقات</h5>
+            <p id="morphRoot">-</p>
+          </div>
+          <div class="morph-box">
+            <h5>الصيغة المنطقية المستخلصة</h5>
+            <p><span class="formula-tag" id="morphFormula">-</span></p>
+          </div>
+          <div class="morph-box" style="grid-column: 1 / -1;">
+            <h5>التحليل التركيبي وأثر حروف المعاني</h5>
+            <p id="morphSyntactic">-</p>
+          </div>
+        </div>
+
+        <h4 style="margin: 16px 0 10px; font-size: 1.05rem; color: #38bdf8;">🔄 شبكة الرنين الداخلي وتفسير القرآن بالقرآن:</h4>
+        <p id="resonanceNetwork" style="font-size: 0.92rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 16px;"></p>
+
+        <h4 style="margin: 16px 0 10px; font-size: 1.05rem; color: #fff;">📖 الآيات المسترجعة بالنص العثماني المضبوط:</h4>
+        <div id="versesList"></div>
+      </div>
+
+      <!-- Node 2: Comparative Sources Matrix -->
+      <div class="node-card" style="border-color: rgba(251, 191, 36, 0.4);">
+        <div class="node-header">
+          <div class="node-title">
+            <span>📚 [العقدة الثانية] مصفوفة المصادر المقارنة والتجاور الدلالي</span>
+          </div>
+          <span class="tier-badge tier-2-badge">Tier 1-3 (التراث والأقوال)</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 12px;">
+          * تطبيق قاعدة التجاور لا الاندماج: تُعرض الأقوال متجاورة ومقرونة بمعرفات فريدة [Ref IDs] دون اختلاق توفيق قسري.
+        </p>
+        <div style="overflow-x: auto;">
+          <table class="matrix-table">
+            <thead>
+              <tr>
+                <th>المصدر والمؤلف</th>
+                <th>المعرّف الفريد [Ref ID]</th>
+                <th>المضمون التفسيري</th>
+                <th>حالة التباين أو الاتفاق</th>
+              </tr>
+            </thead>
+            <tbody id="matrixTableBody"></tbody>
+          </table>
         </div>
       </div>
 
-      <h3 style="margin-bottom: 16px; font-size: 1.2rem; color: #fff;">📖 الآيات القرآنية المستشهد بها:</h3>
-      <div id="versesList"></div>
+      <!-- Node 3: Methodological Pathways -->
+      <div class="node-card" style="border: 1px dashed rgba(249, 115, 22, 0.6);">
+        <div class="node-header">
+          <div class="node-title">
+            <span>🧩 [العقدة الثالثة] المسارات المنهجية المقترحة للتدبر</span>
+          </div>
+          <span class="tier-badge tier-5-badge">Tier 5 (أفق تدبري استكشافي)</span>
+        </div>
+        <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
+          * كل مسار تدبري موسوم كـ [فرضية استكشافية - غير قطعية] ومخضع لفحص "العزلة السياقية للوكيل الحارس".
+        </p>
+        <div id="pathwaysList"></div>
+      </div>
+
+      <!-- Node 4: Epistemic Limits & Ghayb -->
+      <div class="node-card" style="border-color: rgba(148, 163, 184, 0.4);">
+        <div class="node-header">
+          <div class="node-title">
+            <span>⚖️ [العقدة الرابعة] أفق الغيب وحدود المعرفة الإنسانية</span>
+          </div>
+          <span class="tier-badge" style="background: rgba(148, 163, 184, 0.15); color: #cbd5e1; border: 1px solid #94a3b8;">The Unknown</span>
+        </div>
+        <div class="limits-card">
+          <h4 style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 6px;">🌌 مواضع التوقف والغيبيات المحضة:</h4>
+          <p id="unknownGhayb" style="font-size: 0.92rem; color: #e2e8f0; line-height: 1.6; margin-bottom: 12px;"></p>
+          <h4 style="font-size: 0.95rem; color: #cbd5e1; margin-bottom: 6px;">⚠️ التحفظات المنهجية وقواعد الحظر:</h4>
+          <p id="methodologicalCaveats" style="font-size: 0.92rem; color: #94a3b8; line-height: 1.6;"></p>
+        </div>
+      </div>
+
+      <!-- Node 5: Human Console & Red Team -->
+      <div class="console-card">
+        <div class="node-header">
+          <div class="node-title" style="color: #34d399;">
+            <span>🗣️ [العقدة الخامسة] ملعب الباحث وسيادة الاستنتاج (Human-in-the-Loop)</span>
+          </div>
+          <span class="tier-badge tier-4-badge">القرار للباحث</span>
+        </div>
+        <p style="font-size: 0.92rem; color: #e2e8f0; line-height: 1.7; margin-bottom: 14px;">
+          السيادة الكاملة لك في تبني أي مسار أو اختباره أو نقضه؛ النظام لا يصدر أحكاماً إغلاقية أو فتاوى.
+        </p>
+
+        <h4 style="font-size: 0.95rem; color: var(--accent); margin-bottom: 8px;">❓ أسئلة استكشافية مفتوحة لتعميق البحث:</h4>
+        <ul id="researcherQuestions" style="list-style-type: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px;"></ul>
+
+        <div class="red-team-box">
+          <h5>🛡️ اختبار الفريق الأحمر ومقاومة المداهنة (Red-Team Adversarial Challenge):</h5>
+          <p id="redTeamPrompt" style="font-size: 0.9rem; color: #fca5a5; line-height: 1.6;"></p>
+        </div>
+      </div>
+
     </div>
   </main>
 
   <footer>
-    مشروع Quran Data &bull; محرك البحث المعرفي القرآني الذكي
+    منصة Quranic Cognitive Research OS &bull; مستندة بالكامل للدستور التأسيسي والمعمارية الإبستمولوجية
   </footer>
 
   <script>
+    let currentMode = 'tadabbur';
+
+    function selectMode(mode) {
+      currentMode = mode;
+      document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+      if (mode === 'tadabbur') document.getElementById('modeTadabbur').classList.add('active');
+      if (mode === 'heritage') document.getElementById('modeHeritage').classList.add('active');
+      if (mode === 'knowledge') document.getElementById('modeKnowledge').classList.add('active');
+    }
+
     function setQuery(text) {
       document.getElementById('queryInput').value = text;
       performSearch();
@@ -514,85 +766,131 @@
       const searchBtn = document.getElementById('searchBtn');
       const btnText = document.getElementById('btnText');
       const pipelineTracker = document.getElementById('pipelineTracker');
-      const resultsContainer = document.getElementById('resultsContainer');
+      const canvasContainer = document.getElementById('canvasContainer');
 
-      // UI Loading state
       searchBtn.disabled = true;
-      btnText.innerHTML = '<span class="loader"></span> جاري التحليل...';
+      btnText.innerHTML = '<span class="loader"></span> جاري المعالجة المنهجية...';
       pipelineTracker.style.display = 'block';
-      resultsContainer.style.display = 'none';
+      canvasContainer.style.display = 'none';
 
-      // Animate steps
-      const steps = ['step1', 'step2', 'step3', 'step4'];
+      const steps = ['step1', 'step2', 'step3', 'step4', 'step5'];
+      steps.forEach(s => document.getElementById(s).classList.remove('active'));
+
       let stepIndex = 0;
       const stepInterval = setInterval(() => {
         if (stepIndex < steps.length) {
           document.getElementById(steps[stepIndex]).classList.add('active');
           stepIndex++;
         }
-      }, 700);
+      }, 650);
 
       try {
         const response = await fetch('/api/cognitive-search', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query })
+          body: JSON.stringify({ query, mode: currentMode })
         });
 
         clearInterval(stepInterval);
         steps.forEach(s => document.getElementById(s).classList.add('active'));
 
         const json = await response.json();
-
         if (!response.ok || !json.success) {
           throw new Error(json.error || 'حدث خطأ أثناء إجراء البحث');
         }
 
-        renderResults(json.data);
+        renderCanvasResults(json.data);
       } catch (err) {
         alert(err.message);
       } finally {
         searchBtn.disabled = false;
-        btnText.textContent = 'بحث معرفي';
+        btnText.textContent = 'تشغيل البحث المعرفي';
       }
     }
 
-    function renderResults(data) {
-      const results = data.results;
-      document.getElementById('synthesisText').textContent = results.synthesis || '';
+    function renderCanvasResults(data) {
+      const r = data.results;
 
-      const insightsList = document.getElementById('insightsList');
-      insightsList.innerHTML = '';
-      (results.insights || []).forEach(item => {
-        const li = document.createElement('li');
-        li.textContent = item;
-        insightsList.appendChild(li);
-      });
+      // Node 1: Morphology & Resonance
+      const morph = r.node_1_morphology || {};
+      document.getElementById('morphRoot').textContent = morph.root || 'عام / مفهومي';
+      document.getElementById('morphFormula').textContent = morph.logical_formula || data.query;
+      document.getElementById('morphSyntactic').textContent = morph.syntactic_summary || '';
+      document.getElementById('resonanceNetwork').textContent = morph.resonance_network || '';
 
+      // Verses
       const versesList = document.getElementById('versesList');
       versesList.innerHTML = '';
-
-      (results.verses || []).forEach(v => {
-        const card = document.createElement('div');
-        card.className = 'verse-card';
-        card.innerHTML = `
-          <div class="verse-header">
-            <div class="surah-info">
-              <span>سورة ${v.surah_name}</span>
-              <span class="surah-badge">آية ${v.verse_number}</span>
-              <span class="surah-badge">${v.revelation_place}</span>
+      (r.verses || []).forEach(v => {
+        const vCard = document.createElement('div');
+        vCard.className = 'verse-card';
+        vCard.innerHTML = `
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <div style="font-weight: 700; color: #38bdf8;">
+              سورة ${v.surah_name} &bull; آية ${v.verse_number} (${v.revelation_place})
             </div>
-            <span style="font-size: 0.82rem; color: var(--text-muted);">الجزء ${v.juz} &bull; صفحة ${v.page}</span>
+            <span class="ref-tag">${v.ref_id}</span>
           </div>
           <div class="quran-ayah">${v.arabic_text}</div>
-          <div class="verse-reason">
-            <strong>الدلالة المعرفية:</strong> ${v.relevance_reason || ''}
+          <div style="font-size: 0.88rem; color: #cbd5e1; margin-top: 8px;">
+            <strong style="color: #38bdf8;">وجه الرنين الداخلي:</strong> ${v.resonance_reason || ''}
           </div>
+          ${v.syntactic_note ? `<div style="font-size: 0.82rem; color: #94a3b8; margin-top: 4px;"><strong>إضاءة تركيبية:</strong> ${v.syntactic_note}</div>` : ''}
         `;
-        versesList.appendChild(card);
+        versesList.appendChild(vCard);
       });
 
-      document.getElementById('resultsContainer').style.display = 'block';
+      // Node 2: Matrix Table
+      const matrixBody = document.getElementById('matrixTableBody');
+      matrixBody.innerHTML = '';
+      (r.node_2_sources || []).forEach(s => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td style="font-weight: 700; color: #fbbf24;">${s.source_name}</td>
+          <td><span class="ref-tag">${s.ref_id}</span></td>
+          <td style="color: #e2e8f0;">${s.summary}</td>
+          <td><span class="divergence-alert">${s.divergence_note || 'اتفاق دلالي'}</span></td>
+        `;
+        matrixBody.appendChild(tr);
+      });
+
+      // Node 3: Pathways
+      const pathwaysList = document.getElementById('pathwaysList');
+      pathwaysList.innerHTML = '';
+      (r.node_3_pathways || []).forEach(p => {
+        const pCard = document.createElement('div');
+        pCard.className = 'pathway-card';
+        pCard.innerHTML = `
+          <h4><span>🔹</span> ${p.path_name} <span class="ref-tag" style="color: #fb923c; border-color: #f97316;">${p.tag}</span></h4>
+          <p style="font-size: 0.95rem; color: #f1f5f9; line-height: 1.7; margin-bottom: 10px;">${p.thesis}</p>
+          <div style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 8px;"><strong>الشواهد والقرائن:</strong> ${p.supporting_arguments}</div>
+          <div class="guard-check-box">
+            <strong>🛡️ فحص الوكيل الحارس والعزلة السياقية:</strong> ${p.guardrail_check}
+          </div>
+        `;
+        pathwaysList.appendChild(pCard);
+      });
+
+      // Node 4: Limits
+      const limits = r.node_4_limits || {};
+      document.getElementById('unknownGhayb').textContent = limits.unknown_ghayb || 'ما استأثر الله بعلمه ولم يرد فيه نص قاطع.';
+      document.getElementById('methodologicalCaveats').textContent = limits.methodological_caveats || 'تنبيه: لا يجوز قطع تأويل ظني على أنه مراد الله الوحيد.';
+
+      // Node 5: Console & Red Team
+      const consoleNode = r.node_5_console || {};
+      const questionsList = document.getElementById('researcherQuestions');
+      questionsList.innerHTML = '';
+      (consoleNode.researcher_questions || []).forEach(q => {
+        const li = document.createElement('li');
+        li.style.color = '#34d399';
+        li.innerHTML = `✦ <span style="color: #e2e8f0;">${q}</span>`;
+        questionsList.appendChild(li);
+      });
+
+      document.getElementById('redTeamPrompt').textContent = consoleNode.red_team_prompt || 'هل هناك نص أو سياق آخر في القرآن يفرض فهماً مضاداً لهذه الفرضية؟';
+
+      canvasContainer.style.display = 'flex';
+      canvasContainer.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>

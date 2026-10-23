@@ -3,6 +3,8 @@ import { runCognitiveSearch } from '../services/cognitiveSearchService.mjs';
 export async function handleCognitiveSearch(req, res) {
     try {
         const query = req.body?.query || req.query?.q;
+        const mode = req.body?.mode || req.query?.mode || null;
+
         if (!query || typeof query !== 'string' || !query.trim()) {
             return res.status(400).json({
                 success: false,
@@ -10,7 +12,7 @@ export async function handleCognitiveSearch(req, res) {
             });
         }
 
-        const result = await runCognitiveSearch(query.trim());
+        const result = await runCognitiveSearch(query.trim(), mode);
 
         return res.status(200).json({
             success: true,
