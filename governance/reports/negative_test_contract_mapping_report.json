@@ -1,0 +1,228 @@
+{
+  "report_id": "NEGATIVE_TEST_CONTRACT_MAPPING_REPORT",
+  "task_id": "QCR-OS-GOVERNANCE-REGISTRY-ID-CORRECTION-002",
+  "parent_contract": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
+  "generated_at": "2026-10-31T18:57:09.608Z",
+  "total_contract_negative_tests_expected": 36,
+  "total_mapped": 36,
+  "missing": 0,
+  "identity_mismatches": 0,
+  "tests": [
+    {
+      "test_id": "P0-NEG-001",
+      "exact_contract_clause": "Section 2 & MC-INV-13",
+      "test_meaning": "Attempted Phase 0 ingestion execution without explicit Human Authorization",
+      "expected_rejection": "INGESTION_UNAUTHORIZED_PHASE0_FROZEN"
+    },
+    {
+      "test_id": "P0-NEG-002",
+      "exact_contract_clause": "Section 2 & MC-INV-13",
+      "test_meaning": "Autonomous phase progression attempt by system agent",
+      "expected_rejection": "AUTONOMOUS_PROGRESSION_FORBIDDEN"
+    },
+    {
+      "test_id": "P0-NEG-003",
+      "exact_contract_clause": "Section 4 & MC-INV-14",
+      "test_meaning": "Forward phase execution attempt (jumping to future phase scope)",
+      "expected_rejection": "FUTURE_STAGE_IMPLEMENTATION_BLOCKED"
+    },
+    {
+      "test_id": "P0-NEG-004",
+      "exact_contract_clause": "Section 1 & MC-INV-09",
+      "test_meaning": "Premature production cutover without Human Gate authorization",
+      "expected_rejection": "CUTOVER_FORBIDDEN_SHADOW_MODE_ONLY"
+    },
+    {
+      "test_id": "P0-NEG-005",
+      "exact_contract_clause": "Master Article 1 & Bootstrap Task",
+      "test_meaning": "Runtime mutation during governance bootstrap",
+      "expected_rejection": "RUNTIME_MUTATION_TRAPPED"
+    },
+    {
+      "test_id": "P0-NEG-006",
+      "exact_contract_clause": "MC-INV-14 & Bootstrap Task",
+      "test_meaning": "Application of unapplied SQL draft migration without human authorization",
+      "expected_rejection": "MIGRATION_EXECUTION_BLOCKED"
+    },
+    {
+      "test_id": "P0-NEG-007",
+      "exact_contract_clause": "MC-INV-11 & MC-INV-14",
+      "test_meaning": "Source Vault OS-level ACL mutation attempt without dryRun flag",
+      "expected_rejection": "ACTIVE_ACL_MUTATION_LOCKED"
+    },
+    {
+      "test_id": "P0-NEG-008",
+      "exact_contract_clause": "Historical Audit Boundary",
+      "test_meaning": "Unauthorized restoration of quarantined legacy files",
+      "expected_rejection": "QUARANTINE_RESTORATION_UNAUTHORIZED"
+    },
+    {
+      "test_id": "P0-NEG-009",
+      "exact_contract_clause": "MC-INV-05 & QTI-04",
+      "test_meaning": "Attempted injection of Surah 1 Ayah 0 (Fatiha opening Basmala)",
+      "expected_rejection": "FATIHA_AYAH_0_FORBIDDEN"
+    },
+    {
+      "test_id": "P0-NEG-010",
+      "exact_contract_clause": "MC-INV-05 & QTI-04",
+      "test_meaning": "Stripping Basmala text from Surah 1 Ayah 1",
+      "expected_rejection": "FATIHA_AYAH_1_MUST_BE_BASMALA"
+    },
+    {
+      "test_id": "P0-NEG-011",
+      "exact_contract_clause": "MC-INV-05 & QTI-05",
+      "test_meaning": "Attempted injection of opening Basmala into Surah 9 (At-Tawbah)",
+      "expected_rejection": "TAWBA_OPENING_BASMALA_FORBIDDEN"
+    },
+    {
+      "test_id": "P0-NEG-012",
+      "exact_contract_clause": "MC-INV-05 & QTI-06",
+      "test_meaning": "Severance or extraction of internal Basmala from Surah 27 Ayah 30",
+      "expected_rejection": "NAML_27_30_TEXT_PRESERVATION_MANDATE"
+    },
+    {
+      "test_id": "P0-NEG-013",
+      "exact_contract_clause": "MC-INV-05 & QTI-01",
+      "test_meaning": "Surah count deviation from exactly 114 Surahs",
+      "expected_rejection": "SURAH_COUNT_MUST_EQUAL_114"
+    },
+    {
+      "test_id": "P0-NEG-014",
+      "exact_contract_clause": "MC-INV-05 & QTI-02",
+      "test_meaning": "Canonical numbered Ayah count deviation from exactly 6236",
+      "expected_rejection": "CANONICAL_AYAH_COUNT_MUST_EQUAL_6236"
+    },
+    {
+      "test_id": "P0-NEG-015",
+      "exact_contract_clause": "MC-INV-05 & QTI-03",
+      "test_meaning": "Standalone opening Basmala count deviation from exactly 112",
+      "expected_rejection": "OPENING_BASMALA_COUNT_MUST_EQUAL_112"
+    },
+    {
+      "test_id": "P0-NEG-016",
+      "exact_contract_clause": "MC-INV-05 & QTI-07",
+      "test_meaning": "Duplicate composite key (Surah:Ayah:Type) insertion attempt",
+      "expected_rejection": "COMPOSITE_KEY_DUPLICATION_BLOCKED"
+    },
+    {
+      "test_id": "P0-NEG-017",
+      "exact_contract_clause": "MC-INV-11 & MC-INV-08",
+      "test_meaning": "Payload tampering or byte corruption in raw source files (TIRE_SOURCES/**)",
+      "expected_rejection": "RAW_SOURCE_SHA256_MISMATCH"
+    },
+    {
+      "test_id": "P0-NEG-018",
+      "exact_contract_clause": "MC-INV-01 & MC-INV-08",
+      "test_meaning": "Missing mandatory source SHA-256 checksum in verification manifest",
+      "expected_rejection": "UNVERIFIED_SOURCE_IN_MANIFEST"
+    },
+    {
+      "test_id": "P0-NEG-019",
+      "exact_contract_clause": "MC-INV-11 & Source Vault Spec",
+      "test_meaning": "Path traversal or symlink breakout from Source Vault root",
+      "expected_rejection": "PATH_TRAVERSAL_BREACH_DETECTED"
+    },
+    {
+      "test_id": "P0-NEG-020",
+      "exact_contract_clause": "MC-INV-11",
+      "test_meaning": "Unauthorized deletion of registered raw source file",
+      "expected_rejection": "IMMUTABLE_SOURCE_DELETION_BLOCKED"
+    },
+    {
+      "test_id": "P0-NEG-021",
+      "exact_contract_clause": "MC-INV-08",
+      "test_meaning": "Unrecorded or unversioned source injection into vault",
+      "expected_rejection": "UNRECORDED_SOURCE_VERSION_REJECTED"
+    },
+    {
+      "test_id": "P0-NEG-022",
+      "exact_contract_clause": "MC-INV-01 & MC-INV-11",
+      "test_meaning": "Misclassifying canonical Quran source as secondary commentary",
+      "expected_rejection": "TIER0_CANONICAL_FAMILY_MISMATCH"
+    },
+    {
+      "test_id": "P0-NEG-023",
+      "exact_contract_clause": "MC-INV-04 & MC-INV-09",
+      "test_meaning": "Textual conflation of Tier 0 canonical text with Tier 2 Tafsir exegesis",
+      "expected_rejection": "EPISTEMIC_CONFLATION_BLOCKED"
+    },
+    {
+      "test_id": "P0-NEG-024",
+      "exact_contract_clause": "MC-INV-03",
+      "test_meaning": "Injecting LLM-generated synthetic text as a canonical verse",
+      "expected_rejection": "LLM_IS_NOT_A_SOURCE_VIOLATION"
+    },
+    {
+      "test_id": "P0-NEG-025",
+      "exact_contract_clause": "MC-INV-02",
+      "test_meaning": "Formulating claim entity without backing typed evidence link",
+      "expected_rejection": "NO_SOURCE_NO_EVIDENCE_VIOLATION"
+    },
+    {
+      "test_id": "P0-NEG-026",
+      "exact_contract_clause": "MC-INV-06",
+      "test_meaning": "Returning citation without resolvable provenance back to raw byte offset",
+      "expected_rejection": "UNRESOLVABLE_PROVENANCE_BLOCKED"
+    },
+    {
+      "test_id": "P0-NEG-027",
+      "exact_contract_clause": "MC-INV-15",
+      "test_meaning": "Suppressing missing source data without explicit KnowledgeGap record",
+      "expected_rejection": "MISSING_SOURCE_REMAINS_MISSING_VIOLATION"
+    },
+    {
+      "test_id": "P0-NEG-028",
+      "exact_contract_clause": "MC-ARCH-001",
+      "test_meaning": "Attempting to delete or de-register Multi-Agent core architecture requirement",
+      "expected_rejection": "CORE_PRODUCT_REQUIREMENT_IMMUTABLE"
+    },
+    {
+      "test_id": "P0-NEG-029",
+      "exact_contract_clause": "Section 1 (Shadow Mode)",
+      "test_meaning": "Attempting direct active production database write during shadow mode",
+      "expected_rejection": "ACTIVE_MODE_WRITES_LOCKED_IN_SHADOW"
+    },
+    {
+      "test_id": "P0-NEG-030",
+      "exact_contract_clause": "MC-INV-06 & Section 3",
+      "test_meaning": "Inserting canonical Ayah record with null provenance_id foreign key",
+      "expected_rejection": "PROVENANCE_NOT_NULL_CONSTRAINT_VIOLATION"
+    },
+    {
+      "test_id": "P0-NEG-031",
+      "exact_contract_clause": "MC-INV-12",
+      "test_meaning": "Modifying raw source directly instead of derived reconciliation ledger",
+      "expected_rejection": "RAW_SOURCE_MUTATION_FORBIDDEN"
+    },
+    {
+      "test_id": "P0-NEG-032",
+      "exact_contract_clause": "Section 3 & DDL Draft",
+      "test_meaning": "Inserting malformed JSON payload into morphology or features column",
+      "expected_rejection": "INVALID_JSON_PAYLOAD_REJECTED"
+    },
+    {
+      "test_id": "P0-NEG-033",
+      "exact_contract_clause": "Section 3 & DDL Draft",
+      "test_meaning": "Foreign key reference to nonexistent source in ingestion runs table",
+      "expected_rejection": "FOREIGN_KEY_SOURCE_VIOLATION"
+    },
+    {
+      "test_id": "P0-NEG-034",
+      "exact_contract_clause": "MC-INV-01",
+      "test_meaning": "Attempted ingestion from unregistered source file",
+      "expected_rejection": "REGISTERED_SOURCE_ONLY_VIOLATION"
+    },
+    {
+      "test_id": "P0-NEG-035",
+      "exact_contract_clause": "MC-INV-14",
+      "test_meaning": "Executing migration draft without verified corresponding rollback script",
+      "expected_rejection": "ROLLBACK_ABSENCE_BLOCKS_MIGRATION"
+    },
+    {
+      "test_id": "P0-NEG-036",
+      "exact_contract_clause": "MC-INV-10 & Section 5",
+      "test_meaning": "Silently discarding a parity regression between shadow DB and legacy runtime",
+      "expected_rejection": "EXPLICIT_FAILURE_ON_PARITY_MISMATCH"
+    }
+  ]
+}

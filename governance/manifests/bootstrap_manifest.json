@@ -1,0 +1,160 @@
+{
+  "manifest_id": "QCR-MANIFEST-DECISION-GATE-A-APPROVED-006",
+  "task_id": "HUMAN_PHASE_0_DATABASE_DECISION",
+  "generated_at": "2026-11-02T18:49:51.687Z",
+  "contract_authority": "QCR-OS MASTER CONTRACT v2.0",
+  "phase_contract": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
+  "governance_state": {
+    "governance_bootstrap": "APPROVED",
+    "database_decision_gate": "APPROVED",
+    "phase_0_database_engine": "SQLITE_3",
+    "phase_0_database_scope": "SHADOW_ONLY",
+    "source_vault_decision_gate": "PENDING_HUMAN_DECISION",
+    "phase_0": "NOT_AUTHORIZED",
+    "phases_1_to_11": "LOCKED",
+    "multi_agent_implementation": "NOT_AUTHORIZED"
+  },
+  "total_artifacts": 28,
+  "artifacts": [
+    {
+      "relative_path": "governance\\contracts\\human_governance_bootstrap_approval.json",
+      "size_bytes": 2526,
+      "sha256": "68a80969844819e1b399485a135bb2603051b44cfb185cbd3e128edc3932dc25"
+    },
+    {
+      "relative_path": "governance\\contracts\\human_phase0_database_decision.json",
+      "size_bytes": 7289,
+      "sha256": "363c82bb9d5c93ac4dc1962ba07acaa9f9cb284bd2a969074765ae1a2a972293"
+    },
+    {
+      "relative_path": "governance\\contracts\\qcr_os_master_contract_v2.0.json",
+      "size_bytes": 3824,
+      "sha256": "ea8e064173d08445d1ec38cda79f501f69d920be7467e11ef3430792e0c7ec66"
+    },
+    {
+      "relative_path": "governance\\contracts\\qcr_os_phase0_contract_v1.0.json",
+      "size_bytes": 1957,
+      "sha256": "3e0e29385d2bf862fd16181a1bcb038ba830e9d3d00ee852855e53fa57a3cb5b"
+    },
+    {
+      "relative_path": "governance\\manifests\\bootstrap_manifest.json",
+      "size_bytes": 5804,
+      "sha256": "394c58a0b8dacdd8c569e90906c426e897f044de49d656f1244f1789a53b6516"
+    },
+    {
+      "relative_path": "governance\\reconciliation\\legacy_constitution_reconciliation.json",
+      "size_bytes": 5271,
+      "sha256": "06fb538b78ec4e6eadf9ebd6ec537b52f60fa67d572701dbb09a0de9d5b71d8b"
+    },
+    {
+      "relative_path": "governance\\registries\\acceptance_test_registry.json",
+      "size_bytes": 5125,
+      "sha256": "3d7e372386829a229f86e9973fcc99c7b34655cb5467cc6a2a1e671c05c3d2ed"
+    },
+    {
+      "relative_path": "governance\\registries\\clause_registry.json",
+      "size_bytes": 9393,
+      "sha256": "2e23bde171e32c8c40af8c6e528fb8bb01f752a2c9513c0c6444af6b4f672bf2"
+    },
+    {
+      "relative_path": "governance\\registries\\contract_registry.json",
+      "size_bytes": 1154,
+      "sha256": "c910b027676c8832c7a342de92542be2bc527704cc6f022a665f5f4adef925a0"
+    },
+    {
+      "relative_path": "governance\\registries\\identifier_namespace_mapping.json",
+      "size_bytes": 4343,
+      "sha256": "d2aa1296d85cfdb3cdf5ac4d101a03ff5ce1674207e8b8ea4aa9555b62013954"
+    },
+    {
+      "relative_path": "governance\\registries\\multi_agent_registry.json",
+      "size_bytes": 1186,
+      "sha256": "b322b56ab8ec782d3634b3af885025b33e8176a934988ac4f3fbb0f8b9692666"
+    },
+    {
+      "relative_path": "governance\\registries\\phase_registry.json",
+      "size_bytes": 3735,
+      "sha256": "23eca4128899cc16523e373897679a4c596cd0742f64ada6bf80b3adf8371c6f"
+    },
+    {
+      "relative_path": "governance\\reports\\database_decision_record.md",
+      "size_bytes": 3191,
+      "sha256": "55dcf045006d34be95f77aabd293b32161c19d2871f784db0e51ee233853c6cf"
+    },
+    {
+      "relative_path": "governance\\reports\\legacy_phase_mapping_correction_report.json",
+      "size_bytes": 1395,
+      "sha256": "fd3ae481edfb86151ade678e626d4ca95604853fc6cc7ba225c409fe3144e8f5"
+    },
+    {
+      "relative_path": "governance\\reports\\negative_test_contract_mapping_report.json",
+      "size_bytes": 9274,
+      "sha256": "5952f9dacb0dc90856c3b3624653814505ed0a21a8bc2147151f21437bf6c454"
+    },
+    {
+      "relative_path": "governance\\reports\\positive_test_contract_mapping_report.json",
+      "size_bytes": 5926,
+      "sha256": "4d5c3e084eb17cfb4d9c43be6d3daa4e8a70bd26d852abee9bb61d69b5c0878a"
+    },
+    {
+      "relative_path": "governance\\reports\\schema_coverage_matrix.md",
+      "size_bytes": 10941,
+      "sha256": "767ed2375813f05e074377fa95b564c90b15f948c9bb55a3045143439ce2e5f1"
+    },
+    {
+      "relative_path": "governance\\reports\\validator_correction_audit.md",
+      "size_bytes": 2881,
+      "sha256": "7072632070f4398034f9bd7e0534e7784313a97dccc2fd61e08e333b6bb35c61"
+    },
+    {
+      "relative_path": "governance\\security\\source_vault\\incidents.jsonl",
+      "size_bytes": 332,
+      "sha256": "af5cfafd3a7e6731481a1eee600937f188b21fec7ec45d00b8a716cdb1124279"
+    },
+    {
+      "relative_path": "governance\\security\\source_vault\\source_vault_tool.js",
+      "size_bytes": 6493,
+      "sha256": "65c52f685a920d801bf0bb82cac4a2822f1222627f094c0c640bf053286afa11"
+    },
+    {
+      "relative_path": "governance\\sql\\drafts\\001_phase0_initial_schema.sql",
+      "size_bytes": 9737,
+      "sha256": "2dee056e70a7a5326b554deddf107c0b2f95fe2e405de21991d2a3e4e968945b"
+    },
+    {
+      "relative_path": "governance\\sql\\drafts\\001_phase0_rollback.sql",
+      "size_bytes": 1310,
+      "sha256": "d17c6d1e869167e7cfa30a24356bf44b8ffef4209ba021716b8dbc07257c83c9"
+    },
+    {
+      "relative_path": "governance\\templates\\file_governance_header_schema.json",
+      "size_bytes": 1473,
+      "sha256": "abaf5bb4d301e0de407b0e43db2222e4c66bf61027e1bba2ef6402e7f6b9a93d"
+    },
+    {
+      "relative_path": "governance\\tests\\negative_governance_tests.js",
+      "size_bytes": 3115,
+      "sha256": "d2cb2ec4c700287e38099fb9eb9cbe86820af9bc554328ca6f87d0af95a54f23"
+    },
+    {
+      "relative_path": "governance\\tests\\negative_suite_results.json",
+      "size_bytes": 7451,
+      "sha256": "54e4098819e6b90b1c17013e56de369fbf8b88c1e7c146733a910f5036952669"
+    },
+    {
+      "relative_path": "governance\\tests\\negative_test_catalog.json",
+      "size_bytes": 4949,
+      "sha256": "61f479f0eeb032cb10c9a0b271a1bde5f7c9ad60a1ab25e760242059fe34a406"
+    },
+    {
+      "relative_path": "governance\\tests\\p0_negative_test_suite.js",
+      "size_bytes": 12630,
+      "sha256": "694c59b9363adbc85702929671ab91963b74def785a887d5de914329e9b7a8d4"
+    },
+    {
+      "relative_path": "governance\\validators\\contract_validator.js",
+      "size_bytes": 3888,
+      "sha256": "8e7a639db854776ee3beefc9ef8d7e13f4d650dbeb4d3223768a2f6e3a118346"
+    }
+  ]
+}

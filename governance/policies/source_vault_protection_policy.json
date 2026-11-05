@@ -1,0 +1,115 @@
+{
+  "policy_id": "SVP-001",
+  "policy_version": "1.0.0",
+  "task_id": "QCR-OS-DECISION-GATE-B-GUARD-IMPLEMENTATION-003",
+  "checkpoint": "CHECKPOINT-B138",
+  "created_at": "2026-11-05T10:50:00+02:00",
+  "contract_authority": "QCR-OS MASTER CONTRACT v2.0",
+  "phase_contract": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
+
+  "protection_domains": {
+    "P0_RAW": {
+      "root": "TIRE_SOURCES",
+      "pattern": "TIRE_SOURCES/**",
+      "classification": "RAW_SOURCE",
+      "description": "Original registered Quranic source data files"
+    },
+    "P0_CANONICAL_ACTIVE": {
+      "root": "D0_OUTPUT",
+      "pattern": "D0_OUTPUT/**v1.1*",
+      "classification": "CANONICAL_ACTIVE",
+      "description": "Phase 0 v1.1 canonical output artifacts"
+    },
+    "P0_CANONICAL_HISTORICAL": {
+      "root": "D0_OUTPUT",
+      "pattern": "D0_OUTPUT/**v1.0*",
+      "classification": "CANONICAL_HISTORICAL",
+      "description": "Phase 0 v1.0 historical output artifacts"
+    }
+  },
+
+  "protection_mode": "PROTECT_IN_PLACE",
+  "relocation_authorized": false,
+
+  "identity_model": {
+    "current_human_identity": "Eagle",
+    "current_agent_effective_identity": "Eagle",
+    "process_identity_separation": "NOT_AVAILABLE_UNDER_CURRENT_IDENTITY_MODEL",
+    "shared_identity_deny_policy": "FORBIDDEN",
+    "human_administrative_recovery": "MUST_REMAIN_POSSIBLE"
+  },
+
+  "attribute_classification": {
+    "FILE_ATTRIBUTE_READONLY": {
+      "classification": "MUTATION_FRICTION_CONTROL",
+      "is_not": [
+        "SECURITY_IDENTITY_BOUNDARY",
+        "PROCESS_IDENTITY_SEPARATION",
+        "CRYPTOGRAPHIC_INTEGRITY_CONTROL",
+        "HUMAN_VS_AGENT_ACCESS_CONTROL"
+      ],
+      "authorized_in_this_task": false
+    }
+  },
+
+  "authorization_guards": {
+    "AG-01": {
+      "name": "APPLY_FLAG_REQUIRED",
+      "rule": "Without --apply, mode MUST be DRY_RUN_ONLY, no filesystem mutation API may execute"
+    },
+    "AG-02": {
+      "name": "AUTHORIZATION_ID_REQUIRED",
+      "rule": "--apply alone MUST NOT authorize mutation; --authorization-id is also required"
+    },
+    "AG-03": {
+      "name": "AUTHORIZATION_RECORD_VALIDATION",
+      "rule": "Authorization ID must resolve to a real governance record: exists, APPROVED, type permits Source Vault activation, scope matches, not revoked"
+    },
+    "AG-04": {
+      "name": "POLICY_HASH_VERIFICATION",
+      "rule": "--expected-policy-hash must match the independently computed actual policy hash"
+    },
+    "AG-05": {
+      "name": "STRICT_AND_GATE",
+      "rule": "APPLY_FLAG AND VALID_AUTHORIZATION AND POLICY_HASH_MATCH; no OR/fallback may permit mutation"
+    },
+    "AG-06": {
+      "name": "SCOPE_BINDING",
+      "rule": "Authorization valid for TIRE_SOURCES/** does not automatically authorize D0_OUTPUT/**; both must be explicitly bound"
+    },
+    "AG-07": {
+      "name": "REALPATH_BOUNDARY",
+      "rule": "Resolve actual real path; validate against approved roots; protect against traversal, symlink escape, junction escape"
+    },
+    "AG-08": {
+      "name": "PRECONDITION_HASH",
+      "rule": "CURRENT_SHA256 must equal APPROVED_PRE_ACTIVATION_SHA256 for each protected file before mutation"
+    },
+    "AG-09": {
+      "name": "ACL_STATE_CAPTURE",
+      "rule": "Exact pre-activation ACL/security state must be captured before any ACL mutation; icacls /reset is NOT proof of exact restoration"
+    },
+    "AG-10": {
+      "name": "FAIL_CLOSED",
+      "rule": "All authorization failures in guards AG-01 through AG-09 result in STOP + NO_MUTATION + structured audit record"
+    }
+  },
+
+  "rollback_model": {
+    "attribute_rollback": "SEPARATE_TRACK",
+    "acl_rollback": "REQUIRES_EXACT_PRE_STATE_CAPTURE",
+    "content_integrity_recovery": "HASH_VERIFICATION_BASED",
+    "generic_icacls_reset_accepted_as_proof": false,
+    "hundred_percent_reversible_claimed": false
+  },
+
+  "expected_activation_authorization_type": "HUMAN_SOURCE_VAULT_ACTIVATION",
+
+  "current_state": {
+    "source_vault_hardening": "IN_PROGRESS",
+    "source_vault_activation": "NOT_AUTHORIZED",
+    "acl_mutation": "NOT_AUTHORIZED",
+    "file_attribute_mutation": "NOT_AUTHORIZED"
+  }
+}
+

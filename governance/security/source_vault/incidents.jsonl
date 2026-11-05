@@ -1,0 +1,6 @@
+{"timestamp":"2026-10-31T18:46:47.827Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true}}
+{"timestamp":"2026-10-31T19:10:09.054Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true}}
+{"timestamp":"2026-11-02T19:21:26.057Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true}}
+{"timestamp":"2026-11-02T20:31:18.516Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true}}
+{"timestamp":"2026-11-05T01:12:53.692Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"d:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true,"classification":"RAW_SOURCE"}}
+{"timestamp":"2026-11-05T01:12:53.695Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"d:\\Quran-Data\\D0_OUTPUT\\quran-tier0-canonical-v1.1.json","metadata":{"blocked":true,"classification":"CANONICAL_ARTIFACT"}}

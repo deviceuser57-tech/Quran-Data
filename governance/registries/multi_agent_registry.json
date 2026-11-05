@@ -1,0 +1,31 @@
+{
+  "registry_id": "QCR-REG-MULTI-AGENT",
+  "registry_title": "QCR-OS Multi-Agent Architecture Requirement Registry",
+  "version": "2.0.0",
+  "namespaced_id": "MC-ARCH-001",
+  "requirement_name": "MULTI_AGENT_CORE_PRODUCT_REQUIREMENT",
+  "requirement_status": "CORE_PRODUCT_REQUIREMENT",
+  "implementation_status": "REGISTERED_NOT_IMPLEMENTED",
+  "lifecycle_classification": "IMMUTABLE_CORE_FEATURE",
+  "primary_phase": "PHASE_8",
+  "integration_phases": [
+    "PHASE_7",
+    "PHASE_9",
+    "PHASE_10",
+    "PHASE_11"
+  ],
+  "current_implementation_authorization": "NONE",
+  "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 8)",
+  "inviolable_rule": "This requirement is an architectural mandate and must NOT occupy or overwrite Master Contract Invariant MC-INV-13 (NO-SELF-PROGRESSION).",
+  "current_runtime_prototype_policy": {
+    "status": "PRESERVED_FROZEN",
+    "files": [
+      "server/services/cognitiveSearchService.mjs",
+      "server/controllers/cognitiveSearchController.mjs",
+      "server/public/search.html"
+    ],
+    "modification_in_current_task": "FORBIDDEN",
+    "refactoring_in_current_task": "FORBIDDEN",
+    "removal_in_current_task": "FORBIDDEN"
+  }
+}

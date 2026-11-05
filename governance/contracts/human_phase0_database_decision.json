@@ -1,0 +1,154 @@
+# QCR-OS HUMAN PHASE-0 DATABASE DECISION RECORD
+**Document ID:** `QCR-DEC-GATE-A-001`  
+**Authorization ID:** `HUMAN_PHASE_0_DATABASE_DECISION`  
+**Decision Gate:** `QCR-OS DECISION GATE A`  
+**Evidence Reference Task:** `QCR-OS-DECISION-GATE-A-DATABASE-CORRECTION-002`  
+**Parent Authorization:** `HUMAN_GOVERNANCE_BOOTSTRAP_APPROVAL`  
+**Parent Contract:** `QCR-OS MASTER CONTRACT v2.0` (L0 — FROZEN)  
+**Phase Contract:** `QCR-OS PHASE-0 EXECUTION CONTRACT v1.0` (L1 — FROZEN / NOT AUTHORIZED)  
+**Version:** `1.0.0`  
+**Decision Timestamp:** `2026-11-02T20:48:45+02:00`  
+**Authorized By:** `HUMAN_SUPERVISOR`  
+
+---
+
+### 1. Human Database Decision Verdict
+
+Following rigorous technical analysis and factual evidence correction under Decision Gate A:
+- **Decision:** **`SQLite 3`** is formally **`APPROVED`** as the database technology for **`QCR-OS PHASE 0 ONLY`**.
+- **Engine Identifier:** `PHASE_0_DATABASE_ENGINE = SQLITE_3`
+- **Gate Status:** `DATABASE_DECISION_GATE = APPROVED`
+- **Scope Limitation:** `PHASE_0_DATABASE_SCOPE = SHADOW_ONLY`
+- **Execution Mandate:** This decision records human architectural technology selection for Phase 0 storage and **does NOT authorize Phase 0 execution or data ingestion**.
+
+---
+
+### 2. Precise Scope of SQLite Approval
+
+SQLite 3 is approved exclusively as an isolated, embedded, shadow-mode database engine for:
+1. Universal Source Registry
+2. Source Versioning & Hash Verification
+3. Source Records Ledger
+4. Field-Level Source Authority Ledger
+5. Provenance Entity Graph
+6. Canonical Reconciliations (27:0 duplicate, 95:1 / 97:1 Basmalas)
+7. KnowledgeGap & Epistemic Boundaries Ledger
+8. Ingestion Runs & Operator Audit Trail
+9. Integrity Manifests
+10. Quran Tier-0 Canonical Runtime Storage
+11. Canonical Translations Linkage
+12. Quran Structural Metadata (Pages, Juz, Hizb Quarters, Manzils, Rukus)
+13. Sajda & Audio Metadata
+14. Quran Words & Morphological Segments
+15. Controlled Parity Testing against legacy runtime
+16. Round-Trip Byte-for-Byte Fidelity Verification
+17. Shadow Mode Isolation
+
+---
+
+### 3. Future-Phase Firewall (MC-INV-14 Compliance)
+
+This decision is strictly isolated to Phase 0. SQLite is **NOT** selected for:
+- Phase 1 (Deep Morphology)
+- Phase 2 (Epistemic Alignment)
+- Phase 3 (Hadith & Sunnah Ingestion)
+- Phase 4 (Classical Exegesis & Lexicons)
+- Phase 5 (Deterministic Retrieval Engine)
+- Phase 6 (Hybrid, Semantic & Vector Storage)
+- Phase 7 (Evidence, Claims & Knowledge Graph Storage)
+- Phase 8 (Cognitive Swarm & Multi-Agent Persistence)
+- Phase 8 (Agent Working Memory Systems)
+- Phase 9 (Research Workspace & Spatial Canvas)
+- Phase 10 (Grounded Chat & Export Systems)
+- Phase 11 (Final Production Architecture)
+- Any future production database tier.
+
+Every future database technology decision remains independent, uncommitted, and subject to its own stage gate and separate human authorization.
+
+---
+
+### 4. Multi-Agent Architecture Preservation
+
+- **Requirement Status:** **`CORE_PRODUCT_REQUIREMENT`** under ID **`MC-ARCH-001`**.
+- **Primary Phase:** **`PHASE_8`** (with integration in Phases 7, 9, 10, 11).
+- **Current Authorization:** **`NONE`**.
+- **Firewall Rule:** Approving SQLite for Phase 0 creates **zero architectural binding** for Multi-Agent persistence.
+- **PostgreSQL Status:** Remains a **`FUTURE_PHASE_NON_BINDING_PROPOSAL`**. Zero agent frameworks, vector databases, or agent memory technologies are authorized.
+
+---
+
+### 5. Mandatory SQLite Foreign-Key Implementation Condition
+
+```text
+SQLITE_FOREIGN_KEYS_MUST_BE_ENFORCED = TRUE
+```
+- In SQLite, foreign key constraint enforcement is disabled by default.
+- It is a **mandatory, blocking condition** that any future authorized Phase 0 database connection wrapper explicitly execute:
+  ```sql
+  PRAGMA foreign_keys = ON;
+  ```
+- Before any schema creation, migration, ingestion, or testing occurs, the Phase 0 runner must programmatically assert that `PRAGMA foreign_keys;` evaluates to `1`.
+- Any failure of this check must trigger immediate termination with error code:
+  ```text
+  SQLITE_FOREIGN_KEY_ENFORCEMENT_FAILURE
+  ```
+
+---
+
+### 6. SQLite Dialect Requirements & Portability Adaptations
+
+- Current DDL Portability Status: **`PORTABLE_WITH_ADAPTATION`**.
+- The existing draft [`001_phase0_initial_schema.sql`](file:///d:/Quran-Data/governance/sql/drafts/001_phase0_initial_schema.sql) is PostgreSQL-flavored and must **NOT** be executed directly against SQLite.
+- A future authorized Phase 0 task must derive a clean, SQLite-specific migration file implementing the documented adaptations:
+  - `SERIAL PRIMARY KEY` -> `INTEGER PRIMARY KEY AUTOINCREMENT`
+  - `TIMESTAMP WITH TIME ZONE` -> ISO 8601 `TEXT`
+  - `JSONB` -> `TEXT` with JSON1 validation
+  - `CREATE OR REPLACE VIEW` -> `DROP VIEW IF EXISTS; CREATE VIEW`
+- Contractual semantics must not be compromised for dialect compatibility.
+
+---
+
+### 7. Database Isolation & Legacy Artifact Preservation
+
+- **Classification of Existing File:** [`data/sqlite/database.sqlite`](file:///d:/Quran-Data/data/sqlite/database.sqlite) is formally classified as a **`GENERATED_EXPORT / DOWNLOAD_ARTIFACT`**.
+- It is **NOT** a runtime database and must **never** be overwritten, upgraded, repurposed, or used as the Phase 0 database.
+- **Shadow Database Location:** The future Phase 0 database must be a newly created, isolated file located inside an authorized Phase 0 workspace (e.g. `governance/shadow/phase0_shadow.db`).
+- It must **NEVER** be placed inside:
+  `TIRE_SOURCES/`, `D0_OUTPUT/`, `data/`, `server/`, `docs/`, `scripts/`, `QCR_OS_QUARANTINE/`, or `.manus/`.
+- Active Express runtime remains 100% untouched and independent.
+
+---
+
+### 8. Word Count & Morphology Metric Anchoring
+
+The following distinct metrics from D0.1 canonical artifacts are permanently anchored without conflation:
+- **`MORPH_CORPUS_UNIQUE_WORD_POSITIONS = 77,429`** (Unique word positions in Quranic Arabic Corpus 0.4).
+- **`SOURCE_METADATA_WORD_COUNT_SUM = 78,602`** (Sum of words across 114 Surahs from classical metadata).
+- **`MORPHOLOGICAL_SEGMENT_COUNT = 128,219`** (Total atomic morphological segments).
+
+Neither word count metric is declared universally exclusive; their separate provenances are preserved until methodological reconciliation is explicitly authorized.
+
+---
+
+### 9. Performance Claim Policy & DuckDB Correction
+
+- **Unverified Performance Claims:** All speculative figures (`<5ms`, `sub-millisecond`, `under 5 seconds`, `millions of reads`) remain formally expunged.
+- **DuckDB Correction:** DuckDB is classified as **`NOT_RECOMMENDED_FOR_PHASE_0`** strictly due to architectural mismatch (columnar vectorized OLAP vs. embedded row-oriented transactional point-lookups), not due to lack of relational constraints.
+
+---
+
+### 10. Resulting System Governance State
+
+```text
+================================================================================
+GOVERNANCE_BOOTSTRAP       = APPROVED
+DATABASE_DECISION_GATE     = APPROVED
+PHASE_0_DATABASE_ENGINE    = SQLITE_3
+PHASE_0_DATABASE_SCOPE     = SHADOW_ONLY
+SOURCE_VAULT_DECISION_GATE = PENDING_HUMAN_DECISION
+PHASE_0                    = NOT_AUTHORIZED
+PHASE_1 through PHASE_11   = LOCKED
+MULTI_AGENT_IMPLEMENTATION = NOT_AUTHORIZED
+================================================================================
+```
+

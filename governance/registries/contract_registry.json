@@ -1,0 +1,37 @@
+{
+  "registry_id": "QCR-REG-CONTRACTS",
+  "registry_title": "QCR-OS Contract Hierarchy Registry",
+  "version": "1.0.0",
+  "status": "ACTIVE",
+  "created_at": "2026-10-31T20:25:00+02:00",
+  "last_modified_at": "2026-10-31T20:25:00+02:00",
+  "contracts": [
+    {
+      "contract_id": "QCR-OS-MASTER",
+      "version": "2.0.0",
+      "authority_level": "L0",
+      "role": "SUPREME_GOVERNING_CONTRACT",
+      "status": "FROZEN",
+      "path": "governance/contracts/qcr_os_master_contract_v2.0.json"
+    },
+    {
+      "contract_id": "QCR-OS-PHASE-0",
+      "version": "1.0.0",
+      "authority_level": "L1",
+      "role": "PHASE_CONTRACT",
+      "parent_contract_id": "QCR-OS-MASTER",
+      "status": "FROZEN_NOT_AUTHORIZED",
+      "path": "governance/contracts/qcr_os_phase0_contract_v1.0.json"
+    },
+    {
+      "contract_id": "QCR-LEGACY-CONSTITUTION",
+      "version": "1.0.0",
+      "authority_level": "L5",
+      "role": "LEGACY_RESEARCH_BEHAVIOR_SPECIFICATION",
+      "execution_authority": "NONE",
+      "implementation_authority": "NONE",
+      "status": "READ_ONLY_RECONCILED",
+      "path": "docs/QURANIC_RESEARCH_OS_CONSTITUTION.md"
+    }
+  ]
+}

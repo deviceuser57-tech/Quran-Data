@@ -1,0 +1,83 @@
+{
+  "contract_id": "QCR-OS-MASTER",
+  "title": "QCR-OS Master Contract",
+  "version": "2.0.0",
+  "authority_level": "L0",
+  "authority_role": "SUPREME_GOVERNING_CONTRACT",
+  "status": "FROZEN",
+  "execution_model": "STAGE_GATED",
+  "execution_phases_count": 12,
+  "phase_range": "PHASE 0 -> PHASE 11",
+  "automatic_progression": "FORBIDDEN",
+  "future_stage_implementation": "FORBIDDEN",
+  "created_at": "2026-10-31T20:25:00+02:00",
+  "last_modified_at": "2026-10-31T20:25:00+02:00",
+  "authorized_by": "HUMAN_SUPERVISOR",
+  "governing_doctrines": [
+    "SOURCE BEFORE EVIDENCE",
+    "EVIDENCE BEFORE CLAIM",
+    "CLAIM BEFORE ANALYSIS",
+    "RETRIEVAL BEFORE LLM",
+    "PROVENANCE BEFORE CITATION",
+    "VALIDATION BEFORE APPROVAL",
+    "APPROVAL BEFORE NEXT PHASE",
+    "HUMAN AUTHORIZATION BEFORE CUTOVER",
+    "KNOWING THE ROADMAP DOES NOT AUTHORIZE TRAVELING IT"
+  ],
+  "articles": [
+    {
+      "article_number": 1,
+      "title": "PURPOSE",
+      "clause_id": "QCR-ART-001",
+      "description": "Establishes constitutional governance over all QCR-OS operations including source qualification, registration, ingestion, storage, integrity, provenance, retrieval, evidence, claims, analysis, AI, workspace, chat, exports, security, and cutover."
+    },
+    {
+      "article_number": 2,
+      "title": "AUTHORITY HIERARCHY",
+      "clause_id": "QCR-ART-002",
+      "description": "Mandates strict 8-level hierarchy: Human Authorization > Master Contract > Phase Contract > Specialized Source Contract > Executable Policy > Implementation Specification > Legacy Requirement > Reference Material."
+    },
+    {
+      "article_number": 3,
+      "title": "EPISTEMIC TIERS & SEPARATION",
+      "clause_id": "QCR-ART-003",
+      "description": "Defines 6 epistemic tiers (Tier 0: Quran Canonical & Morphology; Tier 1: Hadith & Sunnah; Tier 2: Classical Exegesis & Lexicons; Tier 3: Scientific & Empirical Evidence; Tier 4: Modern Academic & Thematic Studies; Tier 5: Epistemic Meta-layer & Gaps) with strict separation: Contiguity without conflation."
+    },
+    {
+      "article_number": 4,
+      "title": "CANONICAL QURAN & BASMALA RULES",
+      "clause_id": "QCR-ART-004",
+      "description": "Inviolable Quran rules (INV-01 to INV-12): 114 Surahs, 6236 standard Ayahs, 112 unnumbered opening Basmalas, Surah 1 Ayah 1 is Basmala, Surah 9 has no opening Basmala, Surah 27 Ayah 30 textual Basmala preserved, zero duplicate keys, byte-for-byte fidelity."
+    },
+    {
+      "article_number": 5,
+      "title": "STAGE-GATED EXECUTION",
+      "clause_id": "QCR-ART-005",
+      "description": "Strict 12-phase pipeline (Phase 0 to Phase 11). Autonomous transition forbidden. Forward execution strictly blocked."
+    },
+    {
+      "article_number": 6,
+      "title": "SOURCE VAULT & DATA INTEGRITY",
+      "clause_id": "QCR-ART-006",
+      "description": "Raw sources remain immutable read-only assets under cryptographic SHA-256 verification. Destruction or silent modification forbidden."
+    },
+    {
+      "article_number": 7,
+      "title": "EVIDENCE, CLAIMS & PROVENANCE",
+      "clause_id": "QCR-ART-007",
+      "description": "Every claim requires explicit typed evidence and traceable provenance before AI synthesis or user display."
+    },
+    {
+      "article_number": 8,
+      "title": "MULTI-AGENT ARCHITECTURE REQUIREMENT",
+      "clause_id": "QCR-ART-008",
+      "description": "Multi-Agent architecture is registered as a Core Product Requirement reserved for Phase 8, with integrations in Phases 7, 9, 10, 11. It is immutable and not a disposable prototype."
+    },
+    {
+      "article_number": 9,
+      "title": "CUTOVER & PRODUCTION SAFEGUARDS",
+      "clause_id": "QCR-ART-009",
+      "description": "Cutover requires shadow-mode parity, zero data regressions, and explicit Human Authorization."
+    }
+  ]
+}

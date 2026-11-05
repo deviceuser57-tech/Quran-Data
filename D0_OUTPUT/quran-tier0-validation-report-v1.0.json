@@ -1,0 +1,454 @@
+{
+  "report_title": "Quran Tier 0 Canonical Package Validation Report",
+  "phase": "D0",
+  "status": "BLOCKED",
+  "generated_at": "2026-10-29T09:40:49.460Z",
+  "summary": {
+    "input_files_detected": 10,
+    "surah_count": 114,
+    "canonical_ayah_count": 6236,
+    "opening_basmala_count": 111,
+    "total_quran_records": 6347,
+    "fatihah_basmala_verified": true,
+    "tawbah_no_basmala_verified": true,
+    "naml_27_30_verified": true,
+    "duplicate_keys_count": 1,
+    "duplicate_keys": [
+      {
+        "key": "27:0",
+        "count": 2
+      }
+    ],
+    "missing_records_count": 2,
+    "missing_records": [
+      {
+        "key": "95:0",
+        "surah": 95
+      },
+      {
+        "key": "97:0",
+        "surah": 97
+      }
+    ],
+    "page_coverage": 604,
+    "juz_coverage": 30,
+    "hizb_quarter_coverage": 240,
+    "morphology_tokens_linked": 128219,
+    "morphology_unlinked": 0,
+    "translations_linked": 6236,
+    "blocking_conflicts_count": 1,
+    "discrepancies_count": 21
+  },
+  "tests": [
+    {
+      "test_id": "BASMALA-001",
+      "name": "Fatihah 1:1 exists and contains canonical basmala",
+      "passed": true,
+      "details": "Found 1:1 with text: \"بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ\""
+    },
+    {
+      "test_id": "BASMALA-002",
+      "name": "No 1:0 record exists",
+      "passed": true,
+      "details": "Confirmed: No Ayah 0 exists for Surah 1."
+    },
+    {
+      "test_id": "BASMALA-003",
+      "name": "Every Surah except 1 and 9 has exactly one opening basmala record",
+      "passed": false,
+      "blocking": true,
+      "details": "FAILED on Surahs: [{\"surah\":27,\"count\":2},{\"surah\":95,\"count\":0},{\"surah\":97,\"count\":0}]. Surah 27 has duplicate Ayah 0 (count=2); Surahs 95 and 97 lack Ayah 0 (count=0) because opening basmalas are merged into Ayah 1 in Quraan.json."
+    },
+    {
+      "test_id": "BASMALA-004",
+      "name": "Surah 9 has no opening basmala",
+      "passed": true,
+      "details": "Confirmed: No Ayah 0 exists for Surah 9 (At-Tawbah)."
+    },
+    {
+      "test_id": "BASMALA-005",
+      "name": "27:30 retains its complete embedded basmala",
+      "passed": true,
+      "details": "Verse text: \"إِنَّهُ مِن سُلَيْمَانَ وَإِنَّهُ بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ\""
+    },
+    {
+      "test_id": "BASMALA-006",
+      "name": "Opening basmala records are excluded from canonical ayah_count",
+      "passed": true,
+      "details": "Canonical ayah count: 6236 (strictly matches 6236). Opening basmalas count (111) stored with ayah_number=0 and excluded."
+    },
+    {
+      "test_id": "BASMALA-007",
+      "name": "No source reconciliation deletes a basmala",
+      "passed": true,
+      "details": "Confirmed: No basmala text deleted or truncated during reconciliation."
+    },
+    {
+      "test_id": "BASMALA-008",
+      "name": "No translation/alignment operation causes ayah-number shift",
+      "passed": true,
+      "details": "Translations correctly align with canonical ayah_numbers 1..N. Ayah 0 has no translation."
+    },
+    {
+      "test_id": "BASMALA-009",
+      "name": "No deduplication operation treats Naml 27:30 basmala as duplicate opening basmala",
+      "passed": true,
+      "details": "Surah 27 has opening basmala (Ayah 0) AND embedded basmala in Ayah 30 as distinct records."
+    },
+    {
+      "test_id": "BASMALA-010",
+      "name": "No whitespace/text normalization is allowed to modify canonical Quran content during D0",
+      "passed": true,
+      "details": "Canonical Quran text was ingested 100% verbatim without any trim/replace/normalization."
+    }
+  ],
+  "blocking_conflicts": [
+    {
+      "id": "CONFLICT-DUPLICATE-KEY-27-0",
+      "type": "BLOCKING_INTEGRITY_DEFECT",
+      "severity": "CRITICAL_BLOCKING",
+      "field": "primary_key",
+      "key": "27:0",
+      "count": 2,
+      "primary_source": "TIRE_SOURCES/Quraan.json",
+      "description": "Primary source contains 2 identical records for key 27:0 (Surah 27 Ayah 0).",
+      "resolution_policy": "STRICT RULE: Do not silently auto-deduplicate primary source in D0. Record as BLOCKING CONFLICT. D0 STATUS = BLOCKED.",
+      "status": "UNRESOLVED_BLOCKING"
+    },
+    {
+      "id": "CONFLICT-BASMALA-027-DUPLICATE",
+      "type": "BLOCKING_BASMALA_DEFECT",
+      "severity": "CRITICAL_BLOCKING",
+      "field": "opening_basmala",
+      "surah_number": 27,
+      "surah_name_ar": "النمل",
+      "primary_source": "TIRE_SOURCES/Quraan.json",
+      "expected": "Exactly 1 Ayah 0 record",
+      "actual": "Found 2 Ayah 0 records",
+      "resolution_policy": "STRICT RULE: Do not silently deduplicate in D0. Record as BLOCKING CONFLICT.",
+      "status": "UNRESOLVED_BLOCKING"
+    },
+    {
+      "id": "CONFLICT-BASMALA-095-MISSING",
+      "type": "BLOCKING_BASMALA_DEFECT",
+      "severity": "CRITICAL_BLOCKING",
+      "field": "opening_basmala",
+      "surah_number": 95,
+      "surah_name_ar": "التين",
+      "primary_source": "TIRE_SOURCES/Quraan.json",
+      "expected": "Separate Ayah 0 record containing canonical opening basmala",
+      "actual": "Basmala is merged into Ayah 1 text (بِّسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ وَالتِّينِ وَالزَّيْتُونِ)",
+      "resolution_policy": "STRICT RULE: Do not silently auto-split primary source text in D0. Record as BLOCKING CONFLICT. D0 STATUS = BLOCKED.",
+      "status": "UNRESOLVED_BLOCKING"
+    },
+    {
+      "id": "CONFLICT-BASMALA-097-MISSING",
+      "type": "BLOCKING_BASMALA_DEFECT",
+      "severity": "CRITICAL_BLOCKING",
+      "field": "opening_basmala",
+      "surah_number": 97,
+      "surah_name_ar": "القدر",
+      "primary_source": "TIRE_SOURCES/Quraan.json",
+      "expected": "Separate Ayah 0 record containing canonical opening basmala",
+      "actual": "Basmala is merged into Ayah 1 text (بِّسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ)",
+      "resolution_policy": "STRICT RULE: Do not silently auto-split primary source text in D0. Record as BLOCKING CONFLICT. D0 STATUS = BLOCKED.",
+      "status": "UNRESOLVED_BLOCKING"
+    }
+  ],
+  "discrepancies": [
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S029",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 29,
+      "surah_name_ar": "العنكبوت",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 85,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 68,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 85
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S039",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 39,
+      "surah_name_ar": "الزمر",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 59,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 67,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 59
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S047",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 47,
+      "surah_name_ar": "محمد",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 95,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 104,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 95
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S050",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 50,
+      "surah_name_ar": "ق",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 34,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 42,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 34
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S051",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 51,
+      "surah_name_ar": "الذاريات",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 67,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 77,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 67
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S057",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 57,
+      "surah_name_ar": "الحديد",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 94,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 105,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 94
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S058",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 58,
+      "surah_name_ar": "المجادلة",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 105,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 107,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 105
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S059",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 59,
+      "surah_name_ar": "الحشر",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 101,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 109,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 101
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S060",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 60,
+      "surah_name_ar": "الممتحنة",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 91,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 108,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 91
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S061",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 61,
+      "surah_name_ar": "الصف",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 109,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 110,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 109
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S062",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 62,
+      "surah_name_ar": "الجمعة",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 110,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 100,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 110
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S064",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 64,
+      "surah_name_ar": "التغابن",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 108,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 98,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 108
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S066",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 66,
+      "surah_name_ar": "التحريم",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 107,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 101,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 107
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S079",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 79,
+      "surah_name_ar": "النازعات",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 81,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 32,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 81
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S082",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 82,
+      "surah_name_ar": "الإنفطار",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 82,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 35,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 82
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S083",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 83,
+      "surah_name_ar": "المطففين",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 86,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 30,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 86
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S084",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 84,
+      "surah_name_ar": "الإنشقاق",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 83,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 25,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 83
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S100",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 100,
+      "surah_name_ar": "العاديات",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 14,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 100,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 14
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S102",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 102,
+      "surah_name_ar": "التكاثر",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 16,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 34,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 16
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S103",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 103,
+      "surah_name_ar": "العصر",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 13,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 40,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 13
+    },
+    {
+      "id": "CONFLICT-REVELATION-ORDER-S104",
+      "type": "DATA_DISCREPANCY_NON_BLOCKING",
+      "severity": "MEDIUM",
+      "field": "revelation_order",
+      "surah_number": 104,
+      "surah_name_ar": "الهمزة",
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "primary_value": 32,
+      "discrepant_source": "TIRE_SOURCES/Quraan.json",
+      "discrepant_value": 29,
+      "resolution_policy": "Rule 6: quran-data.xml is PRIMARY authority for revelation metadata. Discrepancy logged.",
+      "resolved_value": 32
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "manifest_version": "1.0.0",
+  "package_name": "quran-tier0-canonical",
+  "phase": "D0",
+  "package_status": "BLOCKED",
+  "blocking_reasons": [
+    "BASMALA-003: FAILED on Surahs: [{\"surah\":27,\"count\":2},{\"surah\":95,\"count\":0},{\"surah\":97,\"count\":0}]. Surah 27 has duplicate Ayah 0 (count=2); Surahs 95 and 97 lack Ayah 0 (count=0) because opening basmalas are merged into Ayah 1 in Quraan.json."
+  ],
+  "generated_at": "2026-10-29T09:40:49.464Z",
+  "files": {
+    "canonical_package": {
+      "file": "quran-tier0-canonical-v1.0.json",
+      "sha256": "287ad40510bdec1b86a414e7e10da62fd010be79e9cb142c040d112ce849fcad",
+      "bytes": 52381306
+    },
+    "provenance": {
+      "file": "quran-tier0-provenance-v1.0.json",
+      "sha256": "9137c335fc5f94f931ff7d946c1266908ba41f24c5eef621a924f28302313b66",
+      "bytes": 4483
+    },
+    "conflicts": {
+      "file": "quran-tier0-conflicts-v1.0.json",
+      "sha256": "c1383c46d8fd38c7288548ecaaa92c5b4bac7e791e42ef120fdee4b5acd9608d",
+      "bytes": 14322
+    },
+    "validation_report": {
+      "file": "quran-tier0-validation-report-v1.0.json",
+      "sha256": "bbaa0844ccb548ef229241e8f5cce39aa778be6c27eedd37dff06f48fb5224be",
+      "bytes": 17832
+    }
+  },
+  "source_files": {
+    "quraan_json": {
+      "path": "TIRE_SOURCES/Quraan.json",
+      "sha256": "a75be59aff6a112cf8ff859180ab995d5b5e6318269777fd5760d095b3a7cee2",
+      "size": 2740193
+    },
+    "quran_data_xml": {
+      "path": "TIRE_SOURCES/quran-data.xml",
+      "sha256": "8867c1d88191472adec9db694b3cd9f135b1a2ef580574d32cf888dcb22c5c7a",
+      "size": 77234
+    },
+    "quran_data_js": {
+      "path": "TIRE_SOURCES/quran-data.js",
+      "sha256": "9e9930c592aaa34b5c7a79ff4e99ffdc782263a266090bfe2c49e4ed4bac4ca4",
+      "size": 25096
+    },
+    "quranic_corpus": {
+      "path": "TIRE_SOURCES/quranic-corpus-morphology-0.4.txt",
+      "sha256": "a1d12923815341face765083805d2148ed2d9f5cc3f7d6665219d887675d8c46",
+      "size": 6309503
+    },
+    "pages_quran": {
+      "path": "data/pagesQuran.json",
+      "sha256": "d19dbcf4297a1276c13afe6117dd266a50a8463822797a5caa01d8b105be16a7",
+      "size": 273015
+    },
+    "main_data_quran": {
+      "path": "data/mainDataQuran.json",
+      "sha256": "46885c06aecd60192a49f98441859916cab9c738ccc1ec67f997450769119b57",
+      "size": 9703195
+    },
+    "quran_simple_txt": {
+      "path": "TIRE_SOURCES/quran-simple.txt",
+      "sha256": "b3638f5cf03e2b05e4000efc0e4b656aafb3cf6ed28f8770b6497c5b43c46089",
+      "size": 1353702
+    },
+    "quran_flat_tashkeel": {
+      "path": "TIRE_SOURCES/quran-flat-full-tashkeel.txt",
+      "sha256": "2a6475a09a96d5c6c57ea32ac659d2e2cf2f976ae6ef881a461ef2362da47682",
+      "size": 1048609
+    },
+    "database_csv": {
+      "path": "data/csv/database.csv",
+      "sha256": "7610c050842fd86395bdf7c0fa937de7742f9af4a4ff08cdd204379e80f01727",
+      "size": 8318477
+    },
+    "api_definition_yaml": {
+      "path": "docs/api-definition.yaml",
+      "sha256": "289f01b6a4da5cdb5a0c7fdf677b3c98a788f01867fa978abfc6499b2fcb2fbb",
+      "size": 18206
+    }
+  }
+}

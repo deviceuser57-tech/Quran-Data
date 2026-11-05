@@ -1,0 +1,345 @@
+{
+  "package_version": "1.1.0",
+  "phase": "D0.1",
+  "generated_at": "2026-10-30T11:47:31.496Z",
+  "summary": {
+    "total_conflicts_processed": 24,
+    "blocking_conflicts_remaining": 0,
+    "resolved_conflicts": 3,
+    "non_blocking_metadata_variants": 21
+  },
+  "resolved_conflicts": [
+    {
+      "conflict_id": "CONFLICT-DUPLICATE-KEY-27-0",
+      "type": "INTEGRITY_DEFECT_RESOLVED",
+      "decision": "HUMAN_AUTHORIZED_EXACT_DUPLICATE_COLLAPSE",
+      "status": "RESOLVED",
+      "field": "primary_key",
+      "key": "27:0",
+      "details": {
+        "raw_source": "TIRE_SOURCES/Quraan.json",
+        "raw_occurrences": [
+          {
+            "raw_array_index": 3183,
+            "record": {
+              "رقم السورة": 27,
+              "رقم الآية": 0,
+              "عدد الآيات": 93,
+              "إسم السورة": "النمل",
+              "الآية": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+              "تصنيف": "مكية",
+              "ترتيب النزول": 48
+            }
+          },
+          {
+            "raw_array_index": 3213,
+            "record": {
+              "رقم السورة": 27,
+              "رقم الآية": 0,
+              "عدد الآيات": 93,
+              "إسم السورة": "النمل",
+              "الآية": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+              "تصنيف": "مكية",
+              "ترتيب النزول": 48
+            }
+          }
+        ],
+        "verification": "Byte-for-byte identical in all fields verified. Exactly one opening record retained in canonical derived package."
+      }
+    },
+    {
+      "conflict_id": "CONFLICT-BASMALA-095-MISSING",
+      "type": "BASMALA_STRUCTURE_RESOLVED",
+      "decision": "HUMAN_AUTHORIZED_TARGETED_RECONCILIATION",
+      "status": "RESOLVED",
+      "field": "opening_basmala",
+      "surah_number": 95,
+      "surah_name_ar": "التين",
+      "details": {
+        "raw_source": "TIRE_SOURCES/Quraan.json",
+        "raw_record_ayah_1": {
+          "raw_text": "بِّسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ وَالتِّينِ وَالزَّيْتُونِ"
+        },
+        "canonical_transformation": {
+          "opening_basmala_95_0": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+          "canonical_verse_95_1": "وَالتِّينِ وَالزَّيْتُونِ",
+          "applied_rule": "Strictly targeted split of merged opening basmala in 95:1. Quraan.json raw source remains 100% unaltered."
+        }
+      }
+    },
+    {
+      "conflict_id": "CONFLICT-BASMALA-097-MISSING",
+      "type": "BASMALA_STRUCTURE_RESOLVED",
+      "decision": "HUMAN_AUTHORIZED_TARGETED_RECONCILIATION",
+      "status": "RESOLVED",
+      "field": "opening_basmala",
+      "surah_number": 97,
+      "surah_name_ar": "القدر",
+      "details": {
+        "raw_source": "TIRE_SOURCES/Quraan.json",
+        "raw_record_ayah_1": {
+          "raw_text": "بِّسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ"
+        },
+        "canonical_transformation": {
+          "opening_basmala_97_0": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+          "canonical_verse_97_1": "إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ",
+          "applied_rule": "Strictly targeted split of merged opening basmala in 97:1. Quraan.json raw source remains 100% unaltered."
+        }
+      }
+    }
+  ],
+  "non_blocking_metadata_variants": [
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S029",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 29,
+      "surah_name_ar": "العنكبوت",
+      "primary_field": "revelation_order",
+      "primary_value": 85,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 68,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S039",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 39,
+      "surah_name_ar": "الزمر",
+      "primary_field": "revelation_order",
+      "primary_value": 59,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 67,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S047",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 47,
+      "surah_name_ar": "محمد",
+      "primary_field": "revelation_order",
+      "primary_value": 95,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 104,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S050",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 50,
+      "surah_name_ar": "ق",
+      "primary_field": "revelation_order",
+      "primary_value": 34,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 42,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S051",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 51,
+      "surah_name_ar": "الذاريات",
+      "primary_field": "revelation_order",
+      "primary_value": 67,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 77,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S057",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 57,
+      "surah_name_ar": "الحديد",
+      "primary_field": "revelation_order",
+      "primary_value": 94,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 105,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S058",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 58,
+      "surah_name_ar": "المجادلة",
+      "primary_field": "revelation_order",
+      "primary_value": 105,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 107,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S059",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 59,
+      "surah_name_ar": "الحشر",
+      "primary_field": "revelation_order",
+      "primary_value": 101,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 109,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S060",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 60,
+      "surah_name_ar": "الممتحنة",
+      "primary_field": "revelation_order",
+      "primary_value": 91,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 108,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S061",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 61,
+      "surah_name_ar": "الصف",
+      "primary_field": "revelation_order",
+      "primary_value": 109,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 110,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S062",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 62,
+      "surah_name_ar": "الجمعة",
+      "primary_field": "revelation_order",
+      "primary_value": 110,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 100,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S064",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 64,
+      "surah_name_ar": "التغابن",
+      "primary_field": "revelation_order",
+      "primary_value": 108,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 98,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S066",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 66,
+      "surah_name_ar": "التحريم",
+      "primary_field": "revelation_order",
+      "primary_value": 107,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 101,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S079",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 79,
+      "surah_name_ar": "النازعات",
+      "primary_field": "revelation_order",
+      "primary_value": 81,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 32,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S082",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 82,
+      "surah_name_ar": "الإنفطار",
+      "primary_field": "revelation_order",
+      "primary_value": 82,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 35,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S083",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 83,
+      "surah_name_ar": "المطففين",
+      "primary_field": "revelation_order",
+      "primary_value": 86,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 30,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S084",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 84,
+      "surah_name_ar": "الإنشقاق",
+      "primary_field": "revelation_order",
+      "primary_value": 83,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 25,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S100",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 100,
+      "surah_name_ar": "العاديات",
+      "primary_field": "revelation_order",
+      "primary_value": 14,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 100,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S102",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 102,
+      "surah_name_ar": "التكاثر",
+      "primary_field": "revelation_order",
+      "primary_value": 16,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 34,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S103",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 103,
+      "surah_name_ar": "العصر",
+      "primary_field": "revelation_order",
+      "primary_value": 13,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 40,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    },
+    {
+      "variant_id": "VARIANT-REVELATION-ORDER-S104",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "surah_number": 104,
+      "surah_name_ar": "الهمزة",
+      "primary_field": "revelation_order",
+      "primary_value": 32,
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "alternative_value": 29,
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "note": "Both historical transmission variants are preserved without data loss. quran-data.xml is canonical authority."
+    }
+  ]
+}

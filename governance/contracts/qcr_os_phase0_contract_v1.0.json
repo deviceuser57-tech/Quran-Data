@@ -1,0 +1,44 @@
+{
+  "contract_id": "QCR-OS-PHASE-0",
+  "title": "QCR-OS Phase-0 Execution Contract",
+  "version": "1.0.0",
+  "parent_contract_id": "QCR-OS-MASTER",
+  "authority_level": "L1",
+  "authority_role": "PHASE_CONTRACT",
+  "phase_number": 0,
+  "phase_name": "Universal Source Registry, Versioning, Provenance & Quran Baseline Ingestion",
+  "status": "FROZEN / NOT AUTHORIZED FOR EXECUTION",
+  "cutover_permitted": false,
+  "llm_dependency": "ZERO",
+  "execution_mode": "SHADOW_MODE_ONLY",
+  "created_at": "2026-10-31T20:25:00+02:00",
+  "last_modified_at": "2026-10-31T20:25:00+02:00",
+  "authorized_by": "HUMAN_SUPERVISOR",
+  "sections": [
+    {
+      "section": 1,
+      "title": "PURPOSE",
+      "description": "Establish Universal Source Registry, Provenance foundation, Canonical Reconciliation persistence, Audit foundation, KnowledgeGap foundation, Quran Tier-0 runtime storage, Morphology storage, Shadow ingestion, Controlled Parity, Round-trip verification."
+    },
+    {
+      "section": 2,
+      "title": "ENTRY GATE",
+      "description": "Requires Master Contract v2.0 FROZEN, G0 ACK APPROVED, D0.1 Verified Canonical Artifacts, Human Phase 0 Authorization."
+    },
+    {
+      "section": 3,
+      "title": "IN-SCOPE DELIVERABLES",
+      "description": "Universal Source Registry table, Source Versioning, Ingestion Run tracking, Provenance entity graph, Conflict reconciliation audit table, KnowledgeGap ledger, Quran canonical & morphological storage, Round-trip validators."
+    },
+    {
+      "section": 4,
+      "title": "EXCLUDED / FORBIDDEN SCOPE",
+      "description": "Hadith ingestion, Tafsir ingestion, Semantic retrieval, Vector DB, Knowledge Graph, Multi-Agent implementation, UI redesign, Production cutover."
+    },
+    {
+      "section": 5,
+      "title": "EXIT GATE & VERIFICATION",
+      "description": "Shadow parity 100%, round-trip text match 100%, zero unhandled conflicts, complete provenance chains, human sign-off."
+    }
+  ]
+}

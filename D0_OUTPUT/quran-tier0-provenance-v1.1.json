@@ -1,0 +1,153 @@
+{
+  "package_version": "1.1.0",
+  "phase": "D0.1",
+  "generated_at": "2026-10-30T11:47:33.463Z",
+  "human_authorized_resolutions": {
+    "surah_27_duplicate_0": {
+      "action": "HUMAN_AUTHORIZED_EXACT_DUPLICATE_COLLAPSE",
+      "status": "VERIFIED_AND_APPLIED",
+      "raw_record_indices": [
+        3183,
+        3213
+      ],
+      "raw_source": "TIRE_SOURCES/Quraan.json",
+      "canonical_retained_record": {
+        "رقم السورة": 27,
+        "رقم الآية": 0,
+        "عدد الآيات": 93,
+        "إسم السورة": "النمل",
+        "الآية": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+        "تصنيف": "مكية",
+        "ترتيب النزول": 48
+      },
+      "verification_proof": "Byte-for-byte identical verification confirmed. Index 3213 collapsed into canonical record at Index 3183."
+    },
+    "surah_95_opening_basmala": {
+      "action": "HUMAN_AUTHORIZED_TARGETED_RECONCILIATION",
+      "status": "VERIFIED_AND_APPLIED",
+      "raw_record_index": 6184,
+      "raw_source_text": "بِّسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ وَالتِّينِ وَالزَّيْتُونِ",
+      "canonical_opening_basmala": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+      "canonical_verse_1_text": "وَالتِّينِ وَالزَّيْتُونِ",
+      "scope": "Strictly targeted to 95:1. Never generalized to any other surah or ayah."
+    },
+    "surah_97_opening_basmala": {
+      "action": "HUMAN_AUTHORIZED_TARGETED_RECONCILIATION",
+      "status": "VERIFIED_AND_APPLIED",
+      "raw_record_index": 6211,
+      "raw_source_text": "بِّسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ",
+      "canonical_opening_basmala": "بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ",
+      "canonical_verse_1_text": "إِنَّا أَنزَلْنَاهُ فِي لَيْلَةِ الْقَدْرِ",
+      "scope": "Strictly targeted to 97:1. Never generalized to any other surah or ayah."
+    }
+  },
+  "field_authority_matrix": {
+    "basmala_structure": {
+      "primary_source": "TIRE_SOURCES/Quraan.json",
+      "authority_level": "PRIMARY_SOURCE_OF_TRUTH_WITH_HUMAN_AUTHORIZED_RECONCILIATION",
+      "immutable_rules": {
+        "fatihah_1_1": "Surah 1 Ayah 1 is Basmala. No 1:0 allowed.",
+        "other_surahs_ayah_0": "All 112 surahs except 1 and 9 store exactly one opening basmala as Ayah 0.",
+        "tawbah_no_basmala": "Surah 9 has no opening basmala and no Ayah 0.",
+        "naml_27_30_embedded": "Basmala inside 27:30 is integral part of the verse."
+      }
+    },
+    "arabic_verse_text": {
+      "primary_source": "TIRE_SOURCES/Quraan.json",
+      "authority_level": "PRIMARY_SOURCE_OF_TRUTH",
+      "mutation_policy": "VERBATIM_IMMUTABLE_NO_NORMALIZATION"
+    },
+    "english_verse_translation": {
+      "primary_source": "data/mainDataQuran.json",
+      "authority_level": "PRIMARY_ENRICHMENT",
+      "schema": "surah_number, ayah_number, language, text, source, source_version"
+    },
+    "juz_boundaries": {
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "validation_source": "data/mainDataQuran.json"
+    },
+    "hizb_quarter_boundaries": {
+      "primary_source": "TIRE_SOURCES/quran-data.xml"
+    },
+    "page_boundaries": {
+      "primary_source": "data/pagesQuran.json",
+      "validation_source": "TIRE_SOURCES/quran-data.xml"
+    },
+    "surah_metadata": {
+      "primary_source": "TIRE_SOURCES/quran-data.xml",
+      "validation_source": "TIRE_SOURCES/quran-data.js"
+    },
+    "revelation_order_variants": {
+      "primary_authority": "TIRE_SOURCES/quran-data.xml",
+      "alternative_source": "TIRE_SOURCES/Quraan.json",
+      "classification": "NON_BLOCKING_METADATA_VARIANTS",
+      "total_preserved_variants": 21
+    },
+    "morphology": {
+      "primary_source": "TIRE_SOURCES/quranic-corpus-morphology-0.4.txt",
+      "authority_level": "PRIMARY_REFERENCE",
+      "linkage_fields": [
+        "surah_number",
+        "ayah_number",
+        "word_position",
+        "segment_position"
+      ]
+    },
+    "audio_metadata": {
+      "primary_source": "data/mainDataQuran.json",
+      "authority_level": "AUXILIARY_METADATA"
+    }
+  },
+  "sources_inventory": {
+    "quraan_json": {
+      "path": "TIRE_SOURCES/Quraan.json",
+      "sha256": "a75be59aff6a112cf8ff859180ab995d5b5e6318269777fd5760d095b3a7cee2",
+      "size": 2740193
+    },
+    "quran_data_xml": {
+      "path": "TIRE_SOURCES/quran-data.xml",
+      "sha256": "8867c1d88191472adec9db694b3cd9f135b1a2ef580574d32cf888dcb22c5c7a",
+      "size": 77234
+    },
+    "quran_data_js": {
+      "path": "TIRE_SOURCES/quran-data.js",
+      "sha256": "9e9930c592aaa34b5c7a79ff4e99ffdc782263a266090bfe2c49e4ed4bac4ca4",
+      "size": 25096
+    },
+    "quranic_corpus": {
+      "path": "TIRE_SOURCES/quranic-corpus-morphology-0.4.txt",
+      "sha256": "a1d12923815341face765083805d2148ed2d9f5cc3f7d6665219d887675d8c46",
+      "size": 6309503
+    },
+    "pages_quran": {
+      "path": "data/pagesQuran.json",
+      "sha256": "d19dbcf4297a1276c13afe6117dd266a50a8463822797a5caa01d8b105be16a7",
+      "size": 273015
+    },
+    "main_data_quran": {
+      "path": "data/mainDataQuran.json",
+      "sha256": "46885c06aecd60192a49f98441859916cab9c738ccc1ec67f997450769119b57",
+      "size": 9703195
+    },
+    "quran_simple_txt": {
+      "path": "TIRE_SOURCES/quran-simple.txt",
+      "sha256": "b3638f5cf03e2b05e4000efc0e4b656aafb3cf6ed28f8770b6497c5b43c46089",
+      "size": 1353702
+    },
+    "quran_flat_tashkeel": {
+      "path": "TIRE_SOURCES/quran-flat-full-tashkeel.txt",
+      "sha256": "2a6475a09a96d5c6c57ea32ac659d2e2cf2f976ae6ef881a461ef2362da47682",
+      "size": 1048609
+    },
+    "database_csv": {
+      "path": "data/csv/database.csv",
+      "sha256": "7610c050842fd86395bdf7c0fa937de7742f9af4a4ff08cdd204379e80f01727",
+      "size": 8318477
+    },
+    "api_definition_yaml": {
+      "path": "docs/api-definition.yaml",
+      "sha256": "289f01b6a4da5cdb5a0c7fdf677b3c98a788f01867fa978abfc6499b2fcb2fbb",
+      "size": 18206
+    }
+  }
+}

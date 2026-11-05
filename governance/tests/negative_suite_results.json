@@ -1,0 +1,254 @@
+[
+  {
+    "id": "P0-NEG-001",
+    "name": "UNAUTHORIZED_PHASE0_INGESTION_EXECUTION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Blocked: Phase 0 is NOT_AUTHORIZED."
+  },
+  {
+    "id": "P0-NEG-002",
+    "name": "AUTONOMOUS_PHASE_PROGRESSION_ATTEMPT",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Blocked: Automatic transition forbidden across all 12 phases."
+  },
+  {
+    "id": "P0-NEG-003",
+    "name": "FORWARD_PHASE_EXECUTION_ATTEMPT",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Blocked: Phase 8 is firmly locked."
+  },
+  {
+    "id": "P0-NEG-004",
+    "name": "PREMATURE_CUTOVER_WITHOUT_HUMAN_AUTH",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Blocked: Cutover strictly forbidden in Phase 0."
+  },
+  {
+    "id": "P0-NEG-005",
+    "name": "RUNTIME_MUTATION_DURING_GOVERNANCE",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Blocked: Server runtime completely untouched in bootstrap."
+  },
+  {
+    "id": "P0-NEG-006",
+    "name": "APPLICATION_OF_UNAUTHORIZED_MIGRATION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Blocked: SQL migration is safely isolated in drafts directory."
+  },
+  {
+    "id": "P0-NEG-007",
+    "name": "SOURCE_VAULT_ACL_MUTATION_WITHOUT_DRY_RUN",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Blocked: ACL tool enforces dryRun: true by default."
+  },
+  {
+    "id": "P0-NEG-008",
+    "name": "UNAUTHORIZED_QUARANTINE_RESTORATION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Blocked: Quarantined files remain isolated in quarantine vault."
+  },
+  {
+    "id": "P0-NEG-009",
+    "name": "FATIHA_AYAH_0_INJECTION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Fatiha Ayah 0 rejection invariant triggered."
+  },
+  {
+    "id": "P0-NEG-010",
+    "name": "FATIHA_AYAH_1_BASMALA_STRIPPING",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Detected removal of Basmala from Fatiha 1:1."
+  },
+  {
+    "id": "P0-NEG-011",
+    "name": "TAWBA_OPENING_BASMALA_INJECTION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Detected illicit Basmala on Surah At-Tawbah."
+  },
+  {
+    "id": "P0-NEG-012",
+    "name": "NAML_27_30_BASMALA_SEVERANCE",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Detected severance of internal Basmala in 27:30."
+  },
+  {
+    "id": "P0-NEG-013",
+    "name": "SURAH_COUNT_DEVIATION_FROM_114",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Deviation from 114 Surahs blocked."
+  },
+  {
+    "id": "P0-NEG-014",
+    "name": "CANONICAL_AYAH_COUNT_DEVIATION_FROM_6236",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Deviation from 6236 canonical Ayahs blocked."
+  },
+  {
+    "id": "P0-NEG-015",
+    "name": "OPENING_BASMALA_COUNT_DEVIATION_FROM_112",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Deviation from 112 opening Basmalas blocked."
+  },
+  {
+    "id": "P0-NEG-016",
+    "name": "DUPLICATE_SURAH_AYAH_COMPOSITE_KEY",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Duplicate composite verse key rejected."
+  },
+  {
+    "id": "P0-NEG-017",
+    "name": "TIRE_SOURCES_PAYLOAD_TAMPERING",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: SHA-256 mismatch against source vault baseline."
+  },
+  {
+    "id": "P0-NEG-018",
+    "name": "MISSING_MANDATORY_SOURCE_HASH",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Source presence in manifest enforced."
+  },
+  {
+    "id": "P0-NEG-019",
+    "name": "SYMLINK_TRAVERSAL_ATTEMPT_IN_VAULT",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Path traversal outside project boundary trapped."
+  },
+  {
+    "id": "P0-NEG-020",
+    "name": "UNAUTHORIZED_SOURCE_DELETION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: File presence verified in source vault."
+  },
+  {
+    "id": "P0-NEG-021",
+    "name": "UNRECORDED_SOURCE_VERSION_INJECTION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Unregistered source file rejected."
+  },
+  {
+    "id": "P0-NEG-022",
+    "name": "SOURCE_FAMILY_MISCLASSIFICATION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Enforced strict Tier-0 assignment for canonical Quran."
+  },
+  {
+    "id": "P0-NEG-023",
+    "name": "TIER_0_AND_TIER_2_TEXTUAL_CONFLATION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Rejection of merged text across tiers."
+  },
+  {
+    "id": "P0-NEG-024",
+    "name": "LLM_GENERATED_TEXT_AS_CANONICAL_VERSE",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Synthetic text banned from Tier-0."
+  },
+  {
+    "id": "P0-NEG-025",
+    "name": "CLAIM_GENERATION_WITHOUT_TYPED_EVIDENCE",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Ungrounded claim rejected."
+  },
+  {
+    "id": "P0-NEG-026",
+    "name": "MISSING_PROVENANCE_ON_RETRIEVAL_CITATION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Citation without provenance blocked."
+  },
+  {
+    "id": "P0-NEG-027",
+    "name": "UNDECLARED_KNOWLEDGE_GAP_SUPPRESSION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Mandatory KnowledgeGap declaration triggered."
+  },
+  {
+    "id": "P0-NEG-028",
+    "name": "MULTI_AGENT_CORE_SPEC_DELETION_ATTEMPT",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Multi-agent requirement is immutable."
+  },
+  {
+    "id": "P0-NEG-029",
+    "name": "DB_ACTIVE_INSERT_DURING_SHADOW_MODE",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Active writes locked during Shadow Mode."
+  },
+  {
+    "id": "P0-NEG-030",
+    "name": "NULL_PROVENANCE_ID_ON_INGESTED_AYAH",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Rejection of verse record without provenance link."
+  },
+  {
+    "id": "P0-NEG-031",
+    "name": "UNRECONCILED_RAW_SOURCE_OVERWRITE",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Direct mutation of raw source forbidden."
+  },
+  {
+    "id": "P0-NEG-032",
+    "name": "CORRUPTED_JSONB_PAYLOAD_INSERTION",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Corrupt JSONB schema payload trapped."
+  },
+  {
+    "id": "P0-NEG-033",
+    "name": "FOREIGN_KEY_VIOLATION_INGESTION_RUN",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Foreign key constraint violation caught."
+  },
+  {
+    "id": "P0-NEG-034",
+    "name": "UNREGISTERED_SOURCE_INGESTION_ATTEMPT",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Ingestion rejected for unregistered source."
+  },
+  {
+    "id": "P0-NEG-035",
+    "name": "UNSAFE_MIGRATION_EXECUTION_WITHOUT_ROLLBACK",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Rollback existence verified before migration approval."
+  },
+  {
+    "id": "P0-NEG-036",
+    "name": "SHADOW_PARITY_REGRESSION_SILENT_DISCARD",
+    "status": "PASSED_DETECTED",
+    "detected": true,
+    "details": "Caught: Parity discrepancy triggers immediate blocking alert."
+  }
+]

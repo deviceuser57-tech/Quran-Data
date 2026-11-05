@@ -1,0 +1,148 @@
+{
+  "document_id": "QCR-REC-LEGACY-CONSTITUTION",
+  "source_file": "docs/QURANIC_RESEARCH_OS_CONSTITUTION.md",
+  "classification": "LEGACY_RESEARCH_BEHAVIOR_SPECIFICATION",
+  "authority_level": "L5",
+  "execution_authority": "NONE",
+  "implementation_authority": "NONE",
+  "status": "RECONCILED_AND_ROADMAP_ALIGNED",
+  "last_modified_at": "2026-11-02T19:05:00+02:00",
+  "sections_mapping": [
+    {
+      "legacy_section": "0. معايرة نية الباحث (Intent Calibration)",
+      "principles": [
+        "Tadabbur exploration mode",
+        "Verification mode",
+        "Epistemic knowledge mode"
+      ],
+      "reconciled_primary_phase": "PHASE_8",
+      "reconciled_integration_phases": [
+        "PHASE_9",
+        "PHASE_10"
+      ],
+      "description": "Cognitive intent understanding and research mode calibration."
+    },
+    {
+      "legacy_section": "1. الهوية (Methodological Research OS Identity)",
+      "principles": [
+        "Not a chatbot or mufti",
+        "Epistemic research workbench"
+      ],
+      "reconciled_primary_phase": "MASTER_CONTRACT_DOCTRINE",
+      "reconciled_integration_phases": [
+        "ALL_PHASES"
+      ],
+      "description": "Supreme constitutional identity across all operations."
+    },
+    {
+      "legacy_section": "2. القواعد الذهبية (Golden Rules)",
+      "principles": [
+        "Non-reductionism",
+        "Non-conflation",
+        "Contiguity without blending",
+        "Technical honesty"
+      ],
+      "reconciled_primary_phase": "MASTER_CONTRACT_INVARIANTS",
+      "reconciled_integration_phases": [
+        "ALL_PHASES"
+      ],
+      "description": "Master Contract Invariants MC-INV-01 through MC-INV-15."
+    },
+    {
+      "legacy_section": "9. سجل المعرفة (Knowledge Register)",
+      "principles": [
+        "Immutable record IDs",
+        "Tiers",
+        "Quotes vs Summaries",
+        "Provenance"
+      ],
+      "reconciled_primary_phase": "PHASE_0",
+      "reconciled_integration_phases": [
+        "PHASE_1",
+        "PHASE_2"
+      ],
+      "description": "Universal Source Registry, versioning, and provenance chains."
+    },
+    {
+      "legacy_section": "10. الرسم البياني المعرفي (Knowledge Graph)",
+      "principles": [
+        "Nodes for verses, roots, sources, hypotheses",
+        "Typed relational edges with provenance"
+      ],
+      "reconciled_primary_phase": "PHASE_7",
+      "reconciled_integration_phases": [
+        "PHASE_8",
+        "PHASE_9"
+      ],
+      "description": "Knowledge Graph, inter-tier relational fabric, claims and evidence graphs."
+    },
+    {
+      "legacy_section": "12. الاسترجاع المتقدم (Advanced Retrieval)",
+      "principles": [
+        "Deterministic matching, semantic vector search, graph traversal"
+      ],
+      "sub_capability_mapping": [
+        {
+          "type": "Literal, lexical, root, morphological, and BM25 search",
+          "primary_phase": "PHASE_5 (Deterministic Retrieval Engine)"
+        },
+        {
+          "type": "Vector search, embedding similarity, and hybrid dense/sparse retrieval",
+          "primary_phase": "PHASE_6 (Hybrid & Semantic Retrieval)"
+        },
+        {
+          "type": "Graph traversal and GraphRAG over relational graph fabric",
+          "primary_phase": "PHASE_7 (Evidence, Claims & Knowledge Graph)"
+        }
+      ],
+      "reconciled_primary_phase": "PHASE_5_6_7_SPLIT",
+      "description": "Divided cleanly across Phase 5 (Deterministic), Phase 6 (Hybrid/Semantic), and Phase 7 (Graph)."
+    },
+    {
+      "legacy_section": "21. اللوحة المكانية (Spatial Node Canvas & Visual Coding)",
+      "principles": [
+        "Spatial node-based canvas, visual filters, question/source/hypothesis nodes"
+      ],
+      "reconciled_primary_phase": "PHASE_9",
+      "reconciled_integration_phases": [
+        "PHASE_10"
+      ],
+      "description": "Research Workspace & Spatial Canvas."
+    },
+    {
+      "legacy_section": "22-23. مصفوفة المصادر والمحادثة والتتبع (Traceability & Grounded Chat)",
+      "principles": [
+        "Source matrix, reverse citation tracking, grounded researcher interaction"
+      ],
+      "reconciled_primary_phase": "PHASE_10",
+      "reconciled_integration_phases": [
+        "PHASE_9",
+        "PHASE_11"
+      ],
+      "description": "Grounded Chat, Export, and Reproducibility UI."
+    },
+    {
+      "legacy_section": "24-26. الأخلاق والامتثال (Ethics, Impartiality, Boundary Checks, Privacy)",
+      "principles": [
+        "Scholarly neutrality, bias prevention, unseen realm boundaries, rights compliance"
+      ],
+      "reconciled_primary_phase": "PHASE_8",
+      "reconciled_integration_phases": [
+        "PHASE_9",
+        "PHASE_11"
+      ],
+      "description": "Epistemic gap, disputation, and bias-resistance guardian agents."
+    },
+    {
+      "legacy_section": "27. اختبارات قبول إلزامية (Acceptance Tests 1-17)",
+      "principles": [
+        "System-wide acceptance testing suite"
+      ],
+      "reconciled_primary_phase": "PHASE_11",
+      "reconciled_integration_phases": [
+        "ALL_PHASES"
+      ],
+      "description": "Full System Audit, Verification, and Production Cutover."
+    }
+  ]
+}

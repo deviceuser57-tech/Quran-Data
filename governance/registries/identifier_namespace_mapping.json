@@ -1,0 +1,113 @@
+{
+  "namespace_id": "QCR-MAP-NAMESPACES",
+  "title": "QCR-OS Identifier Namespace Mapping Matrix",
+  "version": "2.0.0",
+  "status": "ACTIVE_GOVERNED",
+  "created_at": "2026-10-31T20:56:00+02:00",
+  "namespaces": [
+    {
+      "prefix": "MC-INV-*",
+      "scope": "Master Contract Inviolable Invariants (INV-01 -> INV-15)",
+      "exact_range": "MC-INV-01 -> MC-INV-15",
+      "count": 15,
+      "governing_body": "QCR-OS MASTER CONTRACT v2.0",
+      "description": "The 15 constitutional invariants of QCR-OS, mapped 1:1 with exact original identities."
+    },
+    {
+      "prefix": "MC-ARTICLE-*",
+      "scope": "Master Contract Articles",
+      "exact_range": "MC-ARTICLE-01 -> MC-ARTICLE-09",
+      "count": 9,
+      "governing_body": "QCR-OS MASTER CONTRACT v2.0",
+      "description": "Formal articles of the supreme governing contract."
+    },
+    {
+      "prefix": "MC-DOCTRINE-*",
+      "scope": "Master Governing Doctrines",
+      "exact_range": "MC-DOCTRINE-001 -> MC-DOCTRINE-009",
+      "count": 9,
+      "governing_body": "QCR-OS MASTER CONTRACT v2.0",
+      "description": "Epistemic order and procedural doctrine statements."
+    },
+    {
+      "prefix": "MC-ARCH-*",
+      "scope": "Master Architecture Requirements",
+      "exact_range": "MC-ARCH-001",
+      "count": 1,
+      "governing_body": "QCR-OS MASTER CONTRACT v2.0 (Article 8)",
+      "description": "Immutable system-level architectural mandates (e.g. Multi-Agent requirement)."
+    },
+    {
+      "prefix": "P0-SECTION-*",
+      "scope": "Phase 0 Contract Sections",
+      "exact_range": "P0-SECTION-01 -> P0-SECTION-05",
+      "count": 5,
+      "governing_body": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
+      "description": "Formal sections of Phase 0 contract."
+    },
+    {
+      "prefix": "QTI-*",
+      "scope": "Quran Textual Invariants",
+      "exact_range": "QTI-01 -> QTI-08",
+      "count": 8,
+      "governing_body": "Canonical Quran Data Specification (Tier-0)",
+      "description": "Textual and structural invariants of the Quranic text."
+    },
+    {
+      "prefix": "BASMALA-*",
+      "scope": "Basmala Reconciliation Acceptance Tests",
+      "exact_range": "BASMALA-001 -> BASMALA-010",
+      "count": 10,
+      "governing_body": "Phase D0 / D0.1 Basmala Engine",
+      "description": "Unit tests verifying the 4 inviolable Basmala conditions."
+    },
+    {
+      "prefix": "P0-ACC-*",
+      "scope": "Phase 0 Contract-Required Positive Acceptance Criteria",
+      "exact_range": "P0-ACC-001 -> P0-ACC-016",
+      "count": 16,
+      "governing_body": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0 (Section 5)",
+      "description": "Contractual positive stage-gate acceptance tests."
+    },
+    {
+      "prefix": "GB-ACC-*",
+      "scope": "Governance Bootstrap Additional Positive Assurance Tests",
+      "exact_range": "GB-ACC-001 -> GB-ACC-002",
+      "count": 2,
+      "origin": "IMPLEMENTATION_ADDITIONAL_ASSURANCE",
+      "description": "Non-contractual implementation tests added for extra validation."
+    },
+    {
+      "prefix": "P0-NEG-*",
+      "scope": "Phase 0 Contract Negative & Adversarial Verification Suite",
+      "exact_range": "P0-NEG-001 -> P0-NEG-036",
+      "count": 36,
+      "governing_body": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
+      "description": "Exhaustive negative test suite covering unauthorized ingestion, invariant breaches, and safety."
+    },
+    {
+      "prefix": "LEG-REQ-*",
+      "scope": "Legacy Requirements",
+      "governing_body": "Legacy Research Constitution (docs/QURANIC_RESEARCH_OS_CONSTITUTION.md)",
+      "description": "Behavioral and interaction specifications from legacy research constitution."
+    },
+    {
+      "prefix": "MA-REQ-*",
+      "scope": "Multi-Agent Requirements",
+      "governing_body": "Phase 8 Cognitive AI Specification",
+      "description": "Detailed multi-agent swarm operational requirements."
+    },
+    {
+      "prefix": "SEC-*",
+      "scope": "Security Requirements",
+      "governing_body": "Source Vault Security Specification",
+      "description": "Cryptographic, read-only ACL, and realpath boundary requirements."
+    },
+    {
+      "prefix": "DB-*",
+      "scope": "Database Requirements",
+      "governing_body": "Database Decision Records & Schemas",
+      "description": "Relational integrity, schema normalization, and rollback specs."
+    }
+  ]
+}

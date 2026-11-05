@@ -1,0 +1,207 @@
+{
+  "registry_id": "QCR-REG-CLAUSES",
+  "registry_title": "QCR-OS Master Contract Inviolable Invariants & Constitutional Doctrines Registry",
+  "version": "2.1.0",
+  "status": "ACTIVE_AUDITED",
+  "master_contract_invariants": [
+    {
+      "original_id": "INV-01",
+      "namespaced_id": "MC-INV-01",
+      "exact_name": "REGISTERED-SOURCE-ONLY",
+      "requirement": "Only explicitly registered sources qualified under Master Contract Article 1 may be queried or ingested into the research platform.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 1 & Article 6)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-034"
+    },
+    {
+      "original_id": "INV-02",
+      "namespaced_id": "MC-INV-02",
+      "exact_name": "NO-SOURCE-NO-EVIDENCE",
+      "requirement": "No evidence entity may be created or asserted without direct linkage to a registered source record.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 1, Operating Doctrine)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-025"
+    },
+    {
+      "original_id": "INV-03",
+      "namespaced_id": "MC-INV-03",
+      "exact_name": "LLM-IS-NOT-A-SOURCE",
+      "requirement": "Large language models operate purely downstream of deterministic retrieval; model memory may never act as a primary factual source.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 1, Operating Doctrine)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-024"
+    },
+    {
+      "original_id": "INV-04",
+      "namespaced_id": "MC-INV-04",
+      "exact_name": "EVIDENCE-ANALYSIS-SEPARATION",
+      "requirement": "Evidence extracted from sources must remain ontologically distinct and unmixed with higher-order interpretive analysis or claims.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 7)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-023"
+    },
+    {
+      "original_id": "INV-05",
+      "namespaced_id": "MC-INV-05",
+      "exact_name": "CANONICAL-QURAN-IMMUTABILITY",
+      "requirement": "The canonical Quran text (114 Surahs, 6236 numbered Ayahs, 112 opening Basmalas) is immutable and cryptographically protected.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 4)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-013..016, QTI-01..08"
+    },
+    {
+      "original_id": "INV-06",
+      "namespaced_id": "MC-INV-06",
+      "exact_name": "RESOLVABLE-PROVENANCE",
+      "requirement": "Every ingested record, claim, or returned token must have complete and resolvable provenance back to primary raw source byte offset.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 7)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-026, P0-NEG-030"
+    },
+    {
+      "original_id": "INV-07",
+      "namespaced_id": "MC-INV-07",
+      "exact_name": "KBOUTPUT-SINGLE-DISPLAY-CONTRACT",
+      "requirement": "All knowledge output delivered to UI/researcher must adhere to the single display contract without silent ungrounded text injection.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 7, Article 10)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-ACC-014"
+    },
+    {
+      "original_id": "INV-08",
+      "namespaced_id": "MC-INV-08",
+      "exact_name": "VERSION-IMMUTABILITY",
+      "requirement": "Once registered and signed, a source version cannot be modified in place; changes require a newly qualified version record.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 6)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-017, P0-NEG-021"
+    },
+    {
+      "original_id": "INV-09",
+      "namespaced_id": "MC-INV-09",
+      "exact_name": "MISSING-TIER-NO-FALLBACK",
+      "requirement": "When an epistemic tier lacks coverage for a topic, the system must not substitute content from another tier to mask the absence.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 3)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-023"
+    },
+    {
+      "original_id": "INV-10",
+      "namespaced_id": "MC-INV-10",
+      "exact_name": "EXPLICIT-FAILURE",
+      "requirement": "System errors, retrieval misses, and data integrity anomalies must fail explicitly with structured codes, never silent fallback or hallucinated filler.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Operating Doctrine)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-036"
+    },
+    {
+      "original_id": "INV-11",
+      "namespaced_id": "MC-INV-11",
+      "exact_name": "FIELD-LEVEL-SOURCE-AUTHORITY",
+      "requirement": "Source authority must be evaluated and recorded at the specific field level (e.g. text vs revelation order vs page mapping), not broadly assumed.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 1, Article 6)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-ACC-004"
+    },
+    {
+      "original_id": "INV-12",
+      "namespaced_id": "MC-INV-12",
+      "exact_name": "HUMAN-AUTHORIZED-CANONICAL-RECONCILIATION",
+      "requirement": "Any reconciliation or normalization of source discrepancies in canonical derivation must be backed by explicit human authorization.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 4, Article 8)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-031"
+    },
+    {
+      "original_id": "INV-13",
+      "namespaced_id": "MC-INV-13",
+      "exact_name": "NO-SELF-PROGRESSION",
+      "requirement": "No agent, script, tool, or phase may advance itself or transition the system to the next phase without explicit human gate sign-off.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 2, Article 5)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-001, P0-NEG-002"
+    },
+    {
+      "original_id": "INV-14",
+      "namespaced_id": "MC-INV-14",
+      "exact_name": "NO-FUTURE-STAGE-IMPLEMENTATION",
+      "requirement": "Implementation of features, schemas, or infrastructure belonging to future phases is strictly prohibited in current phase.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 5)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-003"
+    },
+    {
+      "original_id": "INV-15",
+      "namespaced_id": "MC-INV-15",
+      "exact_name": "MISSING-SOURCE-REMAINS-MISSING",
+      "requirement": "If a qualified source is missing or unavailable, it must remain explicitly registered as missing; synthetic substitution is forbidden.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 1, Operating Doctrine)",
+      "enforcement_level": "BLOCKING",
+      "validation_mapping": "P0-NEG-027"
+    }
+  ],
+  "governing_doctrines": [
+    {
+      "id": "MC-DOCTRINE-001",
+      "name": "SOURCE_BEFORE_EVIDENCE",
+      "statement": "Source qualification, registration, and immutability must precede evidence extraction."
+    },
+    {
+      "id": "MC-DOCTRINE-002",
+      "name": "EVIDENCE_BEFORE_CLAIM",
+      "statement": "Every assertion, fact, or claim must be backed by typed evidence extracted from qualified sources."
+    },
+    {
+      "id": "MC-DOCTRINE-003",
+      "name": "CLAIM_BEFORE_ANALYSIS",
+      "statement": "Higher-order synthesis and analysis must operate strictly over verified claims."
+    },
+    {
+      "id": "MC-DOCTRINE-004",
+      "name": "RETRIEVAL_BEFORE_LLM",
+      "statement": "LLM operates purely downstream of deterministic retrieval, never as an ungrounded memory source."
+    },
+    {
+      "id": "MC-DOCTRINE-005",
+      "name": "PROVENANCE_BEFORE_CITATION",
+      "statement": "No citation or reference may be displayed without complete cryptographic and positional provenance."
+    },
+    {
+      "id": "MC-DOCTRINE-006",
+      "name": "VALIDATION_BEFORE_APPROVAL",
+      "statement": "Artifacts must pass automated and independent verification before human approval can be requested."
+    },
+    {
+      "id": "MC-DOCTRINE-007",
+      "name": "APPROVAL_BEFORE_NEXT_PHASE",
+      "statement": "Transition to phase N+1 requires explicit human approval of phase N deliverables."
+    },
+    {
+      "id": "MC-DOCTRINE-008",
+      "name": "HUMAN_AUTHORIZATION_BEFORE_CUTOVER",
+      "statement": "Production cutover requires shadow parity and explicit separate human authorization."
+    },
+    {
+      "id": "MC-DOCTRINE-009",
+      "name": "KNOWING_ROADMAP_DOES_NOT_AUTHORIZE_TRAVELING_IT",
+      "statement": "Knowledge of future phases grants zero execution or implementation authority in current phase."
+    }
+  ],
+  "architecture_requirements": [
+    {
+      "id": "MC-ARCH-001",
+      "name": "MULTI_AGENT_CORE_PRODUCT_REQUIREMENT",
+      "classification": "CORE_PRODUCT_REQUIREMENT",
+      "primary_phase": "PHASE_8",
+      "integration_phases": [
+        "PHASE_7",
+        "PHASE_9",
+        "PHASE_10",
+        "PHASE_11"
+      ],
+      "current_implementation_authorization": "NONE",
+      "statement": "Multi-Agent architecture is an immutable core product requirement reserved for Phase 8. It is not an optional technology suggestion.",
+      "contract_reference": "QCR-OS MASTER CONTRACT v2.0 (Article 8)"
+    }
+  ]
+}

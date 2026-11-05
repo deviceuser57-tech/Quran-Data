@@ -1,0 +1,137 @@
+{
+  "registry_id": "QCR-REG-ACCEPTANCE-TESTS",
+  "title": "QCR-OS Positive Acceptance Tests Registry (Exact Contract Alignment)",
+  "version": "2.1.0",
+  "contract_required_tests": {
+    "namespace": "P0-ACC-*",
+    "count": 16,
+    "tests": [
+      {
+        "id": "P0-ACC-001",
+        "name": "Source Registry",
+        "meaning": "Universal Source Registry instantiation and source qualification verification",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-002",
+        "name": "Manifest Verification",
+        "meaning": "Manifest verification and cryptographic SHA-256 fingerprint checking",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-003",
+        "name": "Surah Count = 114",
+        "meaning": "Verification that canonical Surahs count equals exactly 114",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-004",
+        "name": "Canonical Ayahs = 6236",
+        "meaning": "Verification that canonical numbered Ayahs count equals exactly 6236",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-005",
+        "name": "Opening Basmalas = 112",
+        "meaning": "Verification that standalone unnumbered opening Basmalas count equals exactly 112",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-006",
+        "name": "Quran Record Total = 6348",
+        "meaning": "Verification that total Quran records (6236 verses + 112 opening Basmalas) equals exactly 6348",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-007",
+        "name": "Duplicate Keys = 0",
+        "meaning": "Verification that duplicate composite keys (Surah:Ayah:Type) equal exactly 0",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-008",
+        "name": "Missing Canonical Ayahs = 0",
+        "meaning": "Verification that missing canonical Ayahs across all 114 Surahs equal exactly 0",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-009",
+        "name": "Translation Linkage",
+        "meaning": "Verification that English and translation linkage points correctly to canonical Ayah records",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-010",
+        "name": "Morphology Linkage",
+        "meaning": "Verification that morphological token segments link directly to canonical Ayahs and roots",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-011",
+        "name": "Provenance",
+        "meaning": "Verification that provenance chains resolve back to raw source byte offsets and records",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-012",
+        "name": "Reconciliations: 27 / 95 / 97",
+        "meaning": "Verification of human-authorized canonical reconciliations for Surah 27:0 duplicate and Surahs 95:1 / 97:1 Basmalas",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-013",
+        "name": "Round Trip",
+        "meaning": "Verification of round-trip text reconstruction fidelity and diacritical byte-for-byte exactness",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-014",
+        "name": "Source Vault Integrity",
+        "meaning": "Verification of Source Vault immutability, discovery, and read-only protection",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-015",
+        "name": "Change Manifest Completeness",
+        "meaning": "Verification that all governance and data changes are cataloged with complete cryptographic signatures",
+        "origin": "CONTRACT_REQUIRED"
+      },
+      {
+        "id": "P0-ACC-016",
+        "name": "Shadow Isolation",
+        "meaning": "Verification that Phase 0 operates strictly in shadow mode with zero active runtime database mutation",
+        "origin": "CONTRACT_REQUIRED"
+      }
+    ]
+  },
+  "additional_assurance_tests": {
+    "namespace": "GB-ACC-*",
+    "count": 4,
+    "tests": [
+      {
+        "id": "GB-ACC-001",
+        "name": "File Governance Schema Compliance",
+        "meaning": "Verification that all governance artifacts follow the mandatory JSON metadata schema",
+        "origin": "IMPLEMENTATION_ADDITIONAL_ASSURANCE"
+      },
+      {
+        "id": "GB-ACC-002",
+        "name": "Source Vault 8-Capability Dry-Run Audit",
+        "meaning": "Dry-run validation of the 8 Source Vault capabilities (Discovery, Backup, ApplySafe, Verify, Rollback, WriteGuard, Realpath, IncidentLogger)",
+        "origin": "IMPLEMENTATION_ADDITIONAL_ASSURANCE"
+      },
+      {
+        "id": "GB-ACC-003",
+        "name": "KBOutput Display Contract Formatting",
+        "meaning": "Verification that knowledge outputs adhere to single display contract format",
+        "origin": "IMPLEMENTATION_ADDITIONAL_ASSURANCE"
+      },
+      {
+        "id": "GB-ACC-004",
+        "name": "Shadow Runtime Parity",
+        "meaning": "Verification of 100% route match between shadow and runtime routes",
+        "origin": "IMPLEMENTATION_ADDITIONAL_ASSURANCE"
+      }
+    ]
+  }
+}

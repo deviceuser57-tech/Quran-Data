@@ -1,0 +1,218 @@
+[
+  {
+    "id": "P0-NEG-001",
+    "name": "UNAUTHORIZED_PHASE0_INGESTION_EXECUTION",
+    "cat": "STAGE_GATE",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-002",
+    "name": "AUTONOMOUS_PHASE_PROGRESSION_ATTEMPT",
+    "cat": "STAGE_GATE",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-003",
+    "name": "FORWARD_PHASE_EXECUTION_ATTEMPT",
+    "cat": "STAGE_GATE",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-004",
+    "name": "PREMATURE_CUTOVER_WITHOUT_HUMAN_AUTH",
+    "cat": "STAGE_GATE",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-005",
+    "name": "RUNTIME_MUTATION_DURING_GOVERNANCE",
+    "cat": "STAGE_GATE",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-006",
+    "name": "APPLICATION_OF_UNAUTHORIZED_MIGRATION",
+    "cat": "STAGE_GATE",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-007",
+    "name": "SOURCE_VAULT_ACL_MUTATION_WITHOUT_DRY_RUN",
+    "cat": "STAGE_GATE",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-008",
+    "name": "UNAUTHORIZED_QUARANTINE_RESTORATION",
+    "cat": "STAGE_GATE",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-009",
+    "name": "FATIHA_AYAH_0_INJECTION",
+    "cat": "QURAN_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-010",
+    "name": "FATIHA_AYAH_1_BASMALA_STRIPPING",
+    "cat": "QURAN_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-011",
+    "name": "TAWBA_OPENING_BASMALA_INJECTION",
+    "cat": "QURAN_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-012",
+    "name": "NAML_27_30_BASMALA_SEVERANCE",
+    "cat": "QURAN_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-013",
+    "name": "SURAH_COUNT_DEVIATION_FROM_114",
+    "cat": "QURAN_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-014",
+    "name": "CANONICAL_AYAH_COUNT_DEVIATION_FROM_6236",
+    "cat": "QURAN_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-015",
+    "name": "OPENING_BASMALA_COUNT_DEVIATION_FROM_112",
+    "cat": "QURAN_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-016",
+    "name": "DUPLICATE_SURAH_AYAH_COMPOSITE_KEY",
+    "cat": "QURAN_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-017",
+    "name": "TIRE_SOURCES_PAYLOAD_TAMPERING",
+    "cat": "SOURCE_VAULT",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-018",
+    "name": "MISSING_MANDATORY_SOURCE_HASH",
+    "cat": "SOURCE_VAULT",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-019",
+    "name": "SYMLINK_TRAVERSAL_ATTEMPT_IN_VAULT",
+    "cat": "SOURCE_VAULT",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-020",
+    "name": "UNAUTHORIZED_SOURCE_DELETION",
+    "cat": "SOURCE_VAULT",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-021",
+    "name": "UNRECORDED_SOURCE_VERSION_INJECTION",
+    "cat": "SOURCE_VAULT",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-022",
+    "name": "SOURCE_FAMILY_MISCLASSIFICATION",
+    "cat": "SOURCE_VAULT",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-023",
+    "name": "TIER_0_AND_TIER_2_TEXTUAL_CONFLATION",
+    "cat": "EPISTEMIC",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-024",
+    "name": "LLM_GENERATED_TEXT_AS_CANONICAL_VERSE",
+    "cat": "EPISTEMIC",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-025",
+    "name": "CLAIM_GENERATION_WITHOUT_TYPED_EVIDENCE",
+    "cat": "EPISTEMIC",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-026",
+    "name": "MISSING_PROVENANCE_ON_RETRIEVAL_CITATION",
+    "cat": "EPISTEMIC",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-027",
+    "name": "UNDECLARED_KNOWLEDGE_GAP_SUPPRESSION",
+    "cat": "EPISTEMIC",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-028",
+    "name": "MULTI_AGENT_CORE_SPEC_DELETION_ATTEMPT",
+    "cat": "EPISTEMIC",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-029",
+    "name": "DB_ACTIVE_INSERT_DURING_SHADOW_MODE",
+    "cat": "DB_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-030",
+    "name": "NULL_PROVENANCE_ID_ON_INGESTED_AYAH",
+    "cat": "DB_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-031",
+    "name": "UNRECONCILED_RAW_SOURCE_OVERWRITE",
+    "cat": "DB_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-032",
+    "name": "CORRUPTED_JSONB_PAYLOAD_INSERTION",
+    "cat": "DB_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-033",
+    "name": "FOREIGN_KEY_VIOLATION_INGESTION_RUN",
+    "cat": "DB_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-034",
+    "name": "UNREGISTERED_SOURCE_INGESTION_ATTEMPT",
+    "cat": "DB_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-035",
+    "name": "UNSAFE_MIGRATION_EXECUTION_WITHOUT_ROLLBACK",
+    "cat": "DB_INTEGRITY",
+    "executable_now": true
+  },
+  {
+    "id": "P0-NEG-036",
+    "name": "SHADOW_PARITY_REGRESSION_SILENT_DISCARD",
+    "cat": "DB_INTEGRITY",
+    "executable_now": true
+  }
+]

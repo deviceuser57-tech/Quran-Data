@@ -1,0 +1,32 @@
+{
+  "report_id": "LEGACY_PHASE_MAPPING_CORRECTION_REPORT",
+  "task_id": "QCR-OS-FINAL-CONTRACT-REPRESENTATION-CORRECTION-004",
+  "generated_at": "2026-11-02T17:06:19.374Z",
+  "corrections_applied": [
+    {
+      "area": "Knowledge Graph (Section 10)",
+      "previous_mapping": "PHASE 5",
+      "corrected_mapping": "PHASE 7 (Evidence, Claims & Knowledge Graph)",
+      "contract_alignment": "Master Contract Article 5 / Roadmap Phase 7"
+    },
+    {
+      "area": "Advanced Retrieval (Section 12)",
+      "previous_mapping": "PHASE 7 (monolithic)",
+      "corrected_mapping": "SPLIT: Deterministic -> PHASE 5, Hybrid/Semantic/Vector -> PHASE 6, Graph Traversal -> PHASE 7",
+      "contract_alignment": "Master Contract Article 5 / Roadmap Phases 5, 6, 7"
+    },
+    {
+      "area": "Spatial Canvas & Node Workspace (Section 21)",
+      "previous_mapping": "PHASE 10",
+      "corrected_mapping": "PHASE 9 (Research Workspace & Spatial Canvas)",
+      "contract_alignment": "Master Contract Article 5 / Roadmap Phase 9"
+    },
+    {
+      "area": "Grounded Chat, Export & Reproducibility (Section 22-23)",
+      "previous_mapping": "Unspecified / mixed",
+      "corrected_mapping": "PHASE 10 (Grounded Chat, Export & Reproducibility)",
+      "contract_alignment": "Master Contract Article 5 / Roadmap Phase 10"
+    }
+  ],
+  "verdict": "LEGACY_PHASE_MAPPING_ALIGNED_WITH_MASTER_CONTRACT_ROADMAP"
+}

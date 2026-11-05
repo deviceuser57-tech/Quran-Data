@@ -1,0 +1,70 @@
+{
+  "task_id": "QCR-OS-QUARANTINE-EXECUTION-001",
+  "action": "RESTORATION_MANIFEST",
+  "generated_at": "2026-10-31T16:48:34.840Z",
+  "authorized_by": "HUMAN_SUPERVISOR",
+  "restore_instructions": "To reverse this quarantine, copy each item from target_path back to original_path and verify sha256.",
+  "items": [
+    {
+      "original_path": "unused/but-csv.png",
+      "target_path": "QCR_OS_QUARANTINE\\LEGACY_ASSETS\\but-csv.png",
+      "file_name": "but-csv.png",
+      "size_bytes": 17937,
+      "sha256": "211d54367514bae9634556a5664adca5eac85969b35524860c3112f2fd1f4854",
+      "status": "QUARANTINED",
+      "quarantine_type": "LEGACY_UNUSED_ASSET"
+    },
+    {
+      "original_path": "unused/but-json.png",
+      "target_path": "QCR_OS_QUARANTINE\\LEGACY_ASSETS\\but-json.png",
+      "file_name": "but-json.png",
+      "size_bytes": 17832,
+      "sha256": "c98aa0030478c87c5583997c801f4be11de191c34c63b1f52d642b2bdd558680",
+      "status": "QUARANTINED",
+      "quarantine_type": "LEGACY_UNUSED_ASSET"
+    },
+    {
+      "original_path": "unused/but-sqlite.png",
+      "target_path": "QCR_OS_QUARANTINE\\LEGACY_ASSETS\\but-sqlite.png",
+      "file_name": "but-sqlite.png",
+      "size_bytes": 18355,
+      "sha256": "1598cd47958593a1cf3c360533de6c7c439e6bfbda9de28d6a87d4bf63295232",
+      "status": "QUARANTINED",
+      "quarantine_type": "LEGACY_UNUSED_ASSET"
+    },
+    {
+      "original_path": "unused/Quran-Data.jpg",
+      "target_path": "QCR_OS_QUARANTINE\\LEGACY_ASSETS\\Quran-Data.jpg",
+      "file_name": "Quran-Data.jpg",
+      "size_bytes": 171437,
+      "sha256": "ca6d722faead090291a229d80a0c1e07a7d86ef0de0b65c0a8b4431a6239298b",
+      "status": "QUARANTINED",
+      "quarantine_type": "LEGACY_UNUSED_ASSET"
+    },
+    {
+      "original_path": "unused/Quran-Data.psd",
+      "target_path": "QCR_OS_QUARANTINE\\LEGACY_ASSETS\\Quran-Data.psd",
+      "file_name": "Quran-Data.psd",
+      "size_bytes": 10368156,
+      "sha256": "06e3e05c34a0550f7222bfb2a28071d2bd084f9a851d7836341ed1403b6d5bdf",
+      "status": "QUARANTINED",
+      "quarantine_type": "LEGACY_UNUSED_ASSET"
+    },
+    {
+      "original_path": "unused/Quran-Data.webp",
+      "target_path": "QCR_OS_QUARANTINE\\LEGACY_ASSETS\\Quran-Data.webp",
+      "file_name": "Quran-Data.webp",
+      "size_bytes": 70872,
+      "sha256": "3181925442c464f462fdb79b85b947e370f53c31492321c31fff290ba6bfe34a",
+      "status": "QUARANTINED",
+      "quarantine_type": "LEGACY_UNUSED_ASSET"
+    },
+    {
+      "original_path": ".ts",
+      "target_path": "QCR_OS_QUARANTINE\\TEMPORARY\\.ts",
+      "type": "EMPTY_DIRECTORY",
+      "status": "QUARANTINED",
+      "quarantine_type": "EMPTY_TEMPORARY_DIR"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "QCR-OS File Governance Header Schema",
+  "type": "object",
+  "required": [
+    "file_id",
+    "file_title",
+    "purpose",
+    "file_version",
+    "status",
+    "created_at",
+    "last_modified_at",
+    "creator",
+    "parent_contract",
+    "phase_contract",
+    "applicable_contract_clauses",
+    "authorized_task",
+    "protection_classification",
+    "modification_policy"
+  ],
+  "properties": {
+    "file_id": { "type": "string" },
+    "file_title": { "type": "string" },
+    "purpose": { "type": "string" },
+    "file_version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "status": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "last_modified_at": { "type": "string", "format": "date-time" },
+    "creator": { "type": "string" },
+    "modifier": { "type": "string" },
+    "parent_contract": { "type": "string" },
+    "phase_contract": { "type": "string" },
+    "applicable_contract_clauses": { "type": "array", "items": { "type": "string" } },
+    "authorized_task": { "type": "string" },
+    "protection_classification": { "type": "string" },
+    "modification_policy": { "type": "string" },
+    "generated_from_references": { "type": "array", "items": { "type": "string" } },
+    "supersedes": { "type": ["string", "null"] },
+    "superseded_by": { "type": ["string", "null"] },
+    "checksum_status": { "type": "string" }
+  }
+}
+
