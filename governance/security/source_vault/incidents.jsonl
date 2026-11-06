@@ -4,3 +4,7 @@
 {"timestamp":"2026-11-02T20:31:18.516Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true}}
 {"timestamp":"2026-11-05T01:12:53.692Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"d:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true,"classification":"RAW_SOURCE"}}
 {"timestamp":"2026-11-05T01:12:53.695Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"d:\\Quran-Data\\D0_OUTPUT\\quran-tier0-canonical-v1.1.json","metadata":{"blocked":true,"classification":"CANONICAL_ARTIFACT"}}
+{"timestamp":"2026-11-06T01:23:54.715Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true,"classification":"RAW_SOURCE"}}
+{"timestamp":"2026-11-06T01:24:16.696Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\TIRE_SOURCES\\Quraan.json","metadata":{"blocked":true,"classification":"RAW_SOURCE"}}
+{"timestamp":"2026-11-06T01:24:16.737Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-canonical-v1.1.json","metadata":{"blocked":true,"classification":"CANONICAL_ACTIVE"}}
+{"timestamp":"2026-11-06T01:24:16.738Z","type":"UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED","target":"D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-canonical-v1.0.json","metadata":{"blocked":true,"classification":"CANONICAL_HISTORICAL"}}

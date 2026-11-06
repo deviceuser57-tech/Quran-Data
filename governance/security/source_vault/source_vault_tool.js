@@ -96,14 +96,23 @@ class ProtectionPolicy {
     );
   }
 
-  getClassification(resolvedPath) {
+  getDomainForPath(resolvedPath) {
     const normalized = path.resolve(resolvedPath);
     for (const d of this.getDomainEntries()) {
       if (normalized === d.root || normalized.startsWith(d.root + path.sep)) {
-        return d.classification;
+        if (d.pattern) {
+          if (d.pattern.includes('v1.1') && !normalized.includes('v1.1')) continue;
+          if (d.pattern.includes('v1.0') && !normalized.includes('v1.0')) continue;
+        }
+        return d;
       }
     }
     return null;
+  }
+
+  getClassification(resolvedPath) {
+    const domain = this.getDomainForPath(resolvedPath);
+    return domain ? domain.classification : null;
   }
 
   computePolicyHash() {
@@ -817,11 +826,12 @@ class SourceVaultSecurityManager {
       const classification = this.policy.getClassification(resolved);
       this.logIncident('UNAUTHORIZED_WRITE_ATTEMPT_BLOCKED', targetFile,
                        { blocked: true, classification: classification });
+      const domainEntry = this.policy.getDomainForPath ? this.policy.getDomainForPath(resolved) : null;
       return {
         blocked: true,
         reason: 'SOURCE_VAULT_IMMUTABLE',
         classification: classification,
-        domain: classification === 'RAW_SOURCE' ? 'P0_RAW' : 'P0_CANONICAL'
+        domain: domainEntry ? domainEntry.key : (classification === 'RAW_SOURCE' ? 'P0_RAW' : 'P0_CANONICAL')
       };
     }
     return { blocked: false };
