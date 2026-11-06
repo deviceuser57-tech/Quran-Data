@@ -1,0 +1,193 @@
+{
+  "task_id": "QCR-OS-DECISION-GATE-B-GUARD-TEST-COMPLETION-005",
+  "parent_task": "QCR-OS-DECISION-GATE-B-GUARD-IMPLEMENTATION-003",
+  "checkpoint": "CHECKPOINT-B138",
+  "timestamp": "2026-11-06T01:25:24.983Z",
+  "test_cases_required": 16,
+  "test_cases_executed": 16,
+  "test_cases_passed": 16,
+  "test_cases_failed": 0,
+  "test_cases_blocked": 0,
+  "total_assertions": 35,
+  "assertions_passed": 35,
+  "assertions_failed": 0,
+  "overall_verdict": "ALL_16_PASS",
+  "test_cases": [
+    {
+      "test_id": "AG-T01",
+      "description": "No --apply flag",
+      "expected_result": "DRY_RUN_ONLY / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: DRY_RUN_ONLY / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T01"
+    },
+    {
+      "test_id": "AG-T02",
+      "description": "--apply without authorization ID",
+      "expected_result": "AUTHORIZATION_ID_REQUIRED / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: AUTHORIZATION_ID_REQUIRED / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T02"
+    },
+    {
+      "test_id": "AG-T03",
+      "description": "Unknown authorization ID",
+      "expected_result": "AUTHORIZATION_NOT_FOUND / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: AUTHORIZATION_NOT_FOUND / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T03"
+    },
+    {
+      "test_id": "AG-T04",
+      "description": "Wrong authorization type",
+      "expected_result": "AUTHORIZATION_TYPE_INVALID / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: AUTHORIZATION_TYPE_INVALID / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T04"
+    },
+    {
+      "test_id": "AG-T05",
+      "description": "Correct authorization type but status != APPROVED",
+      "expected_result": "AUTHORIZATION_NOT_APPROVED / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: AUTHORIZATION_NOT_APPROVED / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T05"
+    },
+    {
+      "test_id": "AG-T06",
+      "description": "Authorization scope excludes target",
+      "expected_result": "AUTHORIZATION_SCOPE_VIOLATION / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: AUTHORIZATION_SCOPE_VIOLATION / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T06"
+    },
+    {
+      "test_id": "AG-T07",
+      "description": "Expected policy hash missing",
+      "expected_result": "POLICY_HASH_REQUIRED / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: POLICY_HASH_REQUIRED / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T07"
+    },
+    {
+      "test_id": "AG-T08",
+      "description": "Expected policy hash incorrect",
+      "expected_result": "POLICY_HASH_MISMATCH / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: POLICY_HASH_MISMATCH / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T08"
+    },
+    {
+      "test_id": "AG-T09",
+      "description": "Resolved realpath outside approved root",
+      "expected_result": "REALPATH_SCOPE_VIOLATION / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: REALPATH_SCOPE_VIOLATION / mutationBlocked: true",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T09"
+    },
+    {
+      "test_id": "AG-T10",
+      "description": "Precondition content hash mismatch",
+      "expected_result": "PRECONDITION_HASH_MISMATCH / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: PRECONDITION_HASH_MISMATCH / mutationBlocked: true",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T10"
+    },
+    {
+      "test_id": "AG-T11",
+      "description": "All technical parameters valid but no real activation record in governance",
+      "expected_result": "REAL_ACTIVATION_BLOCKED / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: AUTHORIZATION_NOT_FOUND / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T11"
+    },
+    {
+      "test_id": "AG-T12",
+      "description": "TIRE_SOURCES fixture domain verification",
+      "expected_result": "P0_RAW / RAW_SOURCE / BLOCKED = TRUE",
+      "actual_result": "domain: P0_RAW / classification: RAW_SOURCE / blocked: true",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T12"
+    },
+    {
+      "test_id": "AG-T13",
+      "description": "Approved D0_OUTPUT v1.1 fixture domain verification",
+      "expected_result": "P0_CANONICAL_ACTIVE / CANONICAL_ACTIVE / BLOCKED = TRUE",
+      "actual_result": "domain: P0_CANONICAL_ACTIVE / classification: CANONICAL_ACTIVE / blocked: true",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T13"
+    },
+    {
+      "test_id": "AG-T14",
+      "description": "Governed historical D0_OUTPUT fixture domain verification",
+      "expected_result": "P0_CANONICAL_HISTORICAL / CANONICAL_HISTORICAL / BLOCKED = TRUE",
+      "actual_result": "domain: P0_CANONICAL_HISTORICAL / classification: CANONICAL_HISTORICAL / blocked: true",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T14"
+    },
+    {
+      "test_id": "AG-T15",
+      "description": "Target outside every approved Source Vault domain",
+      "expected_result": "AUTHORIZATION_SCOPE_VIOLATION / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: AUTHORIZATION_SCOPE_VIOLATION / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T15"
+    },
+    {
+      "test_id": "AG-T16",
+      "description": "Policy fixture changed after expected hash issuance",
+      "expected_result": "POLICY_HASH_MISMATCH / MUTATION_ALLOWED = FALSE",
+      "actual_result": "status: POLICY_HASH_MISMATCH / mutationAllowed: false",
+      "mutation_allowed": false,
+      "real_protected_target_used": false,
+      "real_protected_files_changed": 0,
+      "status": "PASS",
+      "evidence_reference": "source_vault_guard_tests.js:AG-T16"
+    }
+  ]
+}
