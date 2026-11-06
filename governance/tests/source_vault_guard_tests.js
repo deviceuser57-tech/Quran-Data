@@ -520,22 +520,18 @@ function testAGT10() {
 //         → REAL_ACTIVATION_BLOCKED → MUTATION_ALLOWED = FALSE
 // ==============================================================================
 function testAGT11() {
-  const realProjectRoot = path.resolve(__dirname, '../..');
-  const realContractsDir = path.join(realProjectRoot, 'governance', 'contracts');
-  const realPolicyPath = path.join(realProjectRoot, 'governance', 'policies', 'source_vault_protection_policy.json');
-
-  const policy = new ProtectionPolicy(realPolicyPath, realProjectRoot);
+  const policy = loadFixturePolicy();
   const chain = new AuthorizationGuardChain({
     apply: true,
     authorizationId: 'HUMAN_SOURCE_VAULT_ACTIVATION',
-    expectedPolicyHash: policy.computePolicyHash().hash,
+    expectedPolicyHash: computeFixturePolicyHash(),
     policy: policy,
-    projectRoot: realProjectRoot,
-    contractsDir: realContractsDir
+    projectRoot: FIXTURE_ROOT,
+    contractsDir: FIXTURE_CONTRACTS
   });
   const result = chain.evaluateAll();
 
-  const cond1 = assert(result.mutationAllowed === false, 'mutationAllowed must be false when real activation record is absent');
+  const cond1 = assert(result.mutationAllowed === false, 'mutationAllowed must be false when real activation record is absent in fixture');
   const cond2 = assert(result.guardResults['AG-03'].status === 'AUTHORIZATION_NOT_FOUND', 'AG-03 must be AUTHORIZATION_NOT_FOUND');
   const pass = cond1 && cond2;
 
