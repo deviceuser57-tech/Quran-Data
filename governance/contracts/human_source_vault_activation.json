@@ -1,0 +1,74 @@
+{
+  "file_id": "QCR-AUTH-GATE-B-001",
+  "record_title": "QCR-OS Formal Human Source Vault Controlled Activation Authorization Record",
+  "record_version": "1.0.0",
+  "authorization_id": "HUMAN_SOURCE_VAULT_ACTIVATION",
+  "authorization_type": "HUMAN_SOURCE_VAULT_ACTIVATION",
+  "status": "APPROVED",
+  "decision_gate": "DECISION_GATE_B_SOURCE_VAULT",
+  "checkpoint": "CHECKPOINT-B139",
+  "created_at": "2026-11-06T04:03:00+02:00",
+  "approved_at": "2026-11-06T04:03:00+02:00",
+  "human_authority": "HUMAN_SUPERVISOR",
+  "parent_contract": "QCR-OS MASTER CONTRACT v2.0",
+  "phase_contract": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
+  "activation_task": "QCR-OS-DECISION-GATE-B-SOURCE-VAULT-ACTIVATION-006",
+  "evidence_task": "QCR-OS-DECISION-GATE-B-GUARD-TEST-COMPLETION-005",
+  "authorization_scope": "SOURCE_VAULT_ACTIVATION",
+  "authorized_roots": [
+    "TIRE_SOURCES",
+    "D0_OUTPUT"
+  ],
+  "authorized_domains": [
+    "TIRE_SOURCES/**",
+    "D0_OUTPUT/**v1.1*",
+    "D0_OUTPUT/**v1.0*"
+  ],
+  "authorized_protection_classes": [
+    "P0_RAW",
+    "P0_CANONICAL_ACTIVE",
+    "P0_CANONICAL_HISTORICAL"
+  ],
+  "policy_binding": {
+    "policy_artifact": "governance/policies/source_vault_protection_policy.json",
+    "policy_version": "1.0.0",
+    "canonical_policy_hash": "0CBE1C2DDAD262AD31D678FE734FD731ED7AE5BE96B2F8733CB307B13FE5A344",
+    "canonicalization_version": "QCR-POLICY-CANONICAL-V1"
+  },
+  "protection_model": {
+    "layer_1_guards": "AUTHORIZATION_GUARDS_STRICT_AND",
+    "layer_2_guards": "APPLICATION_WRITE_GUARD",
+    "layer_3_guards": "REALPATH_BOUNDARY_GUARD",
+    "layer_4_guards": "PRECONDITION_SHA256_GUARD",
+    "layer_5_guards": "MUTATION_FRICTION_READONLY_ATTRIBUTE_ONLY"
+  },
+  "forbidden_operations": [
+    "NTFS_DENY_AGAINST_EAGLE",
+    "NTFS_DENY_AGAINST_AUTHENTICATED_USERS",
+    "OWNERSHIP_CHANGES",
+    "TAKEOWN",
+    "SOURCE_RELOCATION",
+    "SOURCE_RENAME",
+    "SOURCE_DELETION",
+    "SOURCE_CONTENT_MODIFICATION",
+    "CANONICAL_CONTENT_MODIFICATION",
+    "RUNTIME_MODIFICATION",
+    "DATABASE_CREATION",
+    "SQL_EXECUTION",
+    "PHASE_0_EXECUTION",
+    "MULTI_AGENT_IMPLEMENTATION"
+  ],
+  "governance_state_verdict": {
+    "governance_bootstrap": "APPROVED",
+    "database_decision_status": "APPROVED",
+    "phase_0_database_engine": "SQLITE_3",
+    "phase_0_database_scope": "SHADOW_ONLY",
+    "source_vault_activation_status": "ACTIVATION_AUTHORIZED_PENDING_EXECUTION",
+    "source_vault_decision_gate": "ACTIVATION_AUTHORIZED_PENDING_EXECUTION",
+    "current_phase_status": "NOT_AUTHORIZED",
+    "future_phase_status": "LOCKED",
+    "multi_agent_status": "CORE_PRODUCT_REQUIREMENT_IMPLEMENTATION_NOT_AUTHORIZED"
+  },
+  "revoked": false,
+  "superseded": false
+}
