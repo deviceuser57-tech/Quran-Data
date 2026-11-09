@@ -1,0 +1,178 @@
+[
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/Quraan.json",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\Quraan.json",
+    "sha256": "A75BE59AFF6A112CF8FF859180AB995D5B5E6318269777FD5760D095B3A7CEE2",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/api-definition.yaml",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\api-definition.yaml",
+    "sha256": "418D506569AF08C852FAC1A3502ACA767EFAC0CDE905A7F1758A47DBB0D03CB4",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/database.csv",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\database.csv",
+    "sha256": "B06ADB440BE86CB4FE78ECDF02A238FE53FAAF8726589C30F6596CEE39B130CD",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/mainDataQuran.json",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\mainDataQuran.json",
+    "sha256": "B943E06D86D3EE7AF429CD3FF448B5D42095C4244C5C83232DA15F325F942623",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/pagesQuran.json",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\pagesQuran.json",
+    "sha256": "392E5057EFDD1FBD8FFABA105D30D35B1FF677AD0308EE4986217D5E4B87B4A0",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/quran-data.js",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\quran-data.js",
+    "sha256": "9E9930C592AAA34B5C7A79FF4E99FFDC782263A266090BFE2C49E4ED4BAC4CA4",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/quran-data.xml",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\quran-data.xml",
+    "sha256": "8867C1D88191472ADEC9DB694B3CD9F135B1A2EF580574D32CF888DCB22C5C7A",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/quran-flat-full-tashkeel.txt",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\quran-flat-full-tashkeel.txt",
+    "sha256": "2A6475A09A96D5C6C57EA32AC659D2E2CF2F976AE6EF881A461EF2362DA47682",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/quran-simple.txt",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\quran-simple.txt",
+    "sha256": "B3638F5CF03E2B05E4000EFC0E4B656AAFB3CF6ED28F8770B6497C5B43C46089",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_RAW",
+    "classification": "RAW_SOURCE",
+    "relativePath": "TIRE_SOURCES/quranic-corpus-morphology-0.4.txt",
+    "realPath": "D:\\Quran-Data\\TIRE_SOURCES\\quranic-corpus-morphology-0.4.txt",
+    "sha256": "A1D12923815341FACE765083805D2148ED2D9F5CC3F7D6665219D887675D8C46",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_HISTORICAL",
+    "classification": "CANONICAL_HISTORICAL",
+    "relativePath": "D0_OUTPUT/quran-tier0-canonical-v1.0.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-canonical-v1.0.json",
+    "sha256": "287AD40510BDEC1B86A414E7E10DA62FD010BE79E9CB142C040D112CE849FCAD",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_ACTIVE",
+    "classification": "CANONICAL_ACTIVE",
+    "relativePath": "D0_OUTPUT/quran-tier0-canonical-v1.1.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-canonical-v1.1.json",
+    "sha256": "2168BEC087AD3007DF95169D52FE8332A2686AE077F59EE483FBF49AC83DF0BE",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_HISTORICAL",
+    "classification": "CANONICAL_HISTORICAL",
+    "relativePath": "D0_OUTPUT/quran-tier0-conflicts-v1.0.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-conflicts-v1.0.json",
+    "sha256": "C1383C46D8FD38C7288548ECAAA92C5B4BAC7E791E42EF120FDEE4B5ACD9608D",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_ACTIVE",
+    "classification": "CANONICAL_ACTIVE",
+    "relativePath": "D0_OUTPUT/quran-tier0-conflicts-v1.1.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-conflicts-v1.1.json",
+    "sha256": "ADEA76D1116492DF12F3FDFAB0132D186448D5D2901C47D20B4C7FF406393D87",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_HISTORICAL",
+    "classification": "CANONICAL_HISTORICAL",
+    "relativePath": "D0_OUTPUT/quran-tier0-manifest-v1.0.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-manifest-v1.0.json",
+    "sha256": "291C17654B828A4D28E4355D856BD4F6C6F6B6257853271AD089AFEBE5C77153",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_ACTIVE",
+    "classification": "CANONICAL_ACTIVE",
+    "relativePath": "D0_OUTPUT/quran-tier0-manifest-v1.1.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-manifest-v1.1.json",
+    "sha256": "E0ADBC557C38EF3AF917B063704026F20A256C045546F0A2EEB152782993EAD5",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_HISTORICAL",
+    "classification": "CANONICAL_HISTORICAL",
+    "relativePath": "D0_OUTPUT/quran-tier0-provenance-v1.0.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-provenance-v1.0.json",
+    "sha256": "9137C335FC5F94F931FF7D946C1266908BA41F24C5EEF621A924F28302313B66",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_ACTIVE",
+    "classification": "CANONICAL_ACTIVE",
+    "relativePath": "D0_OUTPUT/quran-tier0-provenance-v1.1.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-provenance-v1.1.json",
+    "sha256": "DE836B40E9D7B007BA12F2912BA957D8382F855B87C6800735A3424F4260AFE5",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_ACTIVE",
+    "classification": "CANONICAL_ACTIVE",
+    "relativePath": "D0_OUTPUT/quran-tier0-v1.1.sha256",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-v1.1.sha256",
+    "sha256": "A81CB91A8EA466A852810DE49CACA52B08875E7BC33611B43D28D5EBBE82DEFA",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_HISTORICAL",
+    "classification": "CANONICAL_HISTORICAL",
+    "relativePath": "D0_OUTPUT/quran-tier0-validation-report-v1.0.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-validation-report-v1.0.json",
+    "sha256": "BBAA0844CCB548EF229241E8F5CCE39AA778BE6C27EEDD37DFF06F48FB5224BE",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_ACTIVE",
+    "classification": "CANONICAL_ACTIVE",
+    "relativePath": "D0_OUTPUT/quran-tier0-validation-report-v1.1.json",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0-validation-report-v1.1.json",
+    "sha256": "80C7F9A5ABEC6C271F10549983372B5F8D7E0A7D33EAF9BF303A99ABCF3A43B8",
+    "preAttribute": "Archive"
+  },
+  {
+    "domain": "P0_CANONICAL_HISTORICAL",
+    "classification": "CANONICAL_OUTPUT",
+    "relativePath": "D0_OUTPUT/quran-tier0.sha256",
+    "realPath": "D:\\Quran-Data\\D0_OUTPUT\\quran-tier0.sha256",
+    "sha256": "B4D728FC3A61FBC2550533B52BE9FC6494B91EA3AB19193B91DABF41C1A26AEC",
+    "preAttribute": "Archive"
+  }
+]

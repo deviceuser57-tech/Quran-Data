@@ -1,0 +1,34 @@
+{
+  "authorization_id": "HUMAN_PHASE_0_START_AUTHORIZATION",
+  "authorization_type": "HUMAN_PHASE_0_EXECUTION_START_AUTHORIZATION",
+  "status": "ISSUED",
+  "phase": "PHASE_0",
+  "phase_status": "AUTHORIZED_FOR_EXECUTION",
+  "checkpoint": "CHECKPOINT-B140",
+  "master_contract": "QCR-OS MASTER CONTRACT v2.0",
+  "phase_contract": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
+  "acknowledgement_record": "governance/contracts/phase0_pre_execution_acknowledgment.json",
+  "acknowledgement_version": "1.1",
+  "acknowledgement_sha256": "8DF01982C5D5AE87CE97C17E0C00F95050BDA8A70E60FDCAB8573E8E639953C1",
+  "governance_bootstrap_status": "APPROVED / CLOSED",
+  "database_gate_status": "APPROVED / CLOSED",
+  "phase0_database_engine": "SQLITE_3",
+  "phase0_database_scope": "SHADOW_ONLY",
+  "sqlite_foreign_keys_must_be_enforced": true,
+  "source_vault_gate_status": "APPROVED / CLOSED",
+  "source_vault_activation_status": "ACTIVE_VERIFIED",
+  "execution_plan_status": "FROZEN_READY_FOR_EXECUTION",
+  "sqlite_execution_mechanism": "NODE_BUILTIN_SQLITE",
+  "node_sqlite_runtime": "v24.21.0",
+  "authorized_scope": "PHASE_0_ONLY",
+  "future_phase_status": "LOCKED",
+  "multi_agent_implementation_status": "NOT_AUTHORIZED",
+  "issued_at": "2026-11-06T15:18:45+02:00",
+  "human_authority": "EXPLICIT_HUMAN_DECISION",
+  "contract_references": [
+    "QCR-OS MASTER CONTRACT v2.0",
+    "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
+    "governance/contracts/phase0_pre_execution_acknowledgment.json"
+  ]
+}
+
