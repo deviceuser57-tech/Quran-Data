@@ -25,4 +25,5 @@ fs.readJSON(jsonFilePath)
   })
   .catch(error => {
     console.error('Error converting JSON to CSV:', error);
+    process.exitCode = 1;
   });

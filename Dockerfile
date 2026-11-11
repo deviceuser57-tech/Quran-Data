@@ -1,20 +1,13 @@
-# استخدام صورة Node.js الرسمية كأساس
-FROM node:18
+FROM node:24
 
-# تعيين مجلد العمل
 WORKDIR /usr/src/app
 
-# نسخ ملفات package.json و package-lock.json إلى مجلد العمل
 COPY package*.json ./
 
-# تثبيت التبعيات
-RUN npm install
+RUN npm ci --omit=dev
 
-# نسخ جميع ملفات المشروع إلى مجلد العمل
 COPY . .
 
-# فتح المنفذ
 EXPOSE 5000
 
-# تشغيل تطبيق الويب
-CMD [ "npm", "start" ]
+CMD ["npm", "start"]

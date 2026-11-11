@@ -27,6 +27,13 @@ const createDatabase = async () => {
         driver: sqlite3.Database
     });
 
+    await db.exec('PRAGMA foreign_keys = ON;');
+    const foreignKeys = await db.get('PRAGMA foreign_keys;');
+    if (foreignKeys.foreign_keys !== 1) {
+        await db.close();
+        throw new Error('SQLite foreign-key enforcement could not be enabled.');
+    }
+
     // إنشاء الجداول
     await db.exec(`
         CREATE TABLE IF NOT EXISTS surahs (
@@ -143,13 +150,18 @@ const insertData = async (db, data) => {
 
 // تنفيذ السكربت
 const run = async () => {
+    let db;
     try {
         const jsonData = await readJsonData();
-        const db = await createDatabase();
+        db = await createDatabase();
         await insertData(db, jsonData);
-        await db.close();
     } catch (error) {
         console.error('Error during data processing:', error);
+        process.exitCode = 1;
+    } finally {
+        if (db) {
+            await db.close();
+        }
     }
 };
 

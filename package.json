@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node server/server.mjs",
     "dev": "nodemon",
-    "splitData": "node scripts/splitData.js",
+    "test": "node --test",
+    "splitData": "node scripts/splitData.mjs",
     "jsonToSqlite": "node scripts/jsonToSqlite.mjs",
     "jsonToCsv": "node scripts/jsonToCsv.mjs"
   },
@@ -30,7 +31,7 @@
     "node-fetch": "^3.3.2"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=22.13.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.4"

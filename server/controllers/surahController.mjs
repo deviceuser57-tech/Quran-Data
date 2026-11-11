@@ -13,6 +13,23 @@ const versesFolderPath = path.join(__dirname, '..', '..', 'data', 'json', 'verse
 const audioFolderPath = path.join(__dirname, '..', '..', 'data', 'json', 'audio');
 const pagesQuranPath = path.join(__dirname, '..', '..', 'data', 'pagesQuran.json');
 
+const parseOptionalId = (value) => {
+    if (value === undefined || value === null || value === '') {
+        return null;
+    }
+
+    const text = String(value);
+    if (!/^\d+$/.test(text)) {
+        return NaN;
+    }
+
+    const parsed = Number(text);
+    return Number.isSafeInteger(parsed) ? parsed : NaN;
+};
+
+const isAtOrBefore = (leftSurah, leftVerse, rightSurah, rightVerse) =>
+    leftSurah < rightSurah || (leftSurah === rightSurah && leftVerse <= rightVerse);
+
 
 export const getAllSurahs = (req, res) => {
     try {
@@ -234,33 +251,56 @@ export const getSajdaVerses = (req, res) => {
 
 export const getPage = (req, res) => {
     try {
-        const surahId = parseInt(req.query.surah_id || req.params.surah_id, 10);
-        const verseId = parseInt(req.query.verse_id || req.params.verse_id, 10);
-        const page = parseInt(req.query.page, 10);
+        const surahId = parseOptionalId(req.query.surah_id || req.params.surah_id);
+        const verseId = parseOptionalId(req.query.verse_id || req.params.verse_id);
+        const page = parseOptionalId(req.query.page);
+
+        if ([surahId, verseId, page].some(value => Number.isNaN(value))) {
+            return handleError(res, 400, 'Page lookup parameters must be positive integers.', {});
+        }
+
+        if (page !== null && (page < 1 || page > 604)) {
+            return handleError(res, 400, 'page must be between 1 and 604.', { page });
+        }
+
+        if (surahId === null && page === null) {
+            return handleError(res, 400, 'Provide a page or surah_id to look up Quran pages.', {});
+        }
+
+        if (verseId !== null && surahId === null) {
+            return handleError(res, 400, 'surah_id is required when verse_id is provided.', { verse_id: verseId });
+        }
+
+        if (surahId !== null && (surahId < 1 || surahId > 114)) {
+            return handleError(res, 400, 'surah_id must be between 1 and 114.', { surah_id: surahId });
+        }
 
         const pagesData = fs.readJSONSync(pagesQuranPath);
-
-        // جلب الصفحة بناءً على السورة أو الآية أو رقم الصفحة
         let result = [];
 
         if (page) {
-            // البحث باستخدام رقم الصفحة
             result = pagesData.filter(p => p.page === page);
         } else if (surahId && verseId) {
-            // البحث باستخدام رقم السورة والآية
+            const metadata = fs.readJSONSync(metadataPath);
+            const surah = metadata.find(item => item.number === surahId);
+            if (!surah || verseId < 1 || verseId > surah.verses_count) {
+                return handleError(res, 400, 'verse_id is outside the requested surah.', {
+                    surah_id: surahId,
+                    verse_id: verseId,
+                });
+            }
+
             result = pagesData.filter(p =>
-                (p.start.surah_number === surahId && p.start.verse <= verseId && p.end.verse >= verseId) ||
-                (p.end.surah_number === surahId && p.end.verse >= verseId)
+                isAtOrBefore(p.start.surah_number, p.start.verse, surahId, verseId) &&
+                isAtOrBefore(surahId, verseId, p.end.surah_number, p.end.verse)
             );
         } else if (surahId) {
-            // البحث باستخدام رقم السورة فقط
             result = pagesData.filter(p =>
-                (p.start.surah_number === surahId) ||
-                (p.end.surah_number === surahId)
+                isAtOrBefore(p.start.surah_number, p.start.verse, surahId, Number.MAX_SAFE_INTEGER) &&
+                isAtOrBefore(surahId, 1, p.end.surah_number, p.end.verse)
             );
         }
 
-        // تحقق إذا لم توجد نتيجة
         if (result.length === 0) {
             return handleError(res, 404, 'No pages found for the given query.', {
                 surah_id: surahId,
@@ -269,18 +309,13 @@ export const getPage = (req, res) => {
             });
         }
 
-        // إضافة رابط الصورة لكل نتيجة
         const imageBaseUrl = '/data/quran_image';
-        const enrichedResult = result.map(item => {
-            return {
-                page: item.page,
-                image: {
-                    url: `${imageBaseUrl}/${item.page}.png`,
-                },
-                ...item,
-
-            };
-        });
+        const enrichedResult = result.map(item => ({
+            ...item,
+            image: {
+                url: `${imageBaseUrl}/${item.page}.png`,
+            },
+        }));
 
         res.json({
             success: true,
