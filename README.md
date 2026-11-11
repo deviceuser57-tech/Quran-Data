@@ -1,4 +1,6 @@
-# Quran Data
+﻿# Quran Data
+
+Quranic Research Operating System (QCR-OS) & Quran-Data Canonical Baseline
 
 ## مقدمة
 
@@ -495,3 +497,4 @@ docker rmi quran_data
 <p align="center">
 للهم أجعل هذا العمل صدقه جاريه لي ولوالدي ولأهل بيتي ولكل مسلم ساهم او دعم او نشر هذه المشروع 🤲🏻
 </p>
+
