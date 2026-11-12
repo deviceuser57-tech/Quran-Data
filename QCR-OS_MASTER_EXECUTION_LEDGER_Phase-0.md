@@ -6,7 +6,7 @@
 
 > \*\*Purpose:\*\* Authoritative operational checklist for continuation with any AI/tool/session without reconstructing project history.
 
-> \*\*Date\*\* 12 November 2026 at 0955 Hrs.
+> \*\*Date\*\* 12 November 2026 at 1854 Hrs.
 
 ## 
 
@@ -28,8 +28,8 @@ DOCUMENT = QCR-OS MASTER EXECUTION LEDGER
 ACTIVE REPOSITORY = deviceuser57-tech/Quran-Data
 ACTIVE BRANCH = main
 CURRENT PHASE = PHASE 0
-CURRENT HIGH-LEVEL STATE = GOVERNANCE RECONCILED / SCHEMA REMEDIATION COMPLETED
-CURRENT EXECUTION FOCUS = GOVERNED RE-EXECUTION OF P0-STEP-05..09
+CURRENT HIGH-LEVEL STATE = PHASE-0 SCHEMA BASELINE COMPLETE / AWAITING SOURCE REGISTRATION
+CURRENT EXECUTION FOCUS = P0-STEP-10 SOURCE REGISTRATION
 PHASE 1-11 = LOCKED
 MULTI-AGENT IMPLEMENTATION = NOT\_AUTHORIZED
 ```
@@ -250,6 +250,7 @@ The execution record exists and was reconciled to a truthful ledger:
 ```text
 P0-STEP-01..04 = PASS
 historical P0-STEP-05..09 attempt = INVALIDATED / SUPERSEDED
+governed P0-STEP-05..09 re-execution = PASS
 P0-STEP-10..24 = NOT\_STARTED
 ```
 
@@ -284,7 +285,7 @@ It must not be used as accepted Phase-0 evidence.
 ```text
 SCHEMA\_REMEDIATION = PASS
 SCHEMA\_CONTRACT\_ALIGNMENT = PASS
-SCHEMA\_REMEDIATION\_STATUS = CONTRACT\_ALIGNED\_PENDING\_APPLICATION
+SCHEMA\_REMEDIATION\_STATUS = CONTRACT\_ALIGNED\_APPLIED\_TO\_SHADOW
 ```
 
 ### Authoritative DDL
@@ -320,17 +321,15 @@ Validated in-memory using `NODE\_BUILTIN\_SQLITE`:
 * ✅ composite-FK behavior
 * ✅ JSON-validation behavior
 
-Schema remediation did **not** modify the physical Shadow DB and did **not** ingest Quran data.
+Schema remediation validation did **not** ingest Quran data. The accepted migration was subsequently applied to the governed Shadow DB during P0-STEP-05..09.
 
 \---
 
-# 13\. CURRENT IN-PROGRESS ITEM
+# 13\. Completed Item — Governed Re-execution of P0-STEP-05 → P0-STEP-09
 
-## Governed Re-execution of P0-STEP-05 → P0-STEP-09
+**Status:** ✅ **PASS / GOVERNANCE RECONCILED**
 
-**Status at ledger creation:** 🔄 **IN PROGRESS / AWAITING TOOL RESULT**
-
-Purpose:
+Purpose completed:
 
 ```text
 accepted corrected migration
@@ -343,29 +342,53 @@ accepted corrected migration
 → STOP before P0-STEP-10
 ```
 
-### Required completion checklist
+### Step results
 
-* \[ ] P0-STEP-05 = PASS
-* \[ ] P0-STEP-06 = PASS
-* \[ ] P0-STEP-07 = PASS
-* \[ ] P0-STEP-08 = PASS
-* \[ ] P0-STEP-09 = PASS
-* \[ ] Migration SHA = `D0E4FFC3299146B1CB6105FC8E1BEB4568F981951F0BCACC4E015204716701EE`
-* \[ ] Schema contract alignment = PASS
-* \[ ] Tables = 12/12
-* \[ ] Views = 3/3
-* \[ ] Foreign keys = ON / `1`
-* \[ ] `foreign\_key\_check` violations = 0
-* \[ ] PK/FK/CHECK/UNIQUE/NOT NULL = PASS
-* \[ ] Total Shadow rows = 0
-* \[ ] Protected changes = 0
-* \[ ] Runtime changes = 0
-* \[ ] Quran ingestion = 0
-* \[ ] Execution Record reconciled
-* \[ ] `LAST\_CONFIRMED\_VALID\_STEP = P0-STEP-09`
-* \[ ] `NEXT\_SAFE\_STEP = P0-STEP-10`
+* ✅ P0-STEP-05 = PASS — accepted schema and migration SHA-256 bindings verified.
+* ✅ P0-STEP-06 = PASS — in-memory SQLite schema, constraints, indexes, views, and adaptations aligned.
+* ✅ P0-STEP-07 = PASS — fresh staged SQLite database validated before replacement.
+* ✅ P0-STEP-08 = PASS — `PRAGMA foreign_keys` enabled and verified as `1`.
+* ✅ P0-STEP-09 = PASS — 12 tables, 3 views, zero FK violations, zero rows.
 
-**Do not mark P0-STEP-05..09 complete until this evidence is returned.**
+### Accepted evidence
+
+```text
+Authoritative schema = governance/sql/drafts/001_phase0_initial_schema.sql
+SHA-256 = DC212DA10320ED9DE3F71B76C74737CE8EE446207CF4780F78B57F82A71D11C5
+
+Accepted migration = governance/sql/migration_phase0_corrected.sql
+SHA-256 = D0E4FFC3299146B1CB6105FC8E1BEB4568F981951F0BCACC4E015204716701EE
+
+Accepted Shadow DB = governance/phase0_workspace/shadow/phase0_shadow.sqlite
+SHA-256 = 05770EA79FDFA8D37AEAE9D6ECB614D153831B7D63B6B4BDADF83ED70E0AF846
+
+Execution record = governance/contracts/phase0_execution_record.json
+SHA-256 = CDD942DECD32BBF006B00F09BAE8CFEB9A9A08DFE185CBEC93E1BB71ED578C8D
+```
+
+### Completion checklist
+
+* \[x] P0-STEP-05 = PASS
+* \[x] P0-STEP-06 = PASS
+* \[x] P0-STEP-07 = PASS
+* \[x] P0-STEP-08 = PASS
+* \[x] P0-STEP-09 = PASS
+* \[x] Migration SHA = `D0E4FFC3299146B1CB6105FC8E1BEB4568F981951F0BCACC4E015204716701EE`
+* \[x] Schema contract alignment = PASS
+* \[x] Tables = 12/12
+* \[x] Views = 3/3
+* \[x] Foreign keys = ON / `1`
+* \[x] `foreign\_key\_check` violations = 0
+* \[x] PK/FK/CHECK/UNIQUE/NOT NULL = PASS
+* \[x] Total Shadow rows = 0
+* \[x] Protected changes = 0
+* \[x] Runtime changes = 0
+* \[x] Quran ingestion = 0
+* \[x] Execution Record reconciled
+* \[x] `LAST\_CONFIRMED\_VALID\_STEP = P0-STEP-09`
+* \[x] `NEXT\_SAFE\_STEP = P0-STEP-10`
+
+**Current stopping point:** P0-STEP-10 has not started. Do not begin it until the next governed execution action is explicitly authorized by the existing Phase-0 execution scope.
 
 \---
 
@@ -373,7 +396,7 @@ accepted corrected migration
 
 ## P0-STEP-10 — Source Registration
 
-**Status:** ⏸️ NOT STARTED
+**Status:** ⏸️ NEXT SAFE STEP / NOT STARTED
 
 Purpose: register authorized Tier-0 sources using the approved Phase-0 physical schema, including governed source/version/authority/ingestion structures. Source Vault remains read-only.
 
@@ -657,11 +680,11 @@ P0-STEP-01                    ✅
 P0-STEP-02                    ✅
 P0-STEP-03                    ✅
 P0-STEP-04                    ✅
-P0-STEP-05                    🔄
-P0-STEP-06                    🔄
-P0-STEP-07                    🔄
-P0-STEP-08                    🔄
-P0-STEP-09                    🔄
+P0-STEP-05                    ✅
+P0-STEP-06                    ✅
+P0-STEP-07                    ✅
+P0-STEP-08                    ✅
+P0-STEP-09                    ✅
 P0-STEP-10                    ⏸️
 P0-STEP-11                    ⏸️
 P0-STEP-12                    ⏸️
@@ -695,7 +718,7 @@ project handover checklist.
 
 Do not restart completed or closed stages.
 
-First verify only the current IN PROGRESS item
+First verify only the current NEXT PENDING item
 against the filesystem.
 
 Continue from the first PENDING item only after

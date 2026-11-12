@@ -1,6 +1,6 @@
 {
   "execution_id": "123e4567-e89b-12d3-a456-426614174000",
-  "task_id": "HUMAN_REVIEW_GOVERNANCE_BINDINGS_001",
+  "task_id": "QCR-OS-P0-STEP-05-09-GOVERNED-REEXECUTION",
   "authorization_id": "HUMAN_PHASE_0_START_AUTHORIZATION",
   "authorization_record": {
     "path": "governance/contracts/human_phase0_start_authorization.json",
@@ -11,24 +11,24 @@
     "version": "1.0",
     "sha256": "65FFB36BA9FA9EF96760732E13BC78C13F60EB78D80B2D040331A7F0B058889F"
   },
-  "phase_status": "BLOCKED",
-  "last_confirmed_valid_step": "P0-STEP-04",
-  "first_invalid_or_incomplete_step": "P0-STEP-05",
+  "phase_status": "AUTHORIZED_FOR_EXECUTION",
+  "last_confirmed_valid_step": "P0-STEP-09",
+  "first_invalid_or_incomplete_step": "P0-STEP-10",
   "steps_ledger": {
     "P0-STEP-01..P0-STEP-04": "PASS AS CURRENTLY GOVERNED EVIDENCE SUPPORTS",
-    "P0-STEP-05..P0-STEP-09": "INVALIDATED / SUPERSEDED EXECUTION ATTEMPT",
+    "P0-STEP-05..P0-STEP-09": "PASS - GOVERNED RE-EXECUTION USING ACCEPTED MIGRATION",
     "P0-STEP-10..P0-STEP-24": "NOT_STARTED"
   },
   "current_remediation_artifacts": {
     "migration_candidate": {
       "path": "governance/sql/migration_phase0_corrected.sql",
-      "sha256": "58296CBCA0D4A80112031A333AFE88375EC2975B0BB71774382BC459C86BBBA3",
-      "status": "CURRENT REMEDIATION CANDIDATE / NOT YET CONTRACT-ACCEPTED"
+      "sha256": "D0E4FFC3299146B1CB6105FC8E1BEB4568F981951F0BCACC4E015204716701EE",
+      "status": "ACCEPTED AND APPLIED FOR P0-STEP-05..09"
     },
     "shadow_db_candidate": {
       "path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
-      "sha256": "43CAD7009CA41730BBDDE0ADF24B7ECA696AB7F874FD48BB21902D692B2F0992",
-      "status": "CURRENT UNGOVERNED / NOT-YET-ACCEPTED PHASE-0 REMEDIATION ARTIFACT"
+      "sha256": "05770EA79FDFA8D37AEAE9D6ECB614D153831B7D63B6B4BDADF83ED70E0AF846",
+      "status": "ACCEPTED P0 EXECUTION ARTIFACT"
     }
   },
   "shadow_db_actual_state": {
@@ -38,7 +38,7 @@
     "views_count": 3,
     "row_counts": 0,
     "quran_ingestion": "NOT_STARTED",
-    "schema_contract_alignment": "NOT YET ACCEPTED / REMEDIATION REQUIRED"
+    "schema_contract_alignment": "PASS"
   },
   "superseded_artifacts": {
     "migration": {
@@ -56,7 +56,7 @@
   },
   "phases_1_11_status": "LOCKED",
   "multi_agent_status": "NOT_AUTHORIZED",
-  "updated_at": "2026-11-12T07:48:43.528Z",
+  "updated_at": "2026-11-12T16:54:28.620Z",
   "superseded_remediation_evidence": {
     "path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
     "sha256": "43CAD7009CA41730BBDDE0ADF24B7ECA696AB7F874FD48BB21902D692B2F0992",
@@ -64,8 +64,527 @@
     "tables": 12,
     "views": 3,
     "row_count_total": 0,
-    "recorded_before_replacement": true
+    "recorded_before_replacement": true,
+    "superseded_by_shadow_sha256": "05770EA79FDFA8D37AEAE9D6ECB614D153831B7D63B6B4BDADF83ED70E0AF846"
   },
-  "blocking_failure": "actualFk is not defined",
-  "next_step": null
+  "blocking_failure": null,
+  "next_step": "P0-STEP-10",
+  "execution_plan": "FROZEN_READY_FOR_EXECUTION",
+  "record_version": "3.1",
+  "authoritative_schema_path": "governance/sql/drafts/001_phase0_initial_schema.sql",
+  "authoritative_schema_sha256": "DC212DA10320ED9DE3F71B76C74737CE8EE446207CF4780F78B57F82A71D11C5",
+  "migration_path": "governance/sql/migration_phase0_corrected.sql",
+  "migration_sha256": "D0E4FFC3299146B1CB6105FC8E1BEB4568F981951F0BCACC4E015204716701EE",
+  "migration_validation": "PASS",
+  "schema_contract_alignment": "PASS",
+  "current_step": "P0-STEP-09",
+  "completed_steps": [
+    "P0-STEP-01",
+    "P0-STEP-02",
+    "P0-STEP-03",
+    "P0-STEP-04",
+    "P0-STEP-05",
+    "P0-STEP-06",
+    "P0-STEP-07",
+    "P0-STEP-08",
+    "P0-STEP-09"
+  ],
+  "steps_completed": [
+    "P0-STEP-01",
+    "P0-STEP-02",
+    "P0-STEP-03",
+    "P0-STEP-04",
+    "P0-STEP-05",
+    "P0-STEP-06",
+    "P0-STEP-07",
+    "P0-STEP-08",
+    "P0-STEP-09"
+  ],
+  "last_confirmed_step": "P0-STEP-09",
+  "shadow_db_path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
+  "shadow_db_sha256": "05770EA79FDFA8D37AEAE9D6ECB614D153831B7D63B6B4BDADF83ED70E0AF846",
+  "foreign_keys": true,
+  "foreign_keys_verified": true,
+  "schema_match_step06": true,
+  "shadow_db_state": "VALID_SCHEMA_EMPTY",
+  "quran_ingestion": "NOT_STARTED",
+  "required_tables": [
+    "qcr_canonical_ayahs",
+    "qcr_canonical_surahs",
+    "qcr_canonical_translations",
+    "qcr_conflict_reconciliations",
+    "qcr_ingestion_runs",
+    "qcr_knowledge_gaps",
+    "qcr_morphology_tokens",
+    "qcr_provenance_entities",
+    "qcr_source_field_authorities",
+    "qcr_source_versions",
+    "qcr_sources",
+    "qcr_surah_metadata_variants"
+  ],
+  "required_views": [
+    "view_active_canonical_ayahs",
+    "view_opening_basmalas",
+    "view_sajda_verses"
+  ],
+  "primary_keys": {
+    "qcr_canonical_ayahs": [
+      "id"
+    ],
+    "qcr_canonical_surahs": [
+      "surah_number"
+    ],
+    "qcr_canonical_translations": [
+      "translation_id"
+    ],
+    "qcr_conflict_reconciliations": [
+      "conflict_id"
+    ],
+    "qcr_ingestion_runs": [
+      "run_id"
+    ],
+    "qcr_knowledge_gaps": [
+      "gap_id"
+    ],
+    "qcr_morphology_tokens": [
+      "token_id"
+    ],
+    "qcr_provenance_entities": [
+      "provenance_id"
+    ],
+    "qcr_source_field_authorities": [
+      "authority_id"
+    ],
+    "qcr_source_versions": [
+      "version_id"
+    ],
+    "qcr_sources": [
+      "source_id"
+    ],
+    "qcr_surah_metadata_variants": [
+      "variant_id"
+    ]
+  },
+  "not_null_constraints": {
+    "qcr_canonical_ayahs": [
+      "ayah_number",
+      "in_canonical_count",
+      "is_opening_basmala",
+      "record_id",
+      "sajda",
+      "surah_number",
+      "text_clean",
+      "text_uthmani"
+    ],
+    "qcr_canonical_surahs": [
+      "canonical_ayah_count",
+      "name_ar",
+      "name_en",
+      "opening_basmala_records_count"
+    ],
+    "qcr_canonical_translations": [
+      "ayah_number",
+      "is_opening_basmala",
+      "language_code",
+      "source_id",
+      "surah_number",
+      "translation_text",
+      "translator_name"
+    ],
+    "qcr_conflict_reconciliations": [
+      "authorized_by",
+      "ayah_number",
+      "canonical_state_snapshot",
+      "conflict_code",
+      "conflict_type",
+      "raw_state_snapshot",
+      "resolution_type",
+      "surah_number"
+    ],
+    "qcr_ingestion_runs": [
+      "mode",
+      "operator_id",
+      "phase_id",
+      "status"
+    ],
+    "qcr_knowledge_gaps": [
+      "declaration_reason",
+      "epistemic_tier",
+      "gap_nature",
+      "status",
+      "topic_or_verse_key"
+    ],
+    "qcr_morphology_tokens": [
+      "ayah_number",
+      "surah_number",
+      "token_position",
+      "token_text"
+    ],
+    "qcr_provenance_entities": [
+      "entity_key",
+      "entity_type",
+      "source_id",
+      "source_version_id"
+    ],
+    "qcr_source_field_authorities": [
+      "authority_level",
+      "entity_type",
+      "field_name",
+      "source_id"
+    ],
+    "qcr_source_versions": [
+      "file_sha256",
+      "file_size_bytes",
+      "record_count",
+      "source_id",
+      "verification_status",
+      "version_tag"
+    ],
+    "qcr_sources": [
+      "acquisition_path",
+      "authority_classification",
+      "epistemic_tier",
+      "expected_sha256",
+      "is_immutable",
+      "license_type",
+      "source_family",
+      "source_name",
+      "status"
+    ],
+    "qcr_surah_metadata_variants": [
+      "authority_classification",
+      "property_name",
+      "property_value",
+      "source_id",
+      "surah_number"
+    ]
+  },
+  "check_constraints": {
+    "qcr_canonical_ayahs": [
+      "sajda_details IS NULL OR json_valid(sajda_details)",
+      "audio_references IS NULL OR json_valid(audio_references)"
+    ],
+    "qcr_canonical_surahs": [
+      "surah_number BETWEEN 1 AND 114",
+      "canonical_ayah_count > 0",
+      "revelation_type IN ('Meccan', 'Medinan')"
+    ],
+    "qcr_canonical_translations": [],
+    "qcr_conflict_reconciliations": [
+      "json_valid(raw_state_snapshot)",
+      "json_valid(canonical_state_snapshot)"
+    ],
+    "qcr_ingestion_runs": [
+      "mode IN ('SHADOW', 'DRY_RUN', 'PARITY_TEST', 'PRODUCTION_ACTIVE')"
+    ],
+    "qcr_knowledge_gaps": [],
+    "qcr_morphology_tokens": [
+      "features IS NULL OR json_valid(features)"
+    ],
+    "qcr_provenance_entities": [],
+    "qcr_source_field_authorities": [
+      "authority_level IN ('PRIMARY', 'ALTERNATIVE', 'SUPPLEMENTARY', 'FALLBACK_FORBIDDEN')"
+    ],
+    "qcr_source_versions": [],
+    "qcr_sources": [
+      "epistemic_tier IN ('TIER_0', 'TIER_1', 'TIER_2', 'TIER_3', 'TIER_4', 'TIER_5')"
+    ],
+    "qcr_surah_metadata_variants": []
+  },
+  "unique_constraints": {
+    "qcr_canonical_ayahs": [
+      "record_id",
+      "surah_number|ayah_number|is_opening_basmala"
+    ],
+    "qcr_canonical_surahs": [],
+    "qcr_canonical_translations": [],
+    "qcr_conflict_reconciliations": [],
+    "qcr_ingestion_runs": [],
+    "qcr_knowledge_gaps": [],
+    "qcr_morphology_tokens": [],
+    "qcr_provenance_entities": [],
+    "qcr_source_field_authorities": [],
+    "qcr_source_versions": [],
+    "qcr_sources": [],
+    "qcr_surah_metadata_variants": []
+  },
+  "foreign_key_constraints": [
+    {
+      "table": "qcr_canonical_ayahs",
+      "from": [
+        "provenance_id"
+      ],
+      "toTable": "qcr_provenance_entities",
+      "to": [
+        "provenance_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_canonical_ayahs",
+      "from": [
+        "surah_number"
+      ],
+      "toTable": "qcr_canonical_surahs",
+      "to": [
+        "surah_number"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_canonical_surahs",
+      "from": [
+        "provenance_id"
+      ],
+      "toTable": "qcr_provenance_entities",
+      "to": [
+        "provenance_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_canonical_translations",
+      "from": [
+        "surah_number",
+        "ayah_number",
+        "is_opening_basmala"
+      ],
+      "toTable": "qcr_canonical_ayahs",
+      "to": [
+        "surah_number",
+        "ayah_number",
+        "is_opening_basmala"
+      ],
+      "onDelete": "CASCADE"
+    },
+    {
+      "table": "qcr_canonical_translations",
+      "from": [
+        "provenance_id"
+      ],
+      "toTable": "qcr_provenance_entities",
+      "to": [
+        "provenance_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_canonical_translations",
+      "from": [
+        "source_id"
+      ],
+      "toTable": "qcr_sources",
+      "to": [
+        "source_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_morphology_tokens",
+      "from": [
+        "provenance_id"
+      ],
+      "toTable": "qcr_provenance_entities",
+      "to": [
+        "provenance_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_provenance_entities",
+      "from": [
+        "source_version_id"
+      ],
+      "toTable": "qcr_source_versions",
+      "to": [
+        "version_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_provenance_entities",
+      "from": [
+        "source_id"
+      ],
+      "toTable": "qcr_sources",
+      "to": [
+        "source_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_source_field_authorities",
+      "from": [
+        "source_id"
+      ],
+      "toTable": "qcr_sources",
+      "to": [
+        "source_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_source_versions",
+      "from": [
+        "source_id"
+      ],
+      "toTable": "qcr_sources",
+      "to": [
+        "source_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_surah_metadata_variants",
+      "from": [
+        "provenance_id"
+      ],
+      "toTable": "qcr_provenance_entities",
+      "to": [
+        "provenance_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_surah_metadata_variants",
+      "from": [
+        "source_id"
+      ],
+      "toTable": "qcr_sources",
+      "to": [
+        "source_id"
+      ],
+      "onDelete": "NO ACTION"
+    },
+    {
+      "table": "qcr_surah_metadata_variants",
+      "from": [
+        "surah_number"
+      ],
+      "toTable": "qcr_canonical_surahs",
+      "to": [
+        "surah_number"
+      ],
+      "onDelete": "NO ACTION"
+    }
+  ],
+  "superseded_execution_attempts": [
+    {
+      "step_range": "P0-STEP-05..P0-STEP-09",
+      "status": "INVALIDATED / SUPERSEDED",
+      "reason": "Previous governed retry failed in validation harness before Shadow DB replacement.",
+      "failure": "ReferenceError: actualFk is not defined",
+      "shadow_path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
+      "shadow_sha256": "43CAD7009CA41730BBDDE0ADF24B7ECA696AB7F874FD48BB21902D692B2F0992"
+    }
+  ],
+  "accepted_execution_artifacts": {
+    "authoritative_schema": {
+      "path": "governance/sql/drafts/001_phase0_initial_schema.sql",
+      "sha256": "DC212DA10320ED9DE3F71B76C74737CE8EE446207CF4780F78B57F82A71D11C5"
+    },
+    "migration": {
+      "path": "governance/sql/migration_phase0_corrected.sql",
+      "sha256": "D0E4FFC3299146B1CB6105FC8E1BEB4568F981951F0BCACC4E015204716701EE"
+    },
+    "shadow_db": {
+      "path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
+      "sha256": "05770EA79FDFA8D37AEAE9D6ECB614D153831B7D63B6B4BDADF83ED70E0AF846"
+    }
+  },
+  "schema_validation": {
+    "tables": 12,
+    "views": 3,
+    "pk_alignment": "PASS",
+    "fk_alignment": "PASS",
+    "check_alignment": "PASS",
+    "unique_alignment": "PASS",
+    "not_null_alignment": "PASS",
+    "column_alignment": "PASS",
+    "index_alignment": "PASS",
+    "view_definition_alignment": "PASS",
+    "json_adaptation": "PASS",
+    "timestamp_adaptation": "PASS",
+    "identity_adaptation": "PASS",
+    "foreign_keys_pragma": 1,
+    "foreign_key_check_violations": 0,
+    "row_counts_by_table": [
+      {
+        "table": "qcr_canonical_ayahs",
+        "count": 0
+      },
+      {
+        "table": "qcr_canonical_surahs",
+        "count": 0
+      },
+      {
+        "table": "qcr_canonical_translations",
+        "count": 0
+      },
+      {
+        "table": "qcr_conflict_reconciliations",
+        "count": 0
+      },
+      {
+        "table": "qcr_ingestion_runs",
+        "count": 0
+      },
+      {
+        "table": "qcr_knowledge_gaps",
+        "count": 0
+      },
+      {
+        "table": "qcr_morphology_tokens",
+        "count": 0
+      },
+      {
+        "table": "qcr_provenance_entities",
+        "count": 0
+      },
+      {
+        "table": "qcr_source_field_authorities",
+        "count": 0
+      },
+      {
+        "table": "qcr_source_versions",
+        "count": 0
+      },
+      {
+        "table": "qcr_sources",
+        "count": 0
+      },
+      {
+        "table": "qcr_surah_metadata_variants",
+        "count": 0
+      }
+    ],
+    "row_count_total": 0
+  },
+  "step_results": [
+    {
+      "step_id": "P0-STEP-05",
+      "status": "PASS",
+      "evidence": "Accepted schema and migration SHA-256 bindings verified."
+    },
+    {
+      "step_id": "P0-STEP-06",
+      "status": "PASS",
+      "evidence": "NODE_BUILTIN_SQLITE :memory:; schema, constraints, indexes, views, and adaptations aligned."
+    },
+    {
+      "step_id": "P0-STEP-07",
+      "status": "PASS",
+      "evidence": "Fresh staged SQLite database validated before replacement."
+    },
+    {
+      "step_id": "P0-STEP-08",
+      "status": "PASS",
+      "evidence": "PRAGMA foreign_keys enabled and verified as 1."
+    },
+    {
+      "step_id": "P0-STEP-09",
+      "status": "PASS",
+      "evidence": "12 tables, 3 views, zero FK violations, zero rows."
+    }
+  ]
 }

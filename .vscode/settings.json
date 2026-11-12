@@ -1,4 +1,8 @@
 {
     "navy.browserHeadless": true,
-    "navy.chromePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+    "navy.chromePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "devin.cliPath": "C:\\Users\\Eagle\\AppData\\Local\\devin\\cli\\bin\\devin.exe",
+    "devin.contextUsage.enabled": true,
+    "devin.defaultModel": "auto",
+    "devin.autoResumeLast": true
 }
