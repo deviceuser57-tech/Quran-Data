@@ -1,60 +1,71 @@
 {
-    "execution_id": "123e4567-e89b-12d3-a456-426614174000",
-    "task_id": "HUMAN_REVIEW_GOVERNANCE_BINDINGS_001",
-    "authorization_id": "HUMAN_PHASE_0_START_AUTHORIZATION",
-    "authorization_record": {
-        "path": "governance/contracts/human_phase0_start_authorization.json",
-        "sha256": "7D0072B5587F4C3AD2EF0CB94DE264187ED54422D302C09FC3A5DF57D6397BBC"
+  "execution_id": "123e4567-e89b-12d3-a456-426614174000",
+  "task_id": "HUMAN_REVIEW_GOVERNANCE_BINDINGS_001",
+  "authorization_id": "HUMAN_PHASE_0_START_AUTHORIZATION",
+  "authorization_record": {
+    "path": "governance/contracts/human_phase0_start_authorization.json",
+    "sha256": "7D0072B5587F4C3AD2EF0CB94DE264187ED54422D302C09FC3A5DF57D6397BBC"
+  },
+  "acknowledgement_record": {
+    "path": "governance/contracts/phase0_pre_execution_acknowledgment.json",
+    "version": "1.0",
+    "sha256": "65FFB36BA9FA9EF96760732E13BC78C13F60EB78D80B2D040331A7F0B058889F"
+  },
+  "phase_status": "BLOCKED",
+  "last_confirmed_valid_step": "P0-STEP-04",
+  "first_invalid_or_incomplete_step": "P0-STEP-05",
+  "steps_ledger": {
+    "P0-STEP-01..P0-STEP-04": "PASS AS CURRENTLY GOVERNED EVIDENCE SUPPORTS",
+    "P0-STEP-05..P0-STEP-09": "INVALIDATED / SUPERSEDED EXECUTION ATTEMPT",
+    "P0-STEP-10..P0-STEP-24": "NOT_STARTED"
+  },
+  "current_remediation_artifacts": {
+    "migration_candidate": {
+      "path": "governance/sql/migration_phase0_corrected.sql",
+      "sha256": "58296CBCA0D4A80112031A333AFE88375EC2975B0BB71774382BC459C86BBBA3",
+      "status": "CURRENT REMEDIATION CANDIDATE / NOT YET CONTRACT-ACCEPTED"
     },
-    "acknowledgement_record": {
-        "path": "governance/contracts/phase0_pre_execution_acknowledgment.json",
-        "version": "1.0",
-        "sha256": "65FFB36BA9FA9EF96760732E13BC78C13F60EB78D80B2D040331A7F0B058889F"
-    },
-    "phase_status": "PAUSED_PENDING_SCHEMA_REMEDIATION",
-    "last_confirmed_valid_step": "P0-STEP-04",
-    "first_invalid_or_incomplete_step": "P0-STEP-05",
-    "steps_ledger": {
-        "P0-STEP-01..P0-STEP-04": "PASS AS CURRENTLY GOVERNED EVIDENCE SUPPORTS",
-        "P0-STEP-05..P0-STEP-09": "INVALIDATED / SUPERSEDED EXECUTION ATTEMPT",
-        "P0-STEP-10..P0-STEP-24": "NOT_STARTED"
-    },
-    "current_remediation_artifacts": {
-        "migration_candidate": {
-            "path": "governance/sql/migration_phase0_corrected.sql",
-            "sha256": "58296CBCA0D4A80112031A333AFE88375EC2975B0BB71774382BC459C86BBBA3",
-            "status": "CURRENT REMEDIATION CANDIDATE / NOT YET CONTRACT-ACCEPTED"
-        },
-        "shadow_db_candidate": {
-            "path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
-            "sha256": "43CAD7009CA41730BBDDE0ADF24B7ECA696AB7F874FD48BB21902D692B2F0992",
-            "status": "CURRENT UNGOVERNED / NOT-YET-ACCEPTED PHASE-0 REMEDIATION ARTIFACT"
-        }
-    },
-    "shadow_db_actual_state": {
-        "present": true,
-        "valid_sqlite": true,
-        "tables_count": 12,
-        "views_count": 3,
-        "row_counts": 0,
-        "quran_ingestion": "NOT_STARTED",
-        "schema_contract_alignment": "NOT YET ACCEPTED / REMEDIATION REQUIRED"
-    },
-    "superseded_artifacts": {
-        "migration": {
-            "path": "governance/sql/migration_step5_6.sql",
-            "status": "SUPERSEDED / INVALIDATED"
-        }
-    },
-    "governance_state": {
-        "bootstrap": "APPROVED / CLOSED",
-        "database_gate": "APPROVED / CLOSED",
-        "source_vault_gate": "APPROVED / CLOSED",
-        "source_vault_activation": "ACTIVE_VERIFIED",
-        "contract_ack": "ACKNOWLEDGED",
-        "human_start_authorization": "ISSUED"
-    },
-    "phases_1_11_status": "LOCKED",
-    "multi_agent_status": "NOT_AUTHORIZED",
-    "updated_at": "2026-11-12T06:50:00Z"
+    "shadow_db_candidate": {
+      "path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
+      "sha256": "43CAD7009CA41730BBDDE0ADF24B7ECA696AB7F874FD48BB21902D692B2F0992",
+      "status": "CURRENT UNGOVERNED / NOT-YET-ACCEPTED PHASE-0 REMEDIATION ARTIFACT"
+    }
+  },
+  "shadow_db_actual_state": {
+    "present": true,
+    "valid_sqlite": true,
+    "tables_count": 12,
+    "views_count": 3,
+    "row_counts": 0,
+    "quran_ingestion": "NOT_STARTED",
+    "schema_contract_alignment": "NOT YET ACCEPTED / REMEDIATION REQUIRED"
+  },
+  "superseded_artifacts": {
+    "migration": {
+      "path": "governance/sql/migration_step5_6.sql",
+      "status": "SUPERSEDED / INVALIDATED"
+    }
+  },
+  "governance_state": {
+    "bootstrap": "APPROVED / CLOSED",
+    "database_gate": "APPROVED / CLOSED",
+    "source_vault_gate": "APPROVED / CLOSED",
+    "source_vault_activation": "ACTIVE_VERIFIED",
+    "contract_ack": "ACKNOWLEDGED",
+    "human_start_authorization": "ISSUED"
+  },
+  "phases_1_11_status": "LOCKED",
+  "multi_agent_status": "NOT_AUTHORIZED",
+  "updated_at": "2026-11-12T07:48:43.528Z",
+  "superseded_remediation_evidence": {
+    "path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
+    "sha256": "43CAD7009CA41730BBDDE0ADF24B7ECA696AB7F874FD48BB21902D692B2F0992",
+    "status": "SUPERSEDED_EMPTY_UNACCEPTED_REMEDIATION_DATABASE",
+    "tables": 12,
+    "views": 3,
+    "row_count_total": 0,
+    "recorded_before_replacement": true
+  },
+  "blocking_failure": "actualFk is not defined",
+  "next_step": null
 }
