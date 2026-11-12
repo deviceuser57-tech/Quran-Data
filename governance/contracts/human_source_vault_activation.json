@@ -63,8 +63,8 @@
     "database_decision_status": "APPROVED",
     "phase_0_database_engine": "SQLITE_3",
     "phase_0_database_scope": "SHADOW_ONLY",
-    "source_vault_activation_status": "ACTIVATION_AUTHORIZED_PENDING_EXECUTION",
-    "source_vault_decision_gate": "ACTIVATION_AUTHORIZED_PENDING_EXECUTION",
+    "source_vault_activation_status": "ACTIVE_VERIFIED",
+    "source_vault_decision_gate": "APPROVED / CLOSED",
     "current_phase_status": "NOT_AUTHORIZED",
     "future_phase_status": "LOCKED",
     "multi_agent_status": "CORE_PRODUCT_REQUIREMENT_IMPLEMENTATION_NOT_AUTHORIZED"

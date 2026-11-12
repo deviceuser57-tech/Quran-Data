@@ -1,13 +1,13 @@
 -- ==============================================================================
 -- QCR-OS PHASE-0 SQLite MIGRATION (CORRECTED)
 -- Derived from: governance/sql/drafts/001_phase0_initial_schema.sql
--- Source SHA-256: 2DEE056E70A7A5326B554DEDDF107C0B2F95FE2E405DE21991D2A3E4E968945B
+-- Source SHA-256: DC212DA10320ED9DE3F71B76C74737CE8EE446207CF4780F78B57F82A71D11C5
 -- Supersedes: governance/sql/migration_step5_6.sql (INVALIDATED)
 -- SQLite adaptations:
 --   1. SERIAL PRIMARY KEY → INTEGER PRIMARY KEY AUTOINCREMENT
---   2. CREATE OR REPLACE VIEW → CREATE VIEW
---   3. Added is_opening_basmala column to qcr_canonical_translations
---      (required by fk_translation_ayah FK but missing from authoritative DDL)
+--   2. TIMESTAMP WITH TIME ZONE → UTC ISO-8601 TEXT
+--   3. JSONB → TEXT with JSON validity CHECK constraints
+--   4. CREATE OR REPLACE VIEW → CREATE VIEW
 -- ==============================================================================
 
 PRAGMA foreign_keys = ON;
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS qcr_sources (
     acquisition_path TEXT NOT NULL,
     expected_sha256 CHAR(64) NOT NULL,
     is_immutable BOOLEAN NOT NULL DEFAULT TRUE,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    created_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
     status VARCHAR(32) NOT NULL DEFAULT 'REGISTERED'
 );
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS qcr_source_versions (
     file_size_bytes BIGINT NOT NULL,
     record_count INTEGER NOT NULL,
     verification_status VARCHAR(32) NOT NULL DEFAULT 'PENDING_VERIFICATION',
-    registered_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    registered_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
 -- 1.3 FIELD-LEVEL SOURCE AUTHORITIES
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS qcr_source_field_authorities (
     entity_type VARCHAR(64) NOT NULL,
     field_name VARCHAR(64) NOT NULL,
     authority_level VARCHAR(32) NOT NULL CHECK (authority_level IN ('PRIMARY', 'ALTERNATIVE', 'SUPPLEMENTARY', 'FALLBACK_FORBIDDEN')),
-    established_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    established_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
 -- 1.4 INGESTION RUNS & AUDIT LOGS
@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS qcr_ingestion_runs (
     run_id VARCHAR(64) PRIMARY KEY,
     phase_id VARCHAR(32) NOT NULL DEFAULT 'PHASE_0',
     mode VARCHAR(32) NOT NULL CHECK (mode IN ('SHADOW', 'DRY_RUN', 'PARITY_TEST', 'PRODUCTION_ACTIVE')),
-    started_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-    completed_at TIMESTAMP WITH TIME ZONE,
+    started_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+    completed_at TEXT,
     status VARCHAR(32) NOT NULL DEFAULT 'IN_PROGRESS',
     records_processed INTEGER DEFAULT 0,
     errors_count INTEGER DEFAULT 0,
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS qcr_provenance_entities (
     raw_offset_or_key TEXT,
     raw_checksum CHAR(64),
     transformation_applied VARCHAR(128) DEFAULT 'NONE',
-    ingested_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    ingested_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
 -- 1.6 CANONICAL RECONCILIATIONS (CONFLICT RESOLUTIONS)
@@ -84,9 +84,9 @@ CREATE TABLE IF NOT EXISTS qcr_conflict_reconciliations (
     conflict_type VARCHAR(64) NOT NULL,
     resolution_type VARCHAR(64) NOT NULL,
     authorized_by VARCHAR(64) NOT NULL,
-    raw_state_snapshot JSONB NOT NULL,
-    canonical_state_snapshot JSONB NOT NULL,
-    resolved_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    raw_state_snapshot TEXT NOT NULL CHECK (json_valid(raw_state_snapshot)),
+    canonical_state_snapshot TEXT NOT NULL CHECK (json_valid(canonical_state_snapshot)),
+    resolved_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
 -- 1.7 KNOWLEDGE GAPS & EPISTEMIC BOUNDARIES
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS qcr_knowledge_gaps (
     gap_nature VARCHAR(128) NOT NULL,
     declaration_reason TEXT NOT NULL,
     status VARCHAR(32) NOT NULL DEFAULT 'OPEN',
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    created_at TEXT DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
 );
 
 -- 2.1 CANONICAL SURAHS (114 SURAHS)
@@ -144,17 +144,13 @@ CREATE TABLE IF NOT EXISTS qcr_canonical_ayahs (
     manzil_number INTEGER,
     ruku_number INTEGER,
     sajda BOOLEAN NOT NULL DEFAULT FALSE,
-    sajda_details JSONB,
-    audio_references JSONB,
+    sajda_details TEXT CHECK (sajda_details IS NULL OR json_valid(sajda_details)),
+    audio_references TEXT CHECK (audio_references IS NULL OR json_valid(audio_references)),
     provenance_id VARCHAR(64) REFERENCES qcr_provenance_entities(provenance_id),
     CONSTRAINT uq_surah_ayah_type UNIQUE (surah_number, ayah_number, is_opening_basmala)
 );
 
 -- 2.4 CANONICAL TRANSLATIONS LINKAGE
--- NOTE: is_opening_basmala added to this table because the authoritative FK
--- (fk_translation_ayah) references the composite key
--- (surah_number, ayah_number, is_opening_basmala) on qcr_canonical_ayahs.
--- SQLite requires all FK columns to exist in the child table.
 CREATE TABLE IF NOT EXISTS qcr_canonical_translations (
     translation_id VARCHAR(64) PRIMARY KEY,
     surah_number INTEGER NOT NULL,
@@ -179,7 +175,7 @@ CREATE TABLE IF NOT EXISTS qcr_morphology_tokens (
     root_norm VARCHAR(64),
     lemma VARCHAR(128),
     part_of_speech VARCHAR(32),
-    features JSONB,
+    features TEXT CHECK (features IS NULL OR json_valid(features)),
     provenance_id VARCHAR(64) REFERENCES qcr_provenance_entities(provenance_id)
 );
 

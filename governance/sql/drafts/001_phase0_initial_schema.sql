@@ -157,6 +157,7 @@ CREATE TABLE IF NOT EXISTS qcr_canonical_translations (
     translation_id VARCHAR(64) PRIMARY KEY,
     surah_number INTEGER NOT NULL,
     ayah_number INTEGER NOT NULL,
+    is_opening_basmala BOOLEAN NOT NULL DEFAULT FALSE,
     language_code VARCHAR(16) NOT NULL,
     translator_name VARCHAR(128) NOT NULL,
     translation_text TEXT NOT NULL,

@@ -1,107 +1,60 @@
 {
-  "execution_id": "123e4567-e89b-12d3-a456-426614174000",
-  "task_id": "QCR-OS-PHASE-0-EXECUTION-001",
-  "authorization_id": "HUMAN_PHASE_0_START_AUTHORIZATION",
-  "authorization_record": {
-    "path": "governance/contracts/human_phase0_start_authorization.json",
-    "sha256": "874E6745D7823B8CBEEAEE278BB67C2CD7937FB29D7360A8929E5B0F438FBC0A"
-  },
-  "acknowledgement_record": {
-    "path": "governance/contracts/phase0_pre_execution_acknowledgment.json",
-    "version": "1.1",
-    "sha256": "8DF01982C5D5AE87CE97C17E0C00F95050BDA8A70E60FDCAB8573E8E639953C1"
-  },
-  "checkpoint": "CHECKPOINT-B140",
-  "master_contract": "QCR-OS MASTER CONTRACT v2.0",
-  "phase_contract": "QCR-OS PHASE-0 EXECUTION CONTRACT v1.0",
-  "execution_plan": "FROZEN_READY_FOR_EXECUTION",
-  "database_engine": "SQLITE_3",
-  "database_scope": "SHADOW_ONLY",
-  "sqlite_execution_mechanism": "NODE_BUILTIN_SQLITE",
-  "node_runtime": "v24.21.0",
-  "sqlite_foreign_keys_required": true,
-  "source_vault_status": "ACTIVE_VERIFIED",
-  "protected_precheck_status": "PASS",
-  "protected_inventory_count": 22,
-  "phase_status": "AUTHORIZED_FOR_EXECUTION",
-  "current_step": "P0-STEP-09",
-  "completed_steps": [
-    "P0-STEP-01",
-    "P0-STEP-02",
-    "P0-STEP-03",
-    "P0-STEP-04"
-  ],
-  "next_step": "P0-STEP-10",
-  "phase_1_11_status": "LOCKED",
-  "multi_agent_implementation": "NOT_AUTHORIZED",
-  "failures": [],
-  "knowledge_gaps": [],
-  "created_at": "2026-11-06T16:21:30+02:00",
-  "updated_at": "2026-11-06T14:52:13.006Z",
-  "record_version": "1.0",
-  "steps_completed": [
-    "P0-STEP-01",
-    "P0-STEP-02",
-    "P0-STEP-03",
-    "P0-STEP-04",
-    "P0-STEP-05",
-    "P0-STEP-06",
-    "P0-STEP-07",
-    "P0-STEP-08",
-    "P0-STEP-09"
-  ],
-  "last_confirmed_step": "P0-STEP-09",
-  "migration_path": "d:\\Quran-Data\\governance\\sql\\migration_step5_6.sql",
-  "migration_sha256": "3845480ccfc93833d92126c58d3fa6c371fa1a4c52fc4c6961b147565cac0d9f",
-  "migration_validation": "PASS",
-  "foreign_keys": true,
-  "required_tables": [
-    "audio",
-    "surahs",
-    "verses"
-  ],
-  "required_views": [],
-  "primary_keys": {
-    "audio": [
-      "id"
-    ],
-    "surahs": [
-      "number"
-    ],
-    "verses": [
-      "surah_number",
-      "number"
-    ]
-  },
-  "foreign_key_constraints": {
-    "audio": [
-      {
-        "table": "surahs",
-        "from": "surah_number",
-        "to": "number"
-      }
-    ],
-    "surahs": [],
-    "verses": [
-      {
-        "table": "surahs",
-        "from": "surah_number",
-        "to": "number"
-      }
-    ]
-  },
-  "check_constraints": {
-    "audio": [],
-    "surahs": [],
-    "verses": []
-  },
-  "unique_constraints": {
-    "audio": [],
-    "surahs": [],
-    "verses": []
-  },
-  "shadow_db_path": "d:\\Quran-Data\\governance\\phase0_workspace\\shadow\\phase0_shadow.sqlite",
-  "shadow_db_sha256": "0cc06c372f9b63e6ffecb379d798f50e0b68f5d8ae81dbd4bfda1cbc631a8f13",
-  "foreign_keys_verified": true,
-  "schema_match_step06": true
+    "execution_id": "123e4567-e89b-12d3-a456-426614174000",
+    "task_id": "HUMAN_REVIEW_GOVERNANCE_BINDINGS_001",
+    "authorization_id": "HUMAN_PHASE_0_START_AUTHORIZATION",
+    "authorization_record": {
+        "path": "governance/contracts/human_phase0_start_authorization.json",
+        "sha256": "7D0072B5587F4C3AD2EF0CB94DE264187ED54422D302C09FC3A5DF57D6397BBC"
+    },
+    "acknowledgement_record": {
+        "path": "governance/contracts/phase0_pre_execution_acknowledgment.json",
+        "version": "1.0",
+        "sha256": "65FFB36BA9FA9EF96760732E13BC78C13F60EB78D80B2D040331A7F0B058889F"
+    },
+    "phase_status": "PAUSED_PENDING_SCHEMA_REMEDIATION",
+    "last_confirmed_valid_step": "P0-STEP-04",
+    "first_invalid_or_incomplete_step": "P0-STEP-05",
+    "steps_ledger": {
+        "P0-STEP-01..P0-STEP-04": "PASS AS CURRENTLY GOVERNED EVIDENCE SUPPORTS",
+        "P0-STEP-05..P0-STEP-09": "INVALIDATED / SUPERSEDED EXECUTION ATTEMPT",
+        "P0-STEP-10..P0-STEP-24": "NOT_STARTED"
+    },
+    "current_remediation_artifacts": {
+        "migration_candidate": {
+            "path": "governance/sql/migration_phase0_corrected.sql",
+            "sha256": "58296CBCA0D4A80112031A333AFE88375EC2975B0BB71774382BC459C86BBBA3",
+            "status": "CURRENT REMEDIATION CANDIDATE / NOT YET CONTRACT-ACCEPTED"
+        },
+        "shadow_db_candidate": {
+            "path": "governance/phase0_workspace/shadow/phase0_shadow.sqlite",
+            "sha256": "43CAD7009CA41730BBDDE0ADF24B7ECA696AB7F874FD48BB21902D692B2F0992",
+            "status": "CURRENT UNGOVERNED / NOT-YET-ACCEPTED PHASE-0 REMEDIATION ARTIFACT"
+        }
+    },
+    "shadow_db_actual_state": {
+        "present": true,
+        "valid_sqlite": true,
+        "tables_count": 12,
+        "views_count": 3,
+        "row_counts": 0,
+        "quran_ingestion": "NOT_STARTED",
+        "schema_contract_alignment": "NOT YET ACCEPTED / REMEDIATION REQUIRED"
+    },
+    "superseded_artifacts": {
+        "migration": {
+            "path": "governance/sql/migration_step5_6.sql",
+            "status": "SUPERSEDED / INVALIDATED"
+        }
+    },
+    "governance_state": {
+        "bootstrap": "APPROVED / CLOSED",
+        "database_gate": "APPROVED / CLOSED",
+        "source_vault_gate": "APPROVED / CLOSED",
+        "source_vault_activation": "ACTIVE_VERIFIED",
+        "contract_ack": "ACKNOWLEDGED",
+        "human_start_authorization": "ISSUED"
+    },
+    "phases_1_11_status": "LOCKED",
+    "multi_agent_status": "NOT_AUTHORIZED",
+    "updated_at": "2026-11-12T06:50:00Z"
 }
