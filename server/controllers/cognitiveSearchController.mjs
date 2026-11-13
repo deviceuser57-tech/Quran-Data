@@ -18,11 +18,11 @@ export async function handleCognitiveSearch(req, res) {
             success: true,
             data: result
         });
-    } catch (error) {
-        console.error('[COGNITIVE-SEARCH-ERROR]:', error);
+    } catch {
+        console.error('[COGNITIVE-SEARCH-ERROR]: search failed');
         return res.status(500).json({
             success: false,
-            error: error.message || 'حدث خطأ أثناء معالجة البحث المعرفي'
+            error: 'حدث خطأ أثناء معالجة البحث المعرفي. يرجى المحاولة لاحقًا.'
         });
     }
 }

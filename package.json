@@ -25,15 +25,20 @@
     "@google/genai": "^2.31.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
+    "express": "^4.22.3",
     "express-rate-limit": "^7.4.0",
     "fs-extra": "^11.2.0",
     "node-fetch": "^3.3.2"
+  },
+  "overrides": {
+    "body-parser": "1.20.9",
+    "proxy-addr": "2.0.8",
+    "qs": "6.16.2"
   },
   "engines": {
     "node": ">=22.13.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.4"
+    "nodemon": "3.1.11"
   }
 }

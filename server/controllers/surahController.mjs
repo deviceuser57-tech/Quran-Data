@@ -40,15 +40,62 @@ export const getAllSurahs = (req, res) => {
         });
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching surah metadata.', {
-            message: error.message,
+            message: SAFE_INTERNAL_ERROR_MESSAGE,
         });
     }
 };
 
+const MAX_SURAH_ID = 114;
+const MAX_VERSE_ID = 286;
+const SAFE_INTERNAL_ERROR_MESSAGE = 'An unexpected error occurred. Please try again later.';
+
+const getRequestId = (req, name) => {
+    const query = req.query || {};
+    const params = req.params || {};
+    return Object.prototype.hasOwnProperty.call(query, name) ? query[name] : params[name];
+};
+
+const parseBoundedNumericId = (value, maximum) => {
+    if (typeof value !== 'string' || !/^[1-9]\d{0,2}$/.test(value)) {
+        return null;
+    }
+
+    const id = Number(value);
+    return Number.isSafeInteger(id) && id <= maximum ? id : null;
+};
+
+const resolveContainedDataPath = (baseDirectory, filename) => {
+    const resolvedBase = path.resolve(baseDirectory);
+    const resolvedTarget = path.resolve(resolvedBase, filename);
+    const relativeTarget = path.relative(resolvedBase, resolvedTarget);
+
+    if (
+        !relativeTarget ||
+        relativeTarget === '..' ||
+        relativeTarget.startsWith(`..${path.sep}`) ||
+        path.isAbsolute(relativeTarget)
+    ) {
+        return null;
+    }
+
+    return resolvedTarget;
+};
+
 export const getAllVerses = (req, res) => {
     try {
-        const surahId = req.query.surah_id || req.params.surah_id;
-        const surahPath = path.join(surahFolderPath, `surah_${surahId}.json`);
+        const surahId = parseBoundedNumericId(getRequestId(req, 'surah_id'), MAX_SURAH_ID);
+        if (surahId === null) {
+            return handleError(res, 400, 'Invalid surah_id.', {
+                message: 'surah_id must be an integer from 1 to 114.',
+            });
+        }
+
+        const surahPath = resolveContainedDataPath(surahFolderPath, `surah_${surahId}.json`);
+        if (!surahPath) {
+            return handleError(res, 400, 'Invalid surah_id.', {
+                message: 'surah_id must be an integer from 1 to 114.',
+            });
+        }
 
         if (!fs.existsSync(surahPath)) {
             return handleError(res, 404, 'The requested verses do not exist.', {
@@ -63,15 +110,25 @@ export const getAllVerses = (req, res) => {
         });
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching verses data.', {
-            message: error.message,
+            message: SAFE_INTERNAL_ERROR_MESSAGE,
         });
     }
 };
 
 export const getSurah = (req, res) => {
+    const surahId = parseBoundedNumericId(getRequestId(req, 'surah_id'), MAX_SURAH_ID);
+    if (surahId === null) {
+        return handleError(res, 400, 'Invalid surah_id.', {
+            message: 'surah_id must be an integer from 1 to 114.',
+        });
+    }
 
-    const surahId = req.query.surah_id || req.params.surah_id;
-    const surahPath = path.join(surahFolderPath, `surah_${surahId}.json`);
+    const surahPath = resolveContainedDataPath(surahFolderPath, `surah_${surahId}.json`);
+    if (!surahPath) {
+        return handleError(res, 400, 'Invalid surah_id.', {
+            message: 'surah_id must be an integer from 1 to 114.',
+        });
+    }
 
     if (!fs.existsSync(surahPath)) {
         return handleError(res, 404, '⚠️ The requested surah does not exist.', {
@@ -91,7 +148,7 @@ export const getSurah = (req, res) => {
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching surah data.', {
             surah_id: surahId,
-            message: error.message,
+            message: SAFE_INTERNAL_ERROR_MESSAGE,
             timestamp: new Date().toISOString(),
             method: req.method,
             path: req.originalUrl
@@ -100,58 +157,96 @@ export const getSurah = (req, res) => {
 };
 
 export const getVerse = (req, res) => {
-    const surahId = req.query.surah_id || req.params.surah_id;
-    const verseId = req.query.verse_id || req.params.verse_id;
-    const versePath = path.join(versesFolderPath, `${String(surahId).padStart(3, '0')}_${String(verseId).padStart(3, '0')}.json`);
+    const surahId = parseBoundedNumericId(getRequestId(req, 'surah_id'), MAX_SURAH_ID);
+    const verseId = parseBoundedNumericId(getRequestId(req, 'verse_id'), MAX_VERSE_ID);
 
-    if (!surahId) {
-        return handleError(res, 400, 'surah_id is required.', {
-            message: 'Please provide a valid surah_id in the query or params.',
-            timestamp: new Date().toISOString(),
-            method: req.method,
-            path: req.originalUrl
+    if (surahId === null) {
+        return handleError(res, 400, 'Invalid surah_id.', {
+            message: 'surah_id must be an integer from 1 to 114.',
         });
-    } else if (!verseId) {
-        return handleError(res, 400, 'verseId is required.', {
-            message: 'Please provide a valid verseId in the query or params.',
-            timestamp: new Date().toISOString(),
-            method: req.method,
-            path: req.originalUrl
+    }
+
+    if (verseId === null) {
+        return handleError(res, 400, 'Invalid verse_id.', {
+            message: 'verse_id must be a positive integer no greater than 286.',
         });
-    } else {
-        // Fetch a specific verse
+    }
+
+    const surahPath = resolveContainedDataPath(surahFolderPath, `surah_${surahId}.json`);
+    if (!surahPath) {
+        return handleError(res, 400, 'Invalid surah_id.', {
+            message: 'surah_id must be an integer from 1 to 114.',
+        });
+    }
+
+    if (!fs.existsSync(surahPath)) {
+        return handleError(res, 404, 'The requested surah does not exist.', {
+            surah_id: surahId,
+        });
+    }
+
+    try {
+        const surahData = fs.readJSONSync(surahPath);
+        if (!Array.isArray(surahData.verses)) {
+            return handleError(res, 500, 'Unable to validate verse data.', {
+                message: SAFE_INTERNAL_ERROR_MESSAGE,
+            });
+        }
+
+        if (verseId > surahData.verses.length) {
+            return handleError(res, 400, 'Invalid verse_id.', {
+                message: `verse_id must be between 1 and ${surahData.verses.length} for this surah.`,
+            });
+        }
+
+        const versePath = resolveContainedDataPath(
+            versesFolderPath,
+            `${String(surahId).padStart(3, '0')}_${String(verseId).padStart(3, '0')}.json`
+        );
+        if (!versePath) {
+            return handleError(res, 400, 'Invalid verse_id.', {
+                message: 'verse_id is invalid for this surah.',
+            });
+        }
+
         if (!fs.existsSync(versePath)) {
             return handleError(res, 404, 'The requested verse does not exist.', {
                 surah_id: surahId,
                 verse_id: verseId,
-                timestamp: new Date().toISOString(),
-                method: req.method,
-                path: req.originalUrl
             });
         }
 
-        try {
-            const verseData = fs.readJSONSync(versePath);
-            res.json({
-                success: true,
-                result: verseData
-            });
-        } catch (error) {
-            handleError(res, 500, 'An error occurred while fetching verse data.', {
-                surah_id: surahId,
-                verse_id: verseId,
-                message: error.message,
-                timestamp: new Date().toISOString(),
-                method: req.method,
-                path: req.originalUrl
-            });
-        }
+        const verseData = fs.readJSONSync(versePath);
+        return res.json({
+            success: true,
+            result: verseData
+        });
+    } catch (error) {
+        handleError(res, 500, 'An error occurred while fetching verse data.', {
+            surah_id: surahId,
+            verse_id: verseId,
+            message: SAFE_INTERNAL_ERROR_MESSAGE,
+            timestamp: new Date().toISOString(),
+            method: req.method,
+            path: req.originalUrl
+        });
     }
 };
 
 export const getAudio = (req, res) => {
-    const surahId = req.query.surah_id || req.params.surah_id;
-    const audioPath = path.join(audioFolderPath, `audio_surah_${surahId}.json`);
+    const surahId = parseBoundedNumericId(getRequestId(req, 'surah_id'), MAX_SURAH_ID);
+    if (surahId === null) {
+        return handleError(res, 400, 'Invalid surah_id.', {
+            message: 'surah_id must be an integer from 1 to 114.',
+        });
+    }
+
+    const audioPath = resolveContainedDataPath(audioFolderPath, `audio_surah_${surahId}.json`);
+    if (!audioPath) {
+        return handleError(res, 400, 'Invalid surah_id.', {
+            message: 'surah_id must be an integer from 1 to 114.',
+        });
+    }
 
     if (!fs.existsSync(audioPath)) {
         return handleError(res, 404, 'The requested audio does not exist.', {
@@ -168,7 +263,7 @@ export const getAudio = (req, res) => {
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching audio data.', {
             surah_id: surahId,
-            message: error.message,
+            message: SAFE_INTERNAL_ERROR_MESSAGE,
         });
     }
 };
@@ -207,7 +302,7 @@ export const getVersesByJuz = (req, res) => {
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching verses by juz.', {
             juz_id: juzId,
-            message: error.message,
+            message: SAFE_INTERNAL_ERROR_MESSAGE,
         });
     }
 };
@@ -243,7 +338,7 @@ export const getSajdaVerses = (req, res) => {
         });
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching sajda verses.', {
-            message: error.message,
+            message: SAFE_INTERNAL_ERROR_MESSAGE,
         });
     }
 };
@@ -323,7 +418,7 @@ export const getPage = (req, res) => {
         });
     } catch (error) {
         handleError(res, 500, 'An error occurred while fetching page data.', {
-            message: error.message,
+            message: SAFE_INTERNAL_ERROR_MESSAGE,
         });
     }
 };
