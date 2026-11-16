@@ -37,30 +37,179 @@ async function getSurahData(surahNumber) {
     return null;
 }
 
-const FALLBACK_MODELS = [
+const GEMINI_FALLBACK_MODELS = [
     'gemini-3.5-flash',
     'gemini-3.5-flash-lite',
     'gemini-3.8-flash'
 ];
 
-async function generateWithFallback(ai, contents, genConfig = {}) {
-    let lastError = null;
-    for (const model of FALLBACK_MODELS) {
-        try {
-            return await ai.models.generateContent({
-                model,
-                contents,
-                config: genConfig
-            });
-        } catch (err) {
-            lastError = err;
-            if (err.status === 503 || err.status === 404) {
-                continue;
-            }
-            throw err;
-        }
+const GROQ_FALLBACK_MODELS = [
+    'llama-3.3-70b-versatile',
+    'llama-3.1-8b-instant',
+    'mixtral-8x7b-32768'
+];
+
+/**
+ * Provider-Neutral LLM Adapter Factory
+ */
+export function getLLMAdapter(overrides = {}) {
+    const provider = (overrides.provider || process.env.TEST_LLM_PROVIDER || 'gemini').toLowerCase();
+    const apiKey = overrides.apiKey || process.env.TEST_LLM_API_KEY || (provider === 'groq' ? process.env.GROQ_API_KEY : (process.env.GEMINI_API_KEY || config.geminiApiKey));
+    const modelOverride = overrides.model || process.env.TEST_LLM_MODEL;
+
+    if (!apiKey || apiKey === 'your_gemini_api_key_here' || apiKey === 'your_groq_api_key_here') {
+        const err = new Error(
+            provider === 'gemini'
+                ? 'MISSING_CONFIGURATION: يرجى تحديد مفتاح GEMINI_API_KEY في ملف .env لتشغيل محرك البحث المعرفي.'
+                : `MISSING_CONFIGURATION: ${provider.toUpperCase()} API key is not configured.`
+        );
+        err.code = 'MISSING_CONFIGURATION';
+        throw err;
     }
-    throw lastError;
+
+    if (provider === 'gemini') {
+        return createGeminiAdapter(apiKey, modelOverride);
+    } else if (provider === 'groq') {
+        return createGroqAdapter(apiKey, modelOverride);
+    } else {
+        const err = new Error(`PROVIDER_UNAVAILABLE: Unsupported provider '${provider}'`);
+        err.code = 'PROVIDER_UNAVAILABLE';
+        throw err;
+    }
+}
+
+function createGeminiAdapter(apiKey, customModel) {
+    const genAI = new GoogleGenAI({ apiKey });
+    const models = customModel ? [customModel] : GEMINI_FALLBACK_MODELS;
+
+    return {
+        provider: 'gemini',
+        async generateContent(options = {}) {
+            const { prompt, responseMimeType, temperature = 0.1 } = options;
+            const genConfig = {};
+            if (responseMimeType) genConfig.responseMimeType = responseMimeType;
+            if (temperature !== undefined) genConfig.temperature = temperature;
+
+            let lastErr = null;
+            for (const model of models) {
+                try {
+                    const res = await genAI.models.generateContent({
+                        model,
+                        contents: prompt,
+                        config: genConfig
+                    });
+                    return { text: res.text };
+                } catch (err) {
+                    lastErr = err;
+                    if (err.status === 401 || err.status === 403) {
+                        const normErr = new Error('AUTHENTICATION_FAILURE: Invalid or unauthorized Gemini API key');
+                        normErr.code = 'AUTHENTICATION_FAILURE';
+                        normErr.originalError = err;
+                        throw normErr;
+                    }
+                    if (err.status === 429) {
+                        const normErr = new Error('RATE_LIMIT: Gemini rate limit exceeded');
+                        normErr.code = 'RATE_LIMIT';
+                        normErr.originalError = err;
+                        throw normErr;
+                    }
+                    if (err.status === 503 || err.status === 404) {
+                        continue;
+                    }
+                    const normErr = new Error(`PROVIDER_UNAVAILABLE: Gemini error - ${err.message || err}`);
+                    normErr.code = 'PROVIDER_UNAVAILABLE';
+                    normErr.originalError = err;
+                    throw normErr;
+                }
+            }
+            const normErr = new Error(`MODEL_UNAVAILABLE: All Gemini models failed. Last error: ${lastErr?.message || lastErr}`);
+            normErr.code = 'MODEL_UNAVAILABLE';
+            normErr.originalError = lastErr;
+            throw normErr;
+        }
+    };
+}
+
+function createGroqAdapter(apiKey, customModel) {
+    const models = customModel ? [customModel] : GROQ_FALLBACK_MODELS;
+
+    return {
+        provider: 'groq',
+        async generateContent(options = {}) {
+            const { prompt, responseMimeType, temperature = 0.1, timeoutMs = 30000 } = options;
+            let lastErr = null;
+
+            for (const model of models) {
+                try {
+                    const controller = new AbortController();
+                    const timer = setTimeout(() => controller.abort(), timeoutMs);
+
+                    const body = {
+                        model,
+                        messages: [{ role: 'user', content: prompt }],
+                        temperature
+                    };
+                    if (responseMimeType === 'application/json') {
+                        body.response_format = { type: 'json_object' };
+                    }
+
+                    const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${apiKey}`,
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(body),
+                        signal: controller.signal
+                    }).finally(() => clearTimeout(timer));
+
+                    if (!response.ok) {
+                        const errData = await response.json().catch(() => ({}));
+                        const errMsg = errData.error?.message || response.statusText;
+                        if (response.status === 401 || response.status === 403) {
+                            const err = new Error(`AUTHENTICATION_FAILURE: Groq auth failed - ${errMsg}`);
+                            err.code = 'AUTHENTICATION_FAILURE';
+                            throw err;
+                        }
+                        if (response.status === 429) {
+                            const err = new Error(`RATE_LIMIT: Groq rate limit exceeded - ${errMsg}`);
+                            err.code = 'RATE_LIMIT';
+                            throw err;
+                        }
+                        if (response.status === 503 || response.status === 502 || response.status === 504 || response.status === 404) {
+                            lastErr = new Error(`PROVIDER_UNAVAILABLE: Groq server error ${response.status} - ${errMsg}`);
+                            lastErr.code = 'PROVIDER_UNAVAILABLE';
+                            continue;
+                        }
+                        const err = new Error(`PROVIDER_UNAVAILABLE: Groq returned status ${response.status} - ${errMsg}`);
+                        err.code = 'PROVIDER_UNAVAILABLE';
+                        throw err;
+                    }
+
+                    const data = await response.json();
+                    const content = data.choices?.[0]?.message?.content;
+                    if (!content) {
+                        const err = new Error('MALFORMED_PROVIDER_RESPONSE: Groq returned empty content');
+                        err.code = 'MALFORMED_PROVIDER_RESPONSE';
+                        throw err;
+                    }
+                    return { text: content };
+                } catch (err) {
+                    if (err.name === 'AbortError') {
+                        const timeoutErr = new Error('TIMEOUT: Request to Groq timed out');
+                        timeoutErr.code = 'TIMEOUT';
+                        throw timeoutErr;
+                    }
+                    if (err.code) throw err;
+                    lastErr = err;
+                }
+            }
+            const normErr = new Error(`MODEL_UNAVAILABLE: All Groq models failed. Last error: ${lastErr?.message || lastErr}`);
+            normErr.code = 'MODEL_UNAVAILABLE';
+            normErr.originalError = lastErr;
+            throw normErr;
+        }
+    };
 }
 
 /**
@@ -84,7 +233,7 @@ function resolveResearchMode(userMode, query) {
 /**
  * Layer 1: Morphological & Syntactic Query Engine
  */
-async function morphologicalEngineAgent(ai, userQuery, mode) {
+async function morphologicalEngineAgent(adapter, userQuery, mode) {
     const prompt = `
 أنت "المحرك الصرفي والتركيبي القرآني" (Quranic Morphological & Syntactic Engine) ضمن نظام التشغيل البحثي القرآني (Quranic Cognitive Research OS).
 النمط البحثي المعتمد: [${mode}].
@@ -109,7 +258,8 @@ async function morphologicalEngineAgent(ai, userQuery, mode) {
 }
 `;
 
-    const response = await generateWithFallback(ai, prompt, {
+    const response = await adapter.generateContent({
+        prompt,
         responseMimeType: 'application/json',
         temperature: 0.1
     });
@@ -133,7 +283,7 @@ async function morphologicalEngineAgent(ai, userQuery, mode) {
 /**
  * Layer 2: Raw Quranic Extraction & Intra-Quranic Resonance Agent (Tier 0 Priority)
  */
-async function intraQuranicResonanceAgent(ai, userQuery, morphData) {
+async function intraQuranicResonanceAgent(adapter, userQuery, morphData) {
     const metadata = await getMetadata();
     const surahSummary = metadata.map(s => `${s.number}. سورة ${s.name.ar}`).join('، ');
 
@@ -162,7 +312,8 @@ async function intraQuranicResonanceAgent(ai, userQuery, morphData) {
 }
 `;
 
-    const response = await generateWithFallback(ai, prompt, {
+    const response = await adapter.generateContent({
+        prompt,
         responseMimeType: 'application/json',
         temperature: 0.1
     });
@@ -208,7 +359,7 @@ async function intraQuranicResonanceAgent(ai, userQuery, morphData) {
 /**
  * Layer 3 & 4: Epistemic Sourcing, Guard Agent & Pathways Synthesis
  */
-async function epistemicSynthesisAgent(ai, userQuery, mode, morphData, resonanceData) {
+async function epistemicSynthesisAgent(adapter, userQuery, mode, morphData, resonanceData) {
     const prompt = `
 أنت "المحرك المعرفي والتحليلي لنظام التشغيل البحثي القرآني" (Cognitive Synthesis & Guard Agent).
 أنت مقيد تماماً بـ "الدستور التأسيسي لنظام التشغيل البحثي القرآني":
@@ -273,7 +424,8 @@ async function epistemicSynthesisAgent(ai, userQuery, mode, morphData, resonance
 }
 `;
 
-    const response = await generateWithFallback(ai, prompt, {
+    const response = await adapter.generateContent({
+        prompt,
         responseMimeType: 'application/json',
         temperature: mode === 'tadabbur' ? 0.4 : 0.1
     });
@@ -306,24 +458,19 @@ async function epistemicSynthesisAgent(ai, userQuery, mode, morphData, resonance
  * Master Controller: Multi-Agent Orchestrator
  */
 export async function runCognitiveSearch(userQuery, requestedMode = null) {
-    const apiKey = process.env.GEMINI_API_KEY || config.geminiApiKey;
-    if (!apiKey || apiKey === 'your_gemini_api_key_here') {
-        throw new Error('يرجى تحديد مفتاح GEMINI_API_KEY في ملف .env لتشغيل محرك البحث المعرفي.');
-    }
-
-    const ai = new GoogleGenAI({ apiKey });
+    const adapter = getLLMAdapter();
 
     // Step 0: Resolve Research Mode
     const mode = resolveResearchMode(requestedMode, userQuery);
 
     // Step 1: Deep Morphological & Syntactic Engine
-    const morphData = await morphologicalEngineAgent(ai, userQuery, mode);
+    const morphData = await morphologicalEngineAgent(adapter, userQuery, mode);
 
     // Step 2: Intra-Quranic Resonance & Raw Text Extraction (Tier 0)
-    const resonanceData = await intraQuranicResonanceAgent(ai, userQuery, morphData);
+    const resonanceData = await intraQuranicResonanceAgent(adapter, userQuery, morphData);
 
     // Step 3 & 4: Epistemic Sourcing, Guard Agent & 5-Nodes Canvas Synthesis
-    const synthesis = await epistemicSynthesisAgent(ai, userQuery, mode, morphData, resonanceData);
+    const synthesis = await epistemicSynthesisAgent(adapter, userQuery, mode, morphData, resonanceData);
 
     return {
         query: userQuery,
@@ -348,3 +495,4 @@ export async function runCognitiveSearch(userQuery, requestedMode = null) {
         }
     };
 }
+
