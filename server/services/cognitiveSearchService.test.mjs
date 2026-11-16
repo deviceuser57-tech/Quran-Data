@@ -52,3 +52,68 @@ test('getLLMAdapter creates gemini adapter instance structurally', t => {
     assert.equal(typeof adapter.generateContent, 'function');
 });
 
+test('groq fallback catalog order is corrected and contains no stale models', async t => {
+    const attempted = [];
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = async (url, opts) => {
+        attempted.push(JSON.parse(opts.body).model);
+        return {
+            ok: false,
+            status: 404,
+            statusText: 'Not Found',
+            json: async () => ({ error: { message: 'model_not_found' } })
+        };
+    };
+    t.after(() => { globalThis.fetch = originalFetch; });
+
+    const adapter = getLLMAdapter({ provider: 'groq', apiKey: 'dummy_groq_key' });
+    await assert.rejects(
+        () => adapter.generateContent({ prompt: 'x' }),
+        err => err.code === 'MODEL_UNAVAILABLE'
+    );
+
+    assert.deepEqual(attempted, ['openai/gpt-oss-20b', 'openai/gpt-oss-120b']);
+});
+
+test('TEST_LLM_MODEL overrides the groq fallback list', async t => {
+    const previousModel = process.env.TEST_LLM_MODEL;
+    process.env.TEST_LLM_MODEL = 'env-override/test-model';
+    t.after(() => {
+        if (previousModel === undefined) {
+            delete process.env.TEST_LLM_MODEL;
+        } else {
+            process.env.TEST_LLM_MODEL = previousModel;
+        }
+    });
+
+    const attempted = [];
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = async (url, opts) => {
+        attempted.push(JSON.parse(opts.body).model);
+        return {
+            ok: true,
+            json: async () => ({ choices: [{ message: { content: 'ok' } }] })
+        };
+    };
+    t.after(() => { globalThis.fetch = originalFetch; });
+
+    const adapter = getLLMAdapter({ provider: 'groq', apiKey: 'dummy_groq_key' });
+    const res = await adapter.generateContent({ prompt: 'x' });
+    assert.equal(res.text, 'ok');
+    assert.deepEqual(attempted, ['env-override/test-model']);
+});
+
+test('adapter construction performs no network request', async t => {
+    let calls = 0;
+    const originalFetch = globalThis.fetch;
+    globalThis.fetch = async () => {
+        calls += 1;
+        throw new Error('network disabled in test');
+    };
+    t.after(() => { globalThis.fetch = originalFetch; });
+
+    getLLMAdapter({ provider: 'groq', apiKey: 'dummy_groq_key' });
+    getLLMAdapter({ provider: 'gemini', apiKey: 'dummy_gemini_key' });
+    assert.equal(calls, 0);
+});
+
